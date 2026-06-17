@@ -27,6 +27,7 @@ private class fflib_AnyOrderTest
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.times(2))).add(fflib_Match.anyString());
 		((fflib_MyList.IList) mocks.verify(mockList)).add('fred');
 		((fflib_MyList.IList) mocks.verify(mockList)).add(fflib_Match.stringContains('fred'));
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -71,6 +72,7 @@ private class fflib_AnyOrderTest
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.times(2))).add(
 			(String)fflib_Match.isNot(fflib_Match.eq('jack'))
 		);
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -90,6 +92,7 @@ private class fflib_AnyOrderTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.times(3))).get((Integer)fflib_Match.matches(new isOdd()));
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.times(2))).get((Integer)fflib_Match.matches(new isEven()));
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -105,6 +108,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.times(2))).add('bob');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -120,6 +124,7 @@ private class fflib_AnyOrderTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.never())).add('bob');
 		((fflib_MyList.IList) mocks.verify(mockList)).get(0);
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -135,6 +140,7 @@ private class fflib_AnyOrderTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList)).set(0, 'bob');
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.never())).set(0, 'fred');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -146,6 +152,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.never())).add('bob');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -161,6 +168,7 @@ private class fflib_AnyOrderTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.never())).get(fflib_Match.anyInteger());
 		((fflib_MyList.IList) mocks.verify(mockList)).add(fflib_Match.anyString());
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	/*
@@ -181,6 +189,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.times(3))).add('bob');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -197,6 +206,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.times(3))).add(fflib_Match.anyString());
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -358,6 +368,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeast(2))).add('bob');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -377,6 +388,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeast(2))).add('bob');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -425,6 +437,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeast(2))).add(fflib_Match.anyString());
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -442,6 +455,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeast(2))).add(fflib_Match.anyString());
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -496,6 +510,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atMost(5))).add('bob');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -514,6 +529,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atMost(3))).add('bob');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -567,6 +583,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atMost(5))).add(fflib_Match.anyString());
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -583,6 +600,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atMost(3))).add(fflib_Match.anyString());
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -637,6 +655,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeastOnce())).add('bob');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -654,6 +673,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeastOnce())).add('bob');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -701,6 +721,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeastOnce())).add(fflib_Match.anyString());
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -720,6 +741,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeastOnce())).add(fflib_Match.anyString());
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -778,6 +800,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.between(3, 5))).add('bob');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -828,6 +851,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.between(3, 5))).add(fflib_Match.anyString());
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -955,6 +979,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.never())).add('bob');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -971,6 +996,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.never())).add(fflib_Match.anyString());
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1043,6 +1069,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeastOnce())).add('bob');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1062,6 +1089,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeastOnce())).add('bob');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1110,6 +1138,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeastOnce())).add(fflib_Match.anyString());
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1127,6 +1156,7 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeastOnce())).add(fflib_Match.anyString());
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest

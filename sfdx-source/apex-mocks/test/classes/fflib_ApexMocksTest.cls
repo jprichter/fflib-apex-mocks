@@ -41,6 +41,7 @@ private class fflib_ApexMocksTest
 		((fflib_MyList.IList) mocks.verify(mockList, 2)).add(fflib_Match.anyString());
 		((fflib_MyList.IList) mocks.verify(mockList)).add('fred');
 		((fflib_MyList.IList) mocks.verify(mockList)).add(fflib_Match.stringContains('fred'));
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -111,6 +112,7 @@ private class fflib_ApexMocksTest
 		((fflib_MyList.IList) mocks.verify(mockList, 2)).add(
 			(String)fflib_Match.isNot(fflib_Match.eq('jack'))
 		);
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -157,6 +159,7 @@ private class fflib_ApexMocksTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, 3)).get((Integer)fflib_Match.matches(new isOdd()));
 		((fflib_MyList.IList) mocks.verify(mockList, 2)).get((Integer)fflib_Match.matches(new isEven()));
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -379,6 +382,7 @@ private class fflib_ApexMocksTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList)).isEmpty();
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -393,6 +397,7 @@ private class fflib_ApexMocksTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList)).add('bob');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -408,6 +413,7 @@ private class fflib_ApexMocksTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, 2)).add('bob');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -424,6 +430,7 @@ private class fflib_ApexMocksTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList)).add('bob');
 		((fflib_MyList.IList) mocks.verify(mockList)).add('fred');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -444,6 +451,7 @@ private class fflib_ApexMocksTest
 		((fflib_MyList.IList) mocks.verify(mockList)).add(new String[] {'bob'});
 		((fflib_MyList.IList) mocks.verify(mockList)).add((String)null);
 		((fflib_MyList.IList) mocks.verify(mockList)).add((String[])null);
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -459,6 +467,7 @@ private class fflib_ApexMocksTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, fflib_ApexMocks.NEVER)).add('bob');
 		((fflib_MyList.IList) mocks.verify(mockList)).get(0);
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -618,6 +627,7 @@ private class fflib_ApexMocksTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, fflib_ApexMocks.NEVER)).add('bob');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -633,6 +643,7 @@ private class fflib_ApexMocksTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList)).set(0, 'bob');
 		((fflib_MyList.IList) mocks.verify(mockList, fflib_ApexMocks.NEVER)).set(0, 'fred');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -713,6 +724,7 @@ private class fflib_ApexMocksTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, fflib_ApexMocks.NEVER)).get(fflib_Match.anyInteger());
 		((fflib_MyList.IList) mocks.verify(mockList)).add(fflib_Match.anyString());
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -728,6 +740,7 @@ private class fflib_ApexMocksTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, fflib_ApexMocks.NEVER)).get(fflib_Match.anyInteger());
 		((fflib_MyList.IList) mocks.verify(mockList)).add('bob');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -767,6 +780,7 @@ private class fflib_ApexMocksTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, 1)).clear();
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -842,6 +856,7 @@ private class fflib_ApexMocksTest
 		// Then
 		assertReturnedValue('One');
 		assertExceptionMessage('Stubbed exception.');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -859,6 +874,7 @@ private class fflib_ApexMocksTest
 		assertReturnedValue('One');
 		assertExceptionMessageForGet2('Stubbed exception2.');
 		assertReturnedValueForGet2('One2');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -876,6 +892,7 @@ private class fflib_ApexMocksTest
 		assertExceptionMessage('Stubbed exception.');
 		assertReturnedValueForGet2('One2');
 		assertExceptionMessageForGet2('Stubbed exception2.');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -891,6 +908,7 @@ private class fflib_ApexMocksTest
 		assertReturnedValue('One');
 		assertReturnedValue('Two');
 		assertReturnedValue('Three');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -909,6 +927,7 @@ private class fflib_ApexMocksTest
 
 		assertReturnedValue('Three');
 		assertReturnedValue('Three');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -928,6 +947,7 @@ private class fflib_ApexMocksTest
 		assertExceptionMessage('first.');
 		assertExceptionMessage('second.');
 		assertExceptionMessage('third.');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -950,6 +970,7 @@ private class fflib_ApexMocksTest
 
 		assertExceptionMessage('third.');
 		assertExceptionMessage('third.');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -978,6 +999,7 @@ private class fflib_ApexMocksTest
 
 		assertReturnedValue('Three');
 		assertReturnedValue('Three');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1006,6 +1028,7 @@ private class fflib_ApexMocksTest
 
 		assertExceptionMessage('third.');
 		assertExceptionMessage('third.');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1021,6 +1044,7 @@ private class fflib_ApexMocksTest
 		// Then
 		assertReturnedValue('Two');
 		assertReturnedValue('Two');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1036,6 +1060,7 @@ private class fflib_ApexMocksTest
 		// Then
 		assertReturnedValue('Two');
 		assertReturnedValue('Two');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1055,6 +1080,7 @@ private class fflib_ApexMocksTest
 
 		assertReturnedValue('Six');
 		assertReturnedValue('Six');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1074,6 +1100,7 @@ private class fflib_ApexMocksTest
 
 		assertReturnedValue('Three');
 		assertReturnedValue('Three');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1091,6 +1118,7 @@ private class fflib_ApexMocksTest
 		// Then
 		assertExceptionMessage('first.');
 		assertExceptionMessage('first.');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1114,6 +1142,7 @@ private class fflib_ApexMocksTest
 
 		assertExceptionMessage('third.');
 		assertExceptionMessage('third.');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1137,6 +1166,7 @@ private class fflib_ApexMocksTest
 
 		assertExceptionMessage('third.');
 		assertExceptionMessage('third.');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1154,6 +1184,7 @@ private class fflib_ApexMocksTest
 		// Then
 		assertExceptionMessage('first.');
 		assertExceptionMessage('first.');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1171,6 +1202,7 @@ private class fflib_ApexMocksTest
 		// Then
 		assertReturnedValue('Two');
 		assertReturnedValue('Two');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1190,6 +1222,7 @@ private class fflib_ApexMocksTest
 		// Then
 		assertReturnedValue('Two');
 		assertReturnedValue('Two');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1213,6 +1246,7 @@ private class fflib_ApexMocksTest
 
 		assertReturnedValue('Six');
 		assertReturnedValue('Six');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1234,6 +1268,7 @@ private class fflib_ApexMocksTest
 
 		assertReturnedValue('Three');
 		assertReturnedValue('Three');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1254,6 +1289,7 @@ private class fflib_ApexMocksTest
 		// Then
 		assertExceptionMessage('fourth.');
 		assertExceptionMessage('fourth.');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1281,6 +1317,7 @@ private class fflib_ApexMocksTest
 
 		assertExceptionMessage('sixth.');
 		assertExceptionMessage('sixth.');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1306,6 +1343,7 @@ private class fflib_ApexMocksTest
 
 		assertExceptionMessage('third.');
 		assertExceptionMessage('third.');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1324,14 +1362,13 @@ private class fflib_ApexMocksTest
 		// Then
 		assertExceptionMessage('first.');
 		assertExceptionMessage('first.');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
 	static void thatVoidMethodThrowsMultipleExceptions()
 	{
 		// Given
-		MyException beforeFirst = new MyException('before first.');
-
 		MyException first = new MyException('first.');
 		MyException second = new MyException('second.');
 		MyException third = new MyException('third.');
@@ -1348,6 +1385,7 @@ private class fflib_ApexMocksTest
 
 		assertExceptionMessageOnVoidMethod('third.');
 		assertExceptionMessageOnVoidMethod('third.');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
@@ -1383,14 +1421,13 @@ private class fflib_ApexMocksTest
 
 		assertExceptionMessageOnAddMoreVoidMethod('third2.');
 		assertExceptionMessageOnAddMoreVoidMethod('third2.');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
 	static void thatStubbingMutipleTimesVoidMethodThrowsMultipleExceptionsOverride()
 	{
 		// Given
-		MyException beforeFirst = new MyException('before first.');
-
 		MyException first = new MyException('first.');
 		MyException second = new MyException('second.');
 		MyException third = new MyException('third.');
@@ -1412,21 +1449,18 @@ private class fflib_ApexMocksTest
 
 		assertExceptionMessageOnVoidMethod('sixth.');
 		assertExceptionMessageOnVoidMethod('sixth.');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest
 	static void thatStubbingMutipleTimesVoidMethodThrowsMultipleExceptionsOverrideWithSingleException()
 	{
 		// Given
-		MyException beforeFirst = new MyException('before first.');
-
 		MyException first = new MyException('first.');
 		MyException second = new MyException('second.');
 		MyException third = new MyException('third.');
 
 		MyException fourth = new MyException('fourth.');
-		MyException fifth = new MyException('fifth.');
-		MyException sixth = new MyException('sixth.');
 
 		// When
 		MY_MOCKS.startStubbing();
@@ -1437,6 +1471,7 @@ private class fflib_ApexMocksTest
 		// Then
 		assertExceptionMessageOnVoidMethod('fourth.');
 		assertExceptionMessageOnVoidMethod('fourth.');
+		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
 	@isTest

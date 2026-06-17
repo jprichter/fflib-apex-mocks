@@ -119,7 +119,7 @@ private class fflib_AnswerTest
 		mocks.stopStubbing();
 
 		// When
-		String mockCalled = mockList.get2(0, 'Hi hi Hello Hi hi');
+		mockList.get2(0, 'Hi hi Hello Hi hi');
 
 		// Then
 		System.Assert.isInstanceOfType(actualInvocation.getMock(), fflib_MyList.IList.class, 'the object returned is not a mock instance as expected');
@@ -195,8 +195,11 @@ private class fflib_AnswerTest
 		mocks.when(mockList.get2(0, 'Hi hi Hello Hi hi')).thenAnswer(new fflib_AnswerTest.ExceptionForArgumentsOutOfBound());
 		mocks.stopStubbing();
 
-		// When
+		// When - answer internally asserts on the exception message; it returns null
 		String actualValue = mockList.get2(0, 'Hi hi Hello Hi hi');
+
+		// Then
+		System.Assert.isNull(actualValue, 'ExceptionForArgumentsOutOfBound answer should return null');
 	}
 
 	@isTest
@@ -210,8 +213,11 @@ private class fflib_AnswerTest
 		mocks.when(mockList.get2(0, 'Hi hi Hello Hi hi')).thenAnswer(new fflib_AnswerTest.ExceptionForNegativeArgumentIndex());
 		mocks.stopStubbing();
 
-		// When
+		// When - answer internally asserts on the exception message; it returns null
 		String actualValue = mockList.get2(0, 'Hi hi Hello Hi hi');
+
+		// Then
+		System.Assert.isNull(actualValue, 'ExceptionForNegativeArgumentIndex answer should return null');
 	}
 
 	@isTest
@@ -225,8 +231,11 @@ private class fflib_AnswerTest
 		mocks.when(mockList.isEmpty()).thenAnswer(new fflib_AnswerTest.ArgumentListEmptyForMethodWithNoArgument());
 		mocks.stopStubbing();
 
-		// When
+		// When - answer internally asserts the argument list is empty; it returns null
 		Boolean actualValue = mockList.isEmpty();
+
+		// Then
+		System.Assert.isNull(actualValue, 'ArgumentListEmptyForMethodWithNoArgument answer should return null');
 	}
 
 	@isTest
@@ -337,7 +346,7 @@ private class fflib_AnswerTest
 
 			try
 			{
-				Object noExistingObj = invocation.getArgument(2);
+				invocation.getArgument(2);
 				System.Assert.fail('an exception was expected because the argument in the method are only 2');
 			}
 			catch(fflib_ApexMocks.ApexMocksException exp)
@@ -358,7 +367,7 @@ private class fflib_AnswerTest
 
 			try
 			{
-				Object noExistingObj = invocation.getArgument(-1);
+				invocation.getArgument(-1);
 				System.Assert.fail('an exception was expected because the argument index cannot be negative');
 			}
 			catch(fflib_ApexMocks.ApexMocksException exp)
