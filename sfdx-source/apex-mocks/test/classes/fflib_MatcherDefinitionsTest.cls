@@ -1405,8 +1405,8 @@ public class fflib_MatcherDefinitionsTest
 	@isTest
 	private static void whenSObjectWithIdToStringReturnsExpectedString()
 	{
-		Id recordId = '001000000000001AAA';
-		System.Assert.areEqual('[SObject with Id "001000000000001AAA"]', '' + new fflib_MatcherDefinitions.SObjectWithId(recordId));
+		Id recordId = fflib_IDGenerator.generate(Account.SObjectType);
+		System.Assert.areEqual('[SObject with Id "' + recordId + '"]', '' + new fflib_MatcherDefinitions.SObjectWithId(recordId));
 	}
 
 	@isTest

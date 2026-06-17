@@ -559,8 +559,8 @@ public with sharing class fflib_MatchTest
 	public static void eqIdRegistersCorrectMatcherType()
 	{
 		//Given/When
-		Object x = fflib_Match.eqId('001000000000001AAA');
-		
+		Object x = fflib_Match.eqId(fflib_IDGenerator.generate(Account.SObjectType));
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1269,7 +1269,7 @@ public with sharing class fflib_MatchTest
 	private static void sObjectWithIdRegistersCorrectMatcherType()
 	{
 		//Given/When
-		SObject x = fflib_Match.sObjectWithId('001000000000001AAA');
+		SObject x = fflib_Match.sObjectWithId(fflib_IDGenerator.generate(Account.SObjectType));
 
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);

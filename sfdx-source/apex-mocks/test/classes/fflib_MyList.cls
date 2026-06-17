@@ -6,6 +6,7 @@
  * @nodoc
  */
 @isTest
+@SuppressWarnings('PMD.EmptyStatementBlock')
 public with sharing class fflib_MyList implements IList
 {
 	public interface IList
@@ -23,18 +24,22 @@ public with sharing class fflib_MyList implements IList
 
 	public void add(String[] value)
 	{
+		// intentional no-op stub — replaced by mock behavior at runtime
 	}
 
 	public void add(String value)
 	{
+		// intentional no-op stub — replaced by mock behavior at runtime
 	}
 
 	public void add(String value1, String value2, String value3, String value4)
 	{
+		// intentional no-op stub — replaced by mock behavior at runtime
 	}
 
 	public void addMore(String value)
 	{
+		// intentional no-op stub — replaced by mock behavior at runtime
 	}
 
 	public String get(Integer index)
@@ -44,6 +49,7 @@ public with sharing class fflib_MyList implements IList
 
 	public void clear()
 	{
+		// intentional no-op stub — replaced by mock behavior at runtime
 	}
 
 	public Boolean isEmpty()
@@ -53,6 +59,7 @@ public with sharing class fflib_MyList implements IList
 
 	public void set(Integer index, Object value)
 	{
+		// intentional no-op stub — replaced by mock behavior at runtime
 	}
 
 	public String get2(Integer index, String value)
