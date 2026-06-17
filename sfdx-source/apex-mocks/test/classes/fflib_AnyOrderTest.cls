@@ -6,6 +6,7 @@
  * @nodoc
  */
 @isTest
+@SuppressWarnings('PMD.CyclomaticComplexity')
 private class fflib_AnyOrderTest
 {
 	/*
