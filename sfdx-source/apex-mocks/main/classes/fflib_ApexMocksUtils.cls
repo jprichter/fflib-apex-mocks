@@ -24,48 +24,48 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 @NamespaceAccessible
-@SuppressWarnings('PMD.ExcessiveParameterList')
+@SuppressWarnings('PMD.ExcessiveParameterList, PMD.ClassNamingConventions')
 public class fflib_ApexMocksUtils
 {
 	/**
-	 * This is taken from https://gist.github.com/afawcett/8dbfc0e1d8c43c982881.
-	 *
-	 * This method works on the principle that serializing and deserialising child records is supported
-	 *
-	 *   System.assertEquals(1, ((List<Master__c>) 
-	 *    JSON.deserialize(
-	 *	    JSON.serialize(
-	 *         [select Id, Name, 
-	 *            (select Id, Name from Children__r) from Master__c]), List<Master__c>.class))
-	 *               [0].Children__r.size());
-	 *
-	 * This method results internally in constructing this JSON, before deserialising it back into SObject's
-	 *
-	 *		[
-	 *		    {
-	 *		        "attributes": {
-	 *		            "type": "Master__c",
-	 *		            "url": "/services/data/v32.0/sobjects/Master__c/a0YG0000005Jn5uMAC"
-	 *		        },
-	 *		        "Name": "Fred",
-	 *		        "Id": "a0YG0000005Jn5uMAC",
-	 *		        "Children__r": {
-	 *		            "totalSize": 1,
-	 *		            "done": true,
-	 *		            "records": [
-	 *		                {
-	 *		                    "attributes": {
-	 *		                        "type": "Child__c",
-	 *		                        "url": "/services/data/v32.0/sobjects/Child__c/a0ZG0000006JGPAMA4"
-	 *		                    },
-	 *		                    "Name": "Bob",
-	 *		                    "Id": "a0ZG0000006JGPAMA4",
-	 *		                    "Master__c": "a0YG0000005Jn5uMAC"
-	 *		                }
-	 *		            ]
-	 *		        }
-	 * 		]
-	 */
+	* This is taken from https://gist.github.com/afawcett/8dbfc0e1d8c43c982881.
+	*
+	* This method works on the principle that serializing and deserialising child records is supported
+	*
+	*   System.assertEquals(1, ((List<Master__c>) 
+	*    JSON.deserialize(
+	*	    JSON.serialize(
+	*         [select Id, Name, 
+	*            (select Id, Name from Children__r) from Master__c]), List<Master__c>.class))
+	*               [0].Children__r.size());
+	*
+	* This method results internally in constructing this JSON, before deserialising it back into SObject's
+	*
+	*		[
+	*		    {
+	*		        "attributes": {
+	*		            "type": "Master__c",
+	*		            "url": "/services/data/v32.0/sobjects/Master__c/a0YG0000005Jn5uMAC"
+	*		        },
+	*		        "Name": "Fred",
+	*		        "Id": "a0YG0000005Jn5uMAC",
+	*		        "Children__r": {
+	*		            "totalSize": 1,
+	*		            "done": true,
+	*		            "records": [
+	*		                {
+	*		                    "attributes": {
+	*		                        "type": "Child__c",
+	*		                        "url": "/services/data/v32.0/sobjects/Child__c/a0ZG0000006JGPAMA4"
+	*		                    },
+	*		                    "Name": "Bob",
+	*		                    "Id": "a0ZG0000006JGPAMA4",
+	*		                    "Master__c": "a0YG0000005Jn5uMAC"
+	*		                }
+	*		            ]
+	*		        }
+	* 		]
+	*/
 	public static Object makeRelationship(Type parentsType, List<SObject> parents, SObjectField relationshipField, List<List<SObject>> children) {
 
 		// Find out more about this relationship...
@@ -74,9 +74,9 @@ public class fflib_ApexMocksUtils
 	}
 
 	/**
-	 * Generic overload to makeRelationship. Enables creation of
-	 * relationships in a loosely-coupled manner. 
-	 */
+	* Generic overload to makeRelationship. Enables creation of
+	* relationships in a loosely-coupled manner. 
+	*/
 	@NamespaceAccessible
 	public static Object makeRelationship(
 			String parentTypeName,
@@ -94,9 +94,9 @@ public class fflib_ApexMocksUtils
 	}
 
 	/**
-	 * Gives the ability to set test values on formula
-	 * and other read-only fields of mock SObjects
-	 */
+	* Gives the ability to set test values on formula
+	* and other read-only fields of mock SObjects
+	*/
 	@NamespaceAccessible
 	public static Object setReadOnlyFields(SObject objInstance, Type deserializeType, Map<SObjectField, Object> properties) {
 
@@ -109,9 +109,9 @@ public class fflib_ApexMocksUtils
 	}
 
 	/**
-	 * Generic overload to setReadOnlyFields. Enables setting test
-	 * values on read-only fields by their name
-	 */
+	* Generic overload to setReadOnlyFields. Enables setting test
+	* values on read-only fields by their name
+	*/
 	@NamespaceAccessible
 	public static Object setReadOnlyFields(SObject objInstance, Type deserializeType, Map<String, Object> properties) {
 
@@ -124,8 +124,8 @@ public class fflib_ApexMocksUtils
 	}
 
 	/**
-	 * Helper Methods
-	 */
+	* Helper Methods
+	*/
 	private static Object deserializeParentsAndChildren(
 		Type parentsType,
 		DescribeSObjectResult parentDescribe,
@@ -154,9 +154,9 @@ public class fflib_ApexMocksUtils
 	}
 
 	/**
-	 * Monitors stream events for end of object for each SObject contained in the parent list
-	 *   then injects the respective childs record list into the stream
-	 */
+	* Monitors stream events for end of object for each SObject contained in the parent list
+	*   then injects the respective childs record list into the stream
+	*/
 	private class InjectChildrenEventHandler implements JSONParserEvents
 	{
 		private JSONParser childrenParser;
@@ -188,8 +188,8 @@ public class fflib_ApexMocksUtils
 	}
 
 	/**
-	 * Utility function to stream tokens from a reader to a write, while providing a basic eventing model
-	 */
+	* Utility function to stream tokens from a reader to a write, while providing a basic eventing model
+	*/
 	private static void streamTokens(JSONParser fromStream, JSONGenerator toStream, JSONParserEvents events)
 	{
 		Integer depth = 0;
@@ -216,7 +216,7 @@ public class fflib_ApexMocksUtils
 				when VALUE_STRING, VALUE_FALSE, VALUE_TRUE, VALUE_NUMBER_FLOAT, VALUE_NUMBER_INT {
 					toStream.writeString(fromStream.getText());
 				}
-			    when VALUE_NULL {
+			when VALUE_NULL {
 					toStream.writeNull();
 				}
 				when END_OBJECT {
@@ -229,22 +229,24 @@ public class fflib_ApexMocksUtils
 				}
 			}
 			// Don't continue to stream beyond the initial starting point
-			if (depth == 0) 
+			if (depth == 0)
+			{
 				break;
+			}
 		}
 	}
 
 	/**
-	 * Basic event used during the above streaming
-	 */
+	* Basic event used during the above streaming
+	*/
 	private interface JSONParserEvents
 	{
 		void nextToken(JSONParser fromStream, Integer depth, JSONGenerator toStream);
 	}
 
 	/**
-	 * Gets the SObjectType by name
-	 */
+	* Gets the SObjectType by name
+	*/
 	private static Schema.SObjectType getType(String typeName) {
 		Map<String, Schema.SObjectType> gd = Schema.getGlobalDescribe();
 		SObjectType sobjType = gd.get(typeName);
@@ -255,8 +257,8 @@ public class fflib_ApexMocksUtils
 	}
 
 	/**
-	 * Gets the SObjectField of an object by name
-	 */
+	* Gets the SObjectField of an object by name
+	*/
 	private static Schema.SObjectField getField(String objectName, String fieldName) {
 
 		SObjectType sobjType = getType(objectName);

@@ -3,7 +3,7 @@
  */
 
 @isTest
-@SuppressWarnings('PMD.CyclomaticComplexity, PMD.NcssCount')
+@SuppressWarnings('PMD.CyclomaticComplexity, PMD.NcssCount, PMD.ClassNamingConventions, PMD.FieldNamingConventions')
 private class fflib_InOrderTest
 {
 	private static fflib_ApexMocks MY_MOCKS = new fflib_ApexMocks();

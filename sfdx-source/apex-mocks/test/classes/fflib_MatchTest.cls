@@ -24,7 +24,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 @isTest
-@SuppressWarnings('PMD.CyclomaticComplexity, PMD.NcssCount')
+@SuppressWarnings('PMD.CyclomaticComplexity, PMD.NcssCount, PMD.ClassNamingConventions')
 public with sharing class fflib_MatchTest
 {
 	@isTest
@@ -1233,7 +1233,7 @@ public with sharing class fflib_MatchTest
 		//When
 		fflib_Match.sObjectsWith(new list<Map<Schema.SObjectField, Object>>{ 
             new map<Schema.SObjectField,Object> {f=>null}
-        	});
+			});
 
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
@@ -1257,7 +1257,7 @@ public with sharing class fflib_MatchTest
 		//When
 		fflib_Match.sObjectsWith(new list<Map<Schema.SObjectField, Object>>{ 
             new map<Schema.SObjectField,Object> {f=>null}
-        	}, false);
+			}, false);
 
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);

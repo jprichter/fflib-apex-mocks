@@ -6,12 +6,12 @@
  * @nodoc
  */
 @isTest
-@SuppressWarnings('PMD.CyclomaticComplexity')
+@SuppressWarnings('PMD.CyclomaticComplexity, PMD.ClassNamingConventions')
 private class fflib_AnyOrderTest
 {
 	/*
-	 *	replicating the apex mocks tests with the new syntax
-	 */
+	*	replicating the apex mocks tests with the new syntax
+	*/
 
 	@isTest
 	private static void whenVerifyMultipleCallsWithMatchersShouldReturnCorrectMethodCallCounts()
@@ -173,8 +173,8 @@ private class fflib_AnyOrderTest
 	}
 
 	/*
-	 *	times
-	 */
+	*	times
+	*/
 
 	@isTest
 	private static void verifyTimesMethodHasBeenCalled()
@@ -311,8 +311,8 @@ private class fflib_AnyOrderTest
 	}
 
 	/*
-	 *	description
-	 */
+	*	description
+	*/
 
 	@isTest
 	private static void thatCustomMessageIsAdded()
@@ -351,8 +351,8 @@ private class fflib_AnyOrderTest
 	}
 
 	/*
-	 *	atLeast
-	 */
+	*	atLeast
+	*/
 
 	@isTest
 	private static void thatVerifiesAtLeastNumberOfTimes()
@@ -492,8 +492,8 @@ private class fflib_AnyOrderTest
 	}
 
 	/*
-	 *	atMost
-	 */
+	*	atMost
+	*/
 
 	@isTest
 	private static void thatVerifiesAtMostNumberOfTimes()
@@ -639,8 +639,8 @@ private class fflib_AnyOrderTest
 	}
 
 	/*
-	 *	atLeastOnce
-	 */
+	*	atLeastOnce
+	*/
 
 	@isTest
 	private static void thatVerifiesAtLeastOnceNumberOfTimes()
@@ -779,8 +779,8 @@ private class fflib_AnyOrderTest
 	}
 
 	/*
-	 *	between
-	 */
+	*	between
+	*/
 
 	@isTest
 	private static void thatVerifiesBetweenNumberOfTimes()
@@ -963,8 +963,8 @@ private class fflib_AnyOrderTest
 	}
 
 	/*
-	 *	never
-	 */
+	*	never
+	*/
 
 	@isTest
 	private static void verifyNeverMethodHasNotBeenCalled()
@@ -1052,8 +1052,8 @@ private class fflib_AnyOrderTest
 
 
 	/*
-	 *	atLeastOnce
-	 */
+	*	atLeastOnce
+	*/
 
 	@isTest
 	private static void thatVerifiesAtLeastOnce()
@@ -1193,8 +1193,8 @@ private class fflib_AnyOrderTest
 	}
 
 	/*
-	 *	HELPER METHODS
-	 */
+	*	HELPER METHODS
+	*/
 
 	private static void assertFailMessage(String exceptionMessage, Integer expectedInvocations, Integer actualsInvocations)
 	{
@@ -1205,8 +1205,8 @@ private class fflib_AnyOrderTest
 	}
 
 	/*
-	 *	HELPER CLASSES
-	 */
+	*	HELPER CLASSES
+	*/
 
 	private class isOdd implements fflib_IMatcher
 	{

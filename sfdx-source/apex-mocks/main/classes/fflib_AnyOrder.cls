@@ -8,14 +8,15 @@
  *	@group Core
  */
 @NamespaceAccessible
+@SuppressWarnings('PMD.ClassNamingConventions')
 public class fflib_AnyOrder extends fflib_MethodVerifier
 {
 	/*
-	 * Verifies a method was invoked the expected number of times, with the expected arguments.
-	 * @param qualifiedMethod The method to be verified.
-	 * @param methodArg The arguments of the method that needs to be verified.
-	 * @param verificationMode The verification mode that holds the setting about how the verification should be performed.
-	 */
+	* Verifies a method was invoked the expected number of times, with the expected arguments.
+	* @param qualifiedMethod The method to be verified.
+	* @param methodArg The arguments of the method that needs to be verified.
+	* @param verificationMode The verification mode that holds the setting about how the verification should be performed.
+	*/
 	protected override void verify(
 		fflib_QualifiedMethod qm,
 		fflib_MethodArgValues expectedArguments,
@@ -52,8 +53,8 @@ public class fflib_AnyOrder extends fflib_MethodVerifier
 
 	private Integer getMethodCount(fflib_MethodArgValues methodArg, List<fflib_IMatcher> matchers, List<fflib_MethodArgValues> methodArgs)
 	{
-		if (methodArgs == null) return 0;
-		if (matchers == null) return countCalls(methodArgs, methodArg);
+		if (methodArgs == null) { return 0; }
+		if (matchers == null) { return countCalls(methodArgs, methodArg); }
 
 		Integer retval = 0;
 		for (fflib_MethodArgValues args : methodArgs)
@@ -73,19 +74,19 @@ public class fflib_AnyOrder extends fflib_MethodVerifier
 
 		for(fflib_MethodArgValues arg: methodArgs)
 		{
-			if( arg == methodArg) count++;
+			if( arg == methodArg) { count++; }
 		}
 
 		return count;
 	}
 
 	/*
-	 * Method that validate the verification mode used in the verify.
-	 * Not all the methods from the fflib_VerificationMode are implemented for the different classes that extends the fflib_MethodVerifier.
-	 * The error is thrown at run time, so this method is called in the method that actually performs the verify.
-	 * @param verificationMode The verification mode that have to been verified.
-	 * @throws Exception with message for the fflib_VerificationMode not implemented.
-	 */
+	* Method that validate the verification mode used in the verify.
+	* Not all the methods from the fflib_VerificationMode are implemented for the different classes that extends the fflib_MethodVerifier.
+	* The error is thrown at run time, so this method is called in the method that actually performs the verify.
+	* @param verificationMode The verification mode that have to been verified.
+	* @throws Exception with message for the fflib_VerificationMode not implemented.
+	*/
 	protected override void validateMode(fflib_VerificationMode verificationMode)
 	{
 		if(verificationMode.Method == fflib_VerificationMode.ModeName.CALLS)

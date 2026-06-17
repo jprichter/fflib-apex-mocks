@@ -31,12 +31,12 @@
  * E.g. Don't construct Eq(Object toMatch), instead call fflib_Match.eq(Object toMatch).
  */
 @NamespaceAccessible
-@SuppressWarnings('PMD.AvoidBooleanMethodParameters, PMD.ExcessiveParameterList, PMD.CyclomaticComplexity, PMD.CognitiveComplexity, PMD.AvoidDeeplyNestedIfStmts')
+@SuppressWarnings('PMD.AvoidBooleanMethodParameters, PMD.ExcessiveParameterList, PMD.CyclomaticComplexity, PMD.CognitiveComplexity, PMD.AvoidDeeplyNestedIfStmts, PMD.ClassNamingConventions')
 public with sharing class fflib_MatcherDefinitions
 {
 	/**
-	 * Connective - Enum representing the possible operators for the Combined matcher. Possible values: ALL, AT_LEAST_ONE, NONE
-	 */
+	* Connective - Enum representing the possible operators for the Combined matcher. Possible values: ALL, AT_LEAST_ONE, NONE
+	*/
 	public Enum Connective
 	{
 		ALL,
@@ -45,12 +45,12 @@ public with sharing class fflib_MatcherDefinitions
 	}
 	
 	/*
-	 * COMBINED MATCHER
-	 */
+	* COMBINED MATCHER
+	*/
 	
 	/**
-	 * Combined matcher: compares the supplied argument matches one, all or none of the internal matchers
-	 */
+	* Combined matcher: compares the supplied argument matches one, all or none of the internal matchers
+	*/
 	@NamespaceAccessible
 	public class Combined implements fflib_IMatcher
 	{
@@ -58,11 +58,11 @@ public with sharing class fflib_MatcherDefinitions
 		private List<fflib_IMatcher> internalMatchers;
 		
 		/**
-		 * Combined constructor
-		 * @param connectiveExpression Controls the combination mode, i.e. if we need to match all, any or none of the inner matchers
-		 * @param internalMatchers An ordered list of the internal matchers to be combined
-		 * @return fflib_MatcherDefinitions.Combined A new Combined instance
-		 */
+		* Combined constructor
+		* @param connectiveExpression Controls the combination mode, i.e. if we need to match all, any or none of the inner matchers
+		* @param internalMatchers An ordered list of the internal matchers to be combined
+		* @return fflib_MatcherDefinitions.Combined A new Combined instance
+		*/
 		public Combined(Connective connectiveExpression, List<fflib_IMatcher> internalMatchers)
 		{
 			this.connectiveExpression = validate(connectiveExpression);
@@ -148,22 +148,22 @@ public with sharing class fflib_MatcherDefinitions
 	}
 	
 	/*
-	 * OBJECT MATCHERS
-	 */
+	* OBJECT MATCHERS
+	*/
 	
 	/**
-	 * Eq matcher: checks if the supplied argument is equal (==) to a specified object
-	 */
+	* Eq matcher: checks if the supplied argument is equal (==) to a specified object
+	*/
 	@NamespaceAccessible
 	public class Eq implements fflib_IMatcher
 	{
 		private Object toMatch;
 		
 		/**
-		 * Eq constructor
-		 * @param toMatch The object to be compared
-		 * @return fflib_MatcherDefinitions.Eq A new Eq instance
-		 */
+		* Eq constructor
+		* @param toMatch The object to be compared
+		* @return fflib_MatcherDefinitions.Eq A new Eq instance
+		*/
 		public Eq(Object toMatch)
 		{
 			this.toMatch = validateNotNull(toMatch);
@@ -181,18 +181,18 @@ public with sharing class fflib_MatcherDefinitions
 	}
 	
 	/**
-	 * RefEq matcher: checks if the supplied argument is a reference to the same object (===) as a specified object
-	 */
+	* RefEq matcher: checks if the supplied argument is a reference to the same object (===) as a specified object
+	*/
 	@NamespaceAccessible
 	public class RefEq implements fflib_IMatcher
 	{
 		private Object toMatch;
 		
 		/**
-		 * RefEq constructor
-		 * @param toMatch The object to be compared
-		 * @return fflib_MatcherDefinitions.RefEq A new RefEq instance
-		 */
+		* RefEq constructor
+		* @param toMatch The object to be compared
+		* @return fflib_MatcherDefinitions.RefEq A new RefEq instance
+		*/
 		public RefEq(Object toMatch)
 		{
 			this.toMatch = validateNotNull(toMatch);
@@ -210,12 +210,12 @@ public with sharing class fflib_MatcherDefinitions
 	}
 	
 	/*
-	 * ANY MATCHERS
-	 */
+	* ANY MATCHERS
+	*/
 
 	/**
-	 * AnyBoolean matcher: checks if the supplied argument is an instance of a Boolean
-	 */
+	* AnyBoolean matcher: checks if the supplied argument is an instance of a Boolean
+	*/
 	@NamespaceAccessible
 	public class AnyBoolean implements fflib_IMatcher
 	{
@@ -231,8 +231,8 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * AnyDate matcher: checks if the supplied argument is an instance of a Date
-	 */
+	* AnyDate matcher: checks if the supplied argument is an instance of a Date
+	*/
 	@NamespaceAccessible
 	public class AnyDate implements fflib_IMatcher
 	{
@@ -248,9 +248,9 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * AnyDatetime matcher: checks if the supplied argument is an instance of a Datetime
+	* AnyDatetime matcher: checks if the supplied argument is an instance of a Datetime
 	@NamespaceAccessible
-	 */
+	*/
 	public class AnyDatetime implements fflib_IMatcher
 	{
 		public Boolean matches(Object arg)
@@ -266,8 +266,8 @@ public with sharing class fflib_MatcherDefinitions
 
 	/**
 	@NamespaceAccessible
-	 * AnyDecimal matcher: checks if the supplied argument is an instance of a Decimal
-	 */
+	* AnyDecimal matcher: checks if the supplied argument is an instance of a Decimal
+	*/
 	public class AnyDecimal implements fflib_IMatcher
 	{
 		public Boolean matches(Object arg)
@@ -282,8 +282,8 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * AnyDouble matcher: checks if the supplied argument is an instance of a Double
-	 */
+	* AnyDouble matcher: checks if the supplied argument is an instance of a Double
+	*/
 	@NamespaceAccessible
 	public class AnyDouble implements fflib_IMatcher
 	{
@@ -299,8 +299,8 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * AnyFieldSet matcher: checks if the supplied argument is an instance of a FieldSet
-	 */
+	* AnyFieldSet matcher: checks if the supplied argument is an instance of a FieldSet
+	*/
 	@NamespaceAccessible
 	public class AnyFieldSet implements fflib_IMatcher
 	{
@@ -316,9 +316,9 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * AnyId matcher: checks if the supplied argument is an instance of an Id
+	* AnyId matcher: checks if the supplied argument is an instance of an Id
 	@NamespaceAccessible
-	 */
+	*/
 	public class AnyId implements fflib_IMatcher
 	{
 		public Boolean matches(Object arg)
@@ -334,8 +334,8 @@ public with sharing class fflib_MatcherDefinitions
 	
 	/**
 	@NamespaceAccessible
-	 * AnyInteger matcher: checks if the supplied argument is an instance of an Integer
-	 */
+	* AnyInteger matcher: checks if the supplied argument is an instance of an Integer
+	*/
 	public class AnyInteger implements fflib_IMatcher
 	{
 		public Boolean matches(Object arg)
@@ -350,8 +350,8 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * AnyList matcher: checks if the supplied argument is an instance of a List
-	 */
+	* AnyList matcher: checks if the supplied argument is an instance of a List
+	*/
 	@NamespaceAccessible
 	public class AnyList implements fflib_IMatcher
 	{
@@ -367,8 +367,8 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * AnyLong matcher: checks if the supplied argument is an instance of a Long
-	 */
+	* AnyLong matcher: checks if the supplied argument is an instance of a Long
+	*/
 	@NamespaceAccessible
 	public class AnyLong implements fflib_IMatcher
 	{
@@ -384,8 +384,8 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * AnyObject matcher: checks if the supplied argument is an instance of an Object
-	 */
+	* AnyObject matcher: checks if the supplied argument is an instance of an Object
+	*/
 	public class AnyObject implements fflib_IMatcher
 	{
 		public Boolean matches(Object arg)
@@ -400,8 +400,8 @@ public with sharing class fflib_MatcherDefinitions
 	}
 	
 	/**
-	 * AnyString matcher: checks if the supplied argument is an instance of a String
-	 */
+	* AnyString matcher: checks if the supplied argument is an instance of a String
+	*/
 	@NamespaceAccessible
 	public class AnyString implements fflib_IMatcher
 	{
@@ -417,8 +417,8 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * AnySObject matcher: checks if the supplied argument is an instance of an SObject
-	 */
+	* AnySObject matcher: checks if the supplied argument is an instance of an SObject
+	*/
 	@NamespaceAccessible
 	public class AnySObject implements fflib_IMatcher
 	{
@@ -434,8 +434,8 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * AnySObjectField matcher: checks if the supplied argument is an instance of an SObjectField
-	 */
+	* AnySObjectField matcher: checks if the supplied argument is an instance of an SObjectField
+	*/
 	@NamespaceAccessible
 	public class AnySObjectField implements fflib_IMatcher
 	{
@@ -451,9 +451,9 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * AnySObjectType matcher: checks if the supplied argument is an instance of an SObjectType
+	* AnySObjectType matcher: checks if the supplied argument is an instance of an SObjectType
 	@NamespaceAccessible
-	 */
+	*/
 	public class AnySObjectType implements fflib_IMatcher
 	{
 		public Boolean matches(Object arg)
@@ -468,12 +468,12 @@ public with sharing class fflib_MatcherDefinitions
 	}
 	
 	/*
-	 * DATETIME MATCHERS
-	 */
+	* DATETIME MATCHERS
+	*/
 
 	/**
-	 * DatetimeAfter matcher: checks if the supplied argument is after a specified datetime
-	 */
+	* DatetimeAfter matcher: checks if the supplied argument is after a specified datetime
+	*/
 	@NamespaceAccessible
 	public class DatetimeAfter implements fflib_IMatcher
 	{
@@ -481,11 +481,11 @@ public with sharing class fflib_MatcherDefinitions
 		private Boolean inclusive;
 		
 		/**
-		 * DatetimeAfter constructor
-		 * @param fromDatetime The datetime to be compared
-		 * @param inclusive Whether or not dates equal to the fromDatetime should be considered a match
-		 * @return fflib_MatcherDefinitions.DatetimeAfter A new DatetimeAfter instance
-		 */
+		* DatetimeAfter constructor
+		* @param fromDatetime The datetime to be compared
+		* @param inclusive Whether or not dates equal to the fromDatetime should be considered a match
+		* @return fflib_MatcherDefinitions.DatetimeAfter A new DatetimeAfter instance
+		*/
 		public DatetimeAfter(Datetime fromDatetime, Boolean inclusive)
 		{
 			this.fromDatetime = (Datetime)validateNotNull(fromDatetime);
@@ -517,8 +517,8 @@ public with sharing class fflib_MatcherDefinitions
 	}
 	
 	/**
-	 * DatetimeBefore matcher: checks if the supplied argument is before a specified datetime
-	 */
+	* DatetimeBefore matcher: checks if the supplied argument is before a specified datetime
+	*/
 	@NamespaceAccessible
 	public class DatetimeBefore implements fflib_IMatcher
 	{
@@ -526,11 +526,11 @@ public with sharing class fflib_MatcherDefinitions
 		private Boolean inclusive;
 		
 		/**
-		 * DatetimeBefore constructor
-		 * @param toDatetime The datetime to be compared
-		 * @param inclusive Whether or not dates equal to the toDatetime should be considered a match
-		 * @return fflib_MatcherDefinitions.DatetimeBefore A new DatetimeBefore instance
-		 */
+		* DatetimeBefore constructor
+		* @param toDatetime The datetime to be compared
+		* @param inclusive Whether or not dates equal to the toDatetime should be considered a match
+		* @return fflib_MatcherDefinitions.DatetimeBefore A new DatetimeBefore instance
+		*/
 		public DatetimeBefore(Datetime toDatetime, Boolean inclusive)
 		{
 			this.toDatetime = (Datetime)validateNotNull(toDatetime);
@@ -562,8 +562,8 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * DatetimeBetween matcher: checks if the supplied argument is between two specified datetimes
-	 */
+	* DatetimeBetween matcher: checks if the supplied argument is between two specified datetimes
+	*/
 	@NamespaceAccessible
 	public class DatetimeBetween implements fflib_IMatcher
 	{
@@ -573,13 +573,13 @@ public with sharing class fflib_MatcherDefinitions
 		private Boolean inclusiveTo;
 		
 		/**
-		 * DatetimeBetween constructor
-		 * @param fromDatetime The lower bound datetime to be compared
-		 * @param inclusiveFrom Whether or not dates equal to the fromDatetime should be considered a match
-		 * @param toDatetime The upper bound dateetime to be compared
-		 * @param inclusiveTo Whether or not dates equal to the toDatetime should be considered a match
-		 * @return fflib_MatcherDefinitions.DatetimeBetween A new DatetimeBetween instance
-		 */
+		* DatetimeBetween constructor
+		* @param fromDatetime The lower bound datetime to be compared
+		* @param inclusiveFrom Whether or not dates equal to the fromDatetime should be considered a match
+		* @param toDatetime The upper bound dateetime to be compared
+		* @param inclusiveTo Whether or not dates equal to the toDatetime should be considered a match
+		* @return fflib_MatcherDefinitions.DatetimeBetween A new DatetimeBetween instance
+		*/
 		public DatetimeBetween(Datetime fromDatetime, Boolean inclusiveFrom, Datetime toDatetime, Boolean inclusiveTo)
 		{
 			this.fromDatetime = (Datetime)validateNotNull(fromDatetime);
@@ -615,12 +615,12 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/*
-	 * DECIMAL (AND OTHER NUMBER) MATCHERS
-	 */
+	* DECIMAL (AND OTHER NUMBER) MATCHERS
+	*/
 	
 	/**
-	 * DecimalBetween matcher: checks if the supplied argument is between two specified decimals
-	 */
+	* DecimalBetween matcher: checks if the supplied argument is between two specified decimals
+	*/
 	@NamespaceAccessible
 	public class DecimalBetween implements fflib_IMatcher
 	{
@@ -630,13 +630,13 @@ public with sharing class fflib_MatcherDefinitions
 		private Boolean inclusiveUpper;
 
 		/**
-		 * DecimalBetween constructor
-		 * @param lower The lower bound number to be compared
-		 * @param inclusiveLower Whether or not numbers equal to lower should be considered a match
-		 * @param upper The upper bound number to be compared
-		 * @param inclusiveUpper Whether or not numbers equal to upper should be considered a match
-		 * @return fflib_MatcherDefinitions.DecimalBetween A new DecimalBetween instance
-		 */
+		* DecimalBetween constructor
+		* @param lower The lower bound number to be compared
+		* @param inclusiveLower Whether or not numbers equal to lower should be considered a match
+		* @param upper The upper bound number to be compared
+		* @param inclusiveUpper Whether or not numbers equal to upper should be considered a match
+		* @return fflib_MatcherDefinitions.DecimalBetween A new DecimalBetween instance
+		*/
 		public DecimalBetween(Decimal lower, Boolean inclusiveLower, Decimal upper, Boolean inclusiveUpper)
 		{
 			this.lower = (Decimal)validateNotNull(lower);
@@ -673,8 +673,8 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * DecimalLessThan matcher: checks if the supplied argument is less than a specified decimal
-	 */
+	* DecimalLessThan matcher: checks if the supplied argument is less than a specified decimal
+	*/
 	@NamespaceAccessible
 	public class DecimalLessThan implements fflib_IMatcher
 	{
@@ -682,11 +682,11 @@ public with sharing class fflib_MatcherDefinitions
 		private Boolean inclusive;
 
 		/**
-		 * DecimalLessThan constructor
-		 * @param toMatch The number to be compared against
-		 * @param inclusive Whether or not numbers equal to toMatch should be considered a match
-		 * @return fflib_MatcherDefinitions.DecimalLessThan A new DecimalLessThan instance
-		 */
+		* DecimalLessThan constructor
+		* @param toMatch The number to be compared against
+		* @param inclusive Whether or not numbers equal to toMatch should be considered a match
+		* @return fflib_MatcherDefinitions.DecimalLessThan A new DecimalLessThan instance
+		*/
 		public DecimalLessThan(Decimal toMatch, Boolean inclusive)
 		{
 			this.toMatch = (Decimal)validateNotNull(toMatch);
@@ -718,8 +718,8 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * DecimalMoreThan matcher: checks if the supplied argument is greater than a specified decimal
-	 */
+	* DecimalMoreThan matcher: checks if the supplied argument is greater than a specified decimal
+	*/
 	@NamespaceAccessible
 	public class DecimalMoreThan implements fflib_IMatcher
 	{
@@ -727,11 +727,11 @@ public with sharing class fflib_MatcherDefinitions
 		private Boolean inclusive;
 
 		/**
-		 * DecimalMoreThan constructor
-		 * @param toMatch The number to be compared against
-		 * @param inclusive Whether or not numbers equal to toMatch should be considered a match
-		 * @return fflib_MatcherDefinitions.DecimalMoreThan A new DecimalMoreThan instance
-		 */
+		* DecimalMoreThan constructor
+		* @param toMatch The number to be compared against
+		* @param inclusive Whether or not numbers equal to toMatch should be considered a match
+		* @return fflib_MatcherDefinitions.DecimalMoreThan A new DecimalMoreThan instance
+		*/
 		public DecimalMoreThan(Decimal toMatch, Boolean inclusive)
 		{
 			this.toMatch = (Decimal)validateNotNull(toMatch);
@@ -763,21 +763,21 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/** 
-	 * FIELDSET MATCHERS
-	 */
+	* FIELDSET MATCHERS
+	*/
 	
 	/**
-	 * FieldSetEquivalentTo matcher: checks the supplied argument is a field set with the same field set members as a specified field set
-	 * This matcher is needed because equivalent FieldSets do not pass == checks, and we can't override equals/hashcode on FieldSets.
-	 */
+	* FieldSetEquivalentTo matcher: checks the supplied argument is a field set with the same field set members as a specified field set
+	* This matcher is needed because equivalent FieldSets do not pass == checks, and we can't override equals/hashcode on FieldSets.
+	*/
 	@NamespaceAccessible
 	public class FieldSetEquivalentTo implements fflib_IMatcher
 	{
 		private final Set<Schema.FieldSetMember> toMatch;
 
 		/*
-		 * Dirty test-only constructor, allowing us to test this class even if there are no field sets defined in the current org.
-		 */
+		* Dirty test-only constructor, allowing us to test this class even if there are no field sets defined in the current org.
+		*/
 		@TestVisible
 		public FieldSetEquivalentTo()
 		{
@@ -801,13 +801,13 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/*
-	 * IS MATCHERS
-	 */
+	* IS MATCHERS
+	*/
 	
 	/**
-	 * IsNotNull matcher: checks the supplied argument is not null
+	* IsNotNull matcher: checks the supplied argument is not null
 	@NamespaceAccessible
-	 */
+	*/
 	public class IsNotNull implements fflib_IMatcher
 	{
 		public Boolean matches(Object arg)
@@ -822,8 +822,8 @@ public with sharing class fflib_MatcherDefinitions
 	}
 	
 	/**
-	 * IsNull matcher: checks the supplied argument is null
-	 */
+	* IsNull matcher: checks the supplied argument is null
+	*/
 	@NamespaceAccessible
 	public class IsNull implements fflib_IMatcher
 	{
@@ -839,22 +839,22 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/*
-	 * LIST MATCHERS
-	 */
+	* LIST MATCHERS
+	*/
 	
 	/**
-	 * ListContains matcher: checks if the supplied argument is equal (==) to any of the elements in a specified list
-	 */
+	* ListContains matcher: checks if the supplied argument is equal (==) to any of the elements in a specified list
+	*/
 	@NamespaceAccessible
 	public class ListContains implements fflib_IMatcher
 	{
 		private Object toMatch;
 		
 		/**
-		 * ListContains constructor
-		 * @param toMatch The list of objects to be compared
-		 * @return fflib_MatcherDefinitions.ListContains A new ListContains instance
-		 */
+		* ListContains constructor
+		* @param toMatch The list of objects to be compared
+		* @return fflib_MatcherDefinitions.ListContains A new ListContains instance
+		*/
 		public ListContains(Object toMatch)
 		{
 			this.toMatch = toMatch;
@@ -883,9 +883,9 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * ListIsEmpty matcher: checks if the supplied argument is an empty list
+	* ListIsEmpty matcher: checks if the supplied argument is an empty list
 	@NamespaceAccessible
-	 */
+	*/
 	public class ListIsEmpty implements fflib_IMatcher
 	{
 		public Boolean matches(Object arg)
@@ -902,22 +902,22 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/*
-	 * SOBJECT MATCHERS
-	 */
+	* SOBJECT MATCHERS
+	*/
 	
 	/**
-	 * SObjectOfType matcher: checks if the supplied argument has the specified SObjectType
+	* SObjectOfType matcher: checks if the supplied argument has the specified SObjectType
 	@NamespaceAccessible
-	 */
+	*/
 	public class SObjectOfType implements fflib_IMatcher
 	{
 		private Schema.SObjectType objectType;
 
 		/**
-		 * SObjectOfType constructor
-		 * @param objectType The SObjectType to be compared
-		 * @return fflib_MatcherDefinitions.SObjectOfType A new SObjectOfType instance
-		 */
+		* SObjectOfType constructor
+		* @param objectType The SObjectType to be compared
+		* @return fflib_MatcherDefinitions.SObjectOfType A new SObjectOfType instance
+		*/
 		public SObjectOfType(Schema.SObjectType objectType)
 		{
 			this.objectType = (Schema.SObjectType)validateNotNull(objectType);
@@ -941,22 +941,22 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * SObjectWith matcher: compares the supplied argument against a Map<Schema.SObjectField, Object>, representing fields and their expected values.
-	 * Note. this method silently catches exceptions getting values for the supplied fields from the arguments supplied in method calls.
-	 * 
-	 * If your matcher is mysteriously failing for your SObject record, it may be getting silent 'SObject row was retrieved via SOQL without querying
-	 * the requested field' exceptions, because you haven't queried all of the fields used in this matcher.
-	 */
+	* SObjectWith matcher: compares the supplied argument against a Map<Schema.SObjectField, Object>, representing fields and their expected values.
+	* Note. this method silently catches exceptions getting values for the supplied fields from the arguments supplied in method calls.
+	* 
+	* If your matcher is mysteriously failing for your SObject record, it may be getting silent 'SObject row was retrieved via SOQL without querying
+	* the requested field' exceptions, because you haven't queried all of the fields used in this matcher.
+	*/
 	@NamespaceAccessible
 	public class SObjectWith implements fflib_IMatcher
 	{
 		private Map<Schema.SObjectField, Object> toMatch;
 
 		/**
-		 * SObjectWith constructor
-		 * @param toMatch A map of fields to their values to be compared. We compare each of these fields against the supplied sobject's field values.
-		 * @return fflib_MatcherDefinitions.SObjectWith A new SObjectWith instance
-		 */
+		* SObjectWith constructor
+		* @param toMatch A map of fields to their values to be compared. We compare each of these fields against the supplied sobject's field values.
+		* @return fflib_MatcherDefinitions.SObjectWith A new SObjectWith instance
+		*/
 		public SObjectWith(Map<Schema.SObjectField, Object> toMatch)
 		{
 			this.toMatch = validate(toMatch);
@@ -1031,10 +1031,10 @@ public with sharing class fflib_MatcherDefinitions
 		}
 
 		/**
-		 * SObjectsWith constructor
-		 * @param toMatch A list of maps of fields to their values to be compared. We compare each of these fields against the supplied list of sobject's field values.
-		 * @return fflib_MatcherDefinitions.SObjectWith A new SObjectWith instance
-		 */
+		* SObjectsWith constructor
+		* @param toMatch A list of maps of fields to their values to be compared. We compare each of these fields against the supplied list of sobject's field values.
+		* @return fflib_MatcherDefinitions.SObjectWith A new SObjectWith instance
+		*/
 		public SObjectsWith(list<Map<Schema.SObjectField, Object>> toMatch, Boolean matchInOrder)
 		{
 			this.toMatch = validate(toMatch);
@@ -1055,7 +1055,7 @@ public with sharing class fflib_MatcherDefinitions
 				//	Counters for matchInOrder = false; not relevant for matchInOrder = true
 				list<Integer> argMatchedCounts = new list<Integer>();		// # times matched by a matcher. anything other than 1 is match error
 				list<Integer> matcherMatchedCounts = new list<Integer>(); 	// for each map<Schema.SObjectField,Object>
-        																	// # args that match it. Anything other than 1 is match error
+																			// # args that match it. Anything other than 1 is match error
                 
                 
 				for (map<Schema.SObjectField,Object> mtchElm : toMatch)
@@ -1171,18 +1171,18 @@ public with sharing class fflib_MatcherDefinitions
     }
     
 	/**
-	 * SObjectWithId matcher: checks if the supplied argument has the specified Id
-	 */
+	* SObjectWithId matcher: checks if the supplied argument has the specified Id
+	*/
 	@NamespaceAccessible
 	public class SObjectWithId implements fflib_IMatcher
 	{
 		private Id toMatch;
 
 		/**
-		 * SObjectWithId constructor
-		 * @param toMatch The Id to be compared
-		 * @return fflib_MatcherDefinitions.SObjectWithId A new SObjectWithId instance
-		 */
+		* SObjectWithId constructor
+		* @param toMatch The Id to be compared
+		* @return fflib_MatcherDefinitions.SObjectWithId A new SObjectWithId instance
+		*/
 		public SObjectWithId(Id toMatch)
 		{
 			this.toMatch = (Id)validateNotNull(toMatch);
@@ -1206,18 +1206,18 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * SObjectWithName matcher: checks if the supplied argument has the specified Name
+	* SObjectWithName matcher: checks if the supplied argument has the specified Name
 	@NamespaceAccessible
-	 */
+	*/
 	public class SObjectWithName implements fflib_IMatcher
 	{
 		private String toMatch;
 
 		/**
-		 * SObjectWithName constructor
-		 * @param toMatch The name to be compared
-		 * @return fflib_MatcherDefinitions.SObjectWithName A new SObjectWithName instance
-		 */
+		* SObjectWithName constructor
+		* @param toMatch The name to be compared
+		* @return fflib_MatcherDefinitions.SObjectWithName A new SObjectWithName instance
+		*/
 		public SObjectWithName(String toMatch)
 		{
 			this.toMatch = (String)validateNotNull(toMatch);
@@ -1248,22 +1248,22 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/*
-	 * STRING MATCHERS
-	 */
+	* STRING MATCHERS
+	*/
 	
 	/**
-	 * StringContains matcher: checks if the supplied argument contains the specified substring
-	 */
+	* StringContains matcher: checks if the supplied argument contains the specified substring
+	*/
 	@NamespaceAccessible
 	public class StringContains implements fflib_IMatcher
 	{
 		private String toMatch;
 		
 		/**
-		 * StringContains constructor
-		 * @param toMatch The substring to be compared
-		 * @return fflib_MatcherDefinitions.StringContains A new StringContains instance
-		 */
+		* StringContains constructor
+		* @param toMatch The substring to be compared
+		* @return fflib_MatcherDefinitions.StringContains A new StringContains instance
+		*/
 		public StringContains(String toMatch)
 		{
 			this.toMatch = (String)validateNotNull(toMatch);
@@ -1281,18 +1281,18 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * StringEndsWith matcher: checks if the supplied argument ends with the specified substring
-	 */
+	* StringEndsWith matcher: checks if the supplied argument ends with the specified substring
+	*/
 	@NamespaceAccessible
 	public class StringEndsWith implements fflib_IMatcher
 	{
 		private String toMatch;
 		
 		/**
-		 * StringEndsWith constructor
-		 * @param toMatch The substring to be compared
-		 * @return fflib_MatcherDefinitions.StringEndsWith A new StringEndsWith instance
-		 */
+		* StringEndsWith constructor
+		* @param toMatch The substring to be compared
+		* @return fflib_MatcherDefinitions.StringEndsWith A new StringEndsWith instance
+		*/
 		public StringEndsWith(String toMatch)
 		{
 			this.toMatch = (String)validateNotNull(toMatch);
@@ -1310,9 +1310,9 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * StringIsBlank matcher: checks if the supplied argument is a blank String
+	* StringIsBlank matcher: checks if the supplied argument is a blank String
 	@NamespaceAccessible
-	 */
+	*/
 	public class StringIsBlank implements fflib_IMatcher
 	{		
 		public Boolean matches(Object arg)
@@ -1328,8 +1328,8 @@ public with sharing class fflib_MatcherDefinitions
 
 	/**
 	@NamespaceAccessible
-	 * StringIsNotBlank matcher: checks if the supplied argument is a non-blank string
-	 */
+	* StringIsNotBlank matcher: checks if the supplied argument is a non-blank string
+	*/
 	public class StringIsNotBlank implements fflib_IMatcher
 	{		
 		public Boolean matches(Object arg)
@@ -1344,8 +1344,8 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * StringMatches matcher: checks if the supplied argument matches the specified regex expression
-	 */
+	* StringMatches matcher: checks if the supplied argument matches the specified regex expression
+	*/
 	@NamespaceAccessible
 	public class StringMatches implements fflib_IMatcher
 	{
@@ -1353,10 +1353,10 @@ public with sharing class fflib_MatcherDefinitions
 		private final String regEx;
 		
 		/**
-		 * StringMatches constructor
-		 * @param toMatch The substring to be compared
-		 * @return fflib_MatcherDefinitions.StringMatches A new StringMatches instance
-		 */
+		* StringMatches constructor
+		* @param toMatch The substring to be compared
+		* @return fflib_MatcherDefinitions.StringMatches A new StringMatches instance
+		*/
 		public StringMatches(String regEx)
 		{
 			this.regEx = regEx;
@@ -1375,18 +1375,18 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/**
-	 * StringStartsWith matcher: checks if the supplied argument starts with the specified substring
-	 */
+	* StringStartsWith matcher: checks if the supplied argument starts with the specified substring
+	*/
 	@NamespaceAccessible
 	public class StringStartsWith implements fflib_IMatcher
 	{
 		private String toMatch;
 		
 		/**
-		 * StringStartsWith constructor
-		 * @param toMatch The substring to be compared
-		 * @return fflib_MatcherDefinitions.StringStartsWith A new StringStartsWith instance
-		 */
+		* StringStartsWith constructor
+		* @param toMatch The substring to be compared
+		* @return fflib_MatcherDefinitions.StringStartsWith A new StringStartsWith instance
+		*/
 		public StringStartsWith(String toMatch)
 		{
 			this.toMatch = (String)validateNotNull(toMatch);
@@ -1404,8 +1404,8 @@ public with sharing class fflib_MatcherDefinitions
 	}
 
 	/*
-	 * Helpers
-	 */
+	* Helpers
+	*/
 
 	private static Object validateNotNull(Object arg)
 	{
