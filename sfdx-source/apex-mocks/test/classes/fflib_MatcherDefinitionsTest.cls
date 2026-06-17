@@ -67,7 +67,7 @@ public class fflib_MatcherDefinitionsTest
 	{
 		try
 		{
-			fflib_IMatcher matcher = new fflib_MatcherDefinitions.Combined(null, INTERNAL_MATCHERS);
+			new fflib_MatcherDefinitions.Combined(null, INTERNAL_MATCHERS);
 			System.Assert.fail('Expecting exception');
 		}
 		catch (fflib_ApexMocks.ApexMocksException e)
@@ -81,7 +81,7 @@ public class fflib_MatcherDefinitionsTest
 	{
 		try
 		{
-			fflib_IMatcher matcher = new fflib_MatcherDefinitions.Combined(fflib_MatcherDefinitions.Connective.ALL, null);
+			new fflib_MatcherDefinitions.Combined(fflib_MatcherDefinitions.Connective.ALL, null);
 			System.Assert.fail('Expecting exception');
 		}
 		catch (fflib_ApexMocks.ApexMocksException e)
@@ -95,7 +95,7 @@ public class fflib_MatcherDefinitionsTest
 	{
 		try
 		{
-			fflib_IMatcher matcher = new fflib_MatcherDefinitions.Combined(fflib_MatcherDefinitions.Connective.ALL, new List<fflib_IMatcher>());
+			new fflib_MatcherDefinitions.Combined(fflib_MatcherDefinitions.Connective.ALL, new List<fflib_IMatcher>());
 			System.Assert.fail('Expecting exception');
 		}
 		catch (fflib_ApexMocks.ApexMocksException e)
@@ -1405,8 +1405,8 @@ public class fflib_MatcherDefinitionsTest
 	@isTest
 	private static void whenSObjectWithIdToStringReturnsExpectedString()
 	{
-		Id recordId = '001000000000001AAA';
-		System.Assert.areEqual('[SObject with Id "001000000000001AAA"]', '' + new fflib_MatcherDefinitions.SObjectWithId(recordId));
+		Id recordId = fflib_IDGenerator.generate(Account.SObjectType);
+		System.Assert.areEqual('[SObject with Id "' + recordId + '"]', '' + new fflib_MatcherDefinitions.SObjectWithId(recordId));
 	}
 
 	@isTest
