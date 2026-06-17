@@ -5,15 +5,15 @@
 /**
  * @nodoc
  */
-@isTest
-@SuppressWarnings('PMD.CyclomaticComplexity, PMD.ClassNamingConventions')
+@IsTest
+@SuppressWarnings('PMD.CyclomaticComplexity, PMD.ClassNamingConventions, PMD.ApexUnitTestClassShouldHaveRunAs, PMD.ApexDoc')
 private class fflib_AnyOrderTest
 {
 	/*
 	*	replicating the apex mocks tests with the new syntax
 	*/
 
-	@isTest
+	@IsTest
 	private static void whenVerifyMultipleCallsWithMatchersShouldReturnCorrectMethodCallCounts()
 	{
 		// Given
@@ -31,7 +31,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void whenVerifyWithCombinedMatchersShouldReturnCorrectMethodCallCounts()
 	{
 		// Given
@@ -76,7 +76,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void whenVerifyCustomMatchersCanBeUsed()
 	{
 		// Given
@@ -96,7 +96,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void verifyMultipleMethodCallsWithSameSingleArgument()
 	{
 		// Given
@@ -112,7 +112,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void verifyMethodNotCalled()
 	{
 		// Given
@@ -128,7 +128,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void verifySingleMethodCallWithMultipleArguments()
 	{
 		// Given
@@ -144,7 +144,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void verifyMethodCallWhenNoCallsBeenMadeForType()
 	{
 		// Given
@@ -156,7 +156,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void whenVerifyMethodNeverCalledMatchersAreReset()
 	{
 		// Given
@@ -176,7 +176,7 @@ private class fflib_AnyOrderTest
 	*	times
 	*/
 
-	@isTest
+	@IsTest
 	private static void verifyTimesMethodHasBeenCalled()
 	{
 		// Given
@@ -193,7 +193,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void verifyTimesMethodHasBeenCalledWithMatchers()
 	{
 		// Given
@@ -210,7 +210,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifyTimesMethodFailsWhenCalledLessTimes()
 	{
 		// Given
@@ -235,7 +235,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifyTimesMethodFailsWhenCalledMoreTimes()
 	{
 		// Given
@@ -260,7 +260,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifyTimesMethodFailsWhenCalledLessTimesWithMatchers()
 	{
 		// Given
@@ -285,7 +285,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifyTimesMethodFailsWhenCalledMoreTimesWithMatchers()
 	{
 		// Given
@@ -314,7 +314,7 @@ private class fflib_AnyOrderTest
 	*	description
 	*/
 
-	@isTest
+	@IsTest
 	private static void thatCustomMessageIsAdded()
 	{
 		// Given
@@ -354,7 +354,7 @@ private class fflib_AnyOrderTest
 	*	atLeast
 	*/
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastNumberOfTimes()
 	{
 		// Given
@@ -372,7 +372,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastNumberOfTimesWhenIsCalledMoreTimes()
 	{
 		// Given
@@ -392,7 +392,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatThrownExceptionIfCalledLessThanAtLeastNumberOfTimes()
 	{
 		// Given
@@ -425,7 +425,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -441,7 +441,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastNumberOfTimesWhenIsCalledMoreTimesWithMatchers()
 	{
 		// Given
@@ -459,7 +459,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatThrownExceptionIfCalledLessThanAtLeastNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -495,7 +495,7 @@ private class fflib_AnyOrderTest
 	*	atMost
 	*/
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtMostNumberOfTimes()
 	{
 		// Given
@@ -514,7 +514,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtMostSameNumberOfTimes()
 	{
 		// Given
@@ -533,7 +533,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatThrownExceptionIfCalledMoreThanAtMostNumberOfTimes()
 	{
 		// Given
@@ -570,7 +570,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtMostNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -587,7 +587,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtMostSameNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -604,7 +604,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatThrownExceptionIfCalledMoreThanAtMostNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -642,7 +642,7 @@ private class fflib_AnyOrderTest
 	*	atLeastOnce
 	*/
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastOnceNumberOfTimes()
 	{
 		// Given
@@ -659,7 +659,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastOnceNumberOfTimesWhenIsCalledMoreTimes()
 	{
 		// Given
@@ -677,7 +677,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatThrownExceptionIfCalledLessThanAtLeastOnceNumberOfTimes()
 	{
 		// Given
@@ -709,7 +709,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastOnceNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -725,7 +725,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastOnceNumberOfTimesWhenIsCalledMoreTimesWithMatchers()
 	{
 		// Given
@@ -745,7 +745,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatThrownExceptionIfCalledLessThanAtLeastOnceNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -782,7 +782,7 @@ private class fflib_AnyOrderTest
 	*	between
 	*/
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesBetweenNumberOfTimes()
 	{
 		// Given
@@ -804,7 +804,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatBetweenThrownExceptionIfCalledLessThanAtLeastNumberOfTimes()
 	{
 		// Given
@@ -837,7 +837,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesBetweenNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -855,7 +855,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatBetweenThrownExceptionIfCalledLessThanAtLeastNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -887,7 +887,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatBetweenThrownExceptionIfCalledMoreThanAtMostNumberOfTimes()
 	{
 		// Given
@@ -926,7 +926,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatBetweenThrownExceptionIfCalledMoreThanAtMostNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -966,7 +966,7 @@ private class fflib_AnyOrderTest
 	*	never
 	*/
 
-	@isTest
+	@IsTest
 	private static void verifyNeverMethodHasNotBeenCalled()
 	{
 		// Given
@@ -983,7 +983,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void verifyNeverMethodHasBeenNotCalledWithMatchers()
 	{
 		// Given
@@ -1000,7 +1000,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifyNeverFailsWhenCalledMoreTimes()
 	{
 		// Given
@@ -1024,7 +1024,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifyNeverFailsWhenCalledMoreTimesWithMatchers()
 	{
 		// Given
@@ -1055,7 +1055,7 @@ private class fflib_AnyOrderTest
 	*	atLeastOnce
 	*/
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastOnce()
 	{
 		// Given
@@ -1073,7 +1073,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastOnceWhenIsCalledMoreTimes()
 	{
 		// Given
@@ -1093,7 +1093,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatThrownExceptionIfCalledLessThanAtLeastOnce()
 	{
 		// Given
@@ -1126,7 +1126,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastOnceWithMatchers()
 	{
 		// Given
@@ -1142,7 +1142,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastOnceWhenIsCalledMoreTimesWithMatchers()
 	{
 		// Given
@@ -1160,7 +1160,7 @@ private class fflib_AnyOrderTest
 		System.Assert.isTrue(true, 'Verifications passed without exception');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatThrownExceptionIfCalledLessThanAtLeastOnceWithMatchers()
 	{
 		// Given

@@ -31,7 +31,7 @@
  * E.g. Don't construct Eq(Object toMatch), instead call fflib_Match.eq(Object toMatch).
  */
 @NamespaceAccessible
-@SuppressWarnings('PMD.AvoidBooleanMethodParameters, PMD.ExcessiveParameterList, PMD.CyclomaticComplexity, PMD.CognitiveComplexity, PMD.AvoidDeeplyNestedIfStmts, PMD.ClassNamingConventions')
+@SuppressWarnings('PMD.AvoidBooleanMethodParameters, PMD.ExcessiveParameterList, PMD.CyclomaticComplexity, PMD.CognitiveComplexity, PMD.AvoidDeeplyNestedIfStmts, PMD.ClassNamingConventions, PMD.ApexDoc')
 public with sharing class fflib_MatcherDefinitions
 {
 	/**
@@ -43,11 +43,11 @@ public with sharing class fflib_MatcherDefinitions
 		AT_LEAST_ONE,
 		NONE
 	}
-	
+
 	/*
 	* COMBINED MATCHER
 	*/
-	
+
 	/**
 	* Combined matcher: compares the supplied argument matches one, all or none of the internal matchers
 	*/
@@ -56,7 +56,7 @@ public with sharing class fflib_MatcherDefinitions
 	{
 		private Connective connectiveExpression;
 		private List<fflib_IMatcher> internalMatchers;
-		
+
 		/**
 		* Combined constructor
 		* @param connectiveExpression Controls the combination mode, i.e. if we need to match all, any or none of the inner matchers
@@ -68,7 +68,7 @@ public with sharing class fflib_MatcherDefinitions
 			this.connectiveExpression = validate(connectiveExpression);
 			this.internalMatchers = validate(internalMatchers);
 		}
-		
+
 		public Boolean matches(Object arg)
 		{
 			for (fflib_IMatcher internalMatcher : internalMatchers)
@@ -92,31 +92,31 @@ public with sharing class fflib_MatcherDefinitions
 					return false;
 				}
 			}
-			
+
 			//We didn't return early.
 			//If matching any, must have been no matches => failure!
 			//If matching all, must have been all matches => success!
 			//If matching none, must have been all mismatches => success!
 			return connectiveExpression != Connective.AT_LEAST_ONE;
 		}
-		
+
 		private Connective validate(Connective connectiveExpression)
 		{
 			if (connectiveExpression == null)
 			{
 				throw new fflib_ApexMocks.ApexMocksException('Invalid connective expression: ' + connectiveExpression);
 			}
-			
+
 			return connectiveExpression;
 		}
-		
+
 		private List<fflib_IMatcher>  validate(List<fflib_IMatcher> innerMatchers)
 		{
 			if (innerMatchers == null || innerMatchers.isEmpty())
 			{
 				throw new fflib_ApexMocks.ApexMocksException('Invalid inner matchers: ' + innerMatchers);
 			}
-			
+
 			return innerMatchers;
 		}
 
@@ -146,11 +146,11 @@ public with sharing class fflib_MatcherDefinitions
 			}
 		}
 	}
-	
+
 	/*
 	* OBJECT MATCHERS
 	*/
-	
+
 	/**
 	* Eq matcher: checks if the supplied argument is equal (==) to a specified object
 	*/
@@ -158,7 +158,7 @@ public with sharing class fflib_MatcherDefinitions
 	public class Eq implements fflib_IMatcher
 	{
 		private Object toMatch;
-		
+
 		/**
 		* Eq constructor
 		* @param toMatch The object to be compared
@@ -168,7 +168,7 @@ public with sharing class fflib_MatcherDefinitions
 		{
 			this.toMatch = validateNotNull(toMatch);
 		}
-		
+
 		public Boolean matches(Object arg)
 		{
 			return toMatch == arg;
@@ -179,7 +179,7 @@ public with sharing class fflib_MatcherDefinitions
 			return '[equals ' + stringify(toMatch) + ']';
 		}
 	}
-	
+
 	/**
 	* RefEq matcher: checks if the supplied argument is a reference to the same object (===) as a specified object
 	*/
@@ -187,7 +187,7 @@ public with sharing class fflib_MatcherDefinitions
 	public class RefEq implements fflib_IMatcher
 	{
 		private Object toMatch;
-		
+
 		/**
 		* RefEq constructor
 		* @param toMatch The object to be compared
@@ -197,7 +197,7 @@ public with sharing class fflib_MatcherDefinitions
 		{
 			this.toMatch = validateNotNull(toMatch);
 		}
-		
+
 		public Boolean matches(Object arg)
 		{
 			return toMatch === arg;
@@ -208,7 +208,7 @@ public with sharing class fflib_MatcherDefinitions
 			return '[reference equals ' + fflib_MatcherDefinitions.stringify(toMatch) + ']';
 		}
 	}
-	
+
 	/*
 	* ANY MATCHERS
 	*/
@@ -331,7 +331,7 @@ public with sharing class fflib_MatcherDefinitions
 			return '[any Id]';
 		}
 	}
-	
+
 	/**
 	@NamespaceAccessible
 	* AnyInteger matcher: checks if the supplied argument is an instance of an Integer
@@ -398,7 +398,7 @@ public with sharing class fflib_MatcherDefinitions
 			return '[any Object]';
 		}
 	}
-	
+
 	/**
 	* AnyString matcher: checks if the supplied argument is an instance of a String
 	*/
@@ -466,7 +466,7 @@ public with sharing class fflib_MatcherDefinitions
 			return '[any SObjectType]';
 		}
 	}
-	
+
 	/*
 	* DATETIME MATCHERS
 	*/
@@ -479,7 +479,7 @@ public with sharing class fflib_MatcherDefinitions
 	{
 		private Datetime fromDatetime;
 		private Boolean inclusive;
-		
+
 		/**
 		* DatetimeAfter constructor
 		* @param fromDatetime The datetime to be compared
@@ -491,7 +491,7 @@ public with sharing class fflib_MatcherDefinitions
 			this.fromDatetime = (Datetime)validateNotNull(fromDatetime);
 			this.inclusive = (Boolean)validateNotNull(inclusive);
 		}
-		
+
 		public Boolean matches(Object arg)
 		{
 			if (arg instanceof Datetime)
@@ -515,7 +515,7 @@ public with sharing class fflib_MatcherDefinitions
 			}
 		}
 	}
-	
+
 	/**
 	* DatetimeBefore matcher: checks if the supplied argument is before a specified datetime
 	*/
@@ -524,7 +524,7 @@ public with sharing class fflib_MatcherDefinitions
 	{
 		private Datetime toDatetime;
 		private Boolean inclusive;
-		
+
 		/**
 		* DatetimeBefore constructor
 		* @param toDatetime The datetime to be compared
@@ -536,7 +536,7 @@ public with sharing class fflib_MatcherDefinitions
 			this.toDatetime = (Datetime)validateNotNull(toDatetime);
 			this.inclusive = (Boolean)validateNotNull(inclusive);
 		}
-		
+
 		public Boolean matches(Object arg)
 		{
 			if (arg instanceof Datetime)
@@ -571,7 +571,7 @@ public with sharing class fflib_MatcherDefinitions
 		private Boolean inclusiveFrom;
 		private Datetime toDatetime;
 		private Boolean inclusiveTo;
-		
+
 		/**
 		* DatetimeBetween constructor
 		* @param fromDatetime The lower bound datetime to be compared
@@ -587,7 +587,7 @@ public with sharing class fflib_MatcherDefinitions
 			this.toDatetime = (Datetime)validateNotNull(toDatetime);
 			this.inclusiveTo = (Boolean)validateNotNull(inclusiveTo);
 		}
-		
+
 		public Boolean matches(Object arg)
 		{
 			if (arg instanceof Datetime)
@@ -617,7 +617,7 @@ public with sharing class fflib_MatcherDefinitions
 	/*
 	* DECIMAL (AND OTHER NUMBER) MATCHERS
 	*/
-	
+
 	/**
 	* DecimalBetween matcher: checks if the supplied argument is between two specified decimals
 	*/
@@ -762,10 +762,10 @@ public with sharing class fflib_MatcherDefinitions
 		}
 	}
 
-	/** 
+	/**
 	* FIELDSET MATCHERS
 	*/
-	
+
 	/**
 	* FieldSetEquivalentTo matcher: checks the supplied argument is a field set with the same field set members as a specified field set
 	* This matcher is needed because equivalent FieldSets do not pass == checks, and we can't override equals/hashcode on FieldSets.
@@ -803,7 +803,7 @@ public with sharing class fflib_MatcherDefinitions
 	/*
 	* IS MATCHERS
 	*/
-	
+
 	/**
 	* IsNotNull matcher: checks the supplied argument is not null
 	@NamespaceAccessible
@@ -820,7 +820,7 @@ public with sharing class fflib_MatcherDefinitions
 			return '[is not null]';
 		}
 	}
-	
+
 	/**
 	* IsNull matcher: checks the supplied argument is null
 	*/
@@ -841,7 +841,7 @@ public with sharing class fflib_MatcherDefinitions
 	/*
 	* LIST MATCHERS
 	*/
-	
+
 	/**
 	* ListContains matcher: checks if the supplied argument is equal (==) to any of the elements in a specified list
 	*/
@@ -849,7 +849,7 @@ public with sharing class fflib_MatcherDefinitions
 	public class ListContains implements fflib_IMatcher
 	{
 		private Object toMatch;
-		
+
 		/**
 		* ListContains constructor
 		* @param toMatch The list of objects to be compared
@@ -904,7 +904,7 @@ public with sharing class fflib_MatcherDefinitions
 	/*
 	* SOBJECT MATCHERS
 	*/
-	
+
 	/**
 	* SObjectOfType matcher: checks if the supplied argument has the specified SObjectType
 	@NamespaceAccessible
@@ -943,7 +943,7 @@ public with sharing class fflib_MatcherDefinitions
 	/**
 	* SObjectWith matcher: compares the supplied argument against a Map<Schema.SObjectField, Object>, representing fields and their expected values.
 	* Note. this method silently catches exceptions getting values for the supplied fields from the arguments supplied in method calls.
-	* 
+	*
 	* If your matcher is mysteriously failing for your SObject record, it may be getting silent 'SObject row was retrieved via SOQL without querying
 	* the requested field' exceptions, because you haven't queried all of the fields used in this matcher.
 	*/
@@ -995,26 +995,26 @@ public with sharing class fflib_MatcherDefinitions
 
 	/**
 	* SObjectsWith matcher: compares the supplied list<Sobject> argument against a list<Map<Schema.SObjectField, Object>>, representing fields and their expected values.
-	* Each list element represents one Sobject in a list supplied to a mocked method that accepts list<SObject>. 
+	* Each list element represents one Sobject in a list supplied to a mocked method that accepts list<SObject>.
 	* Each list element that is a map<Schema.SobjectField,Object> is compared against the equivalent argument list element position
-	* 
+	*
 	* Example:
 	*   You use uow.registerNew(someListofAccounts). You mock uow in the testmethod.
 	*   toMatch is new list<Schema.SObjectField,Object> {
 	*      new map<Schema.SobjectField,Object> {Account.Name => 'foo'},
 	*      new map<Schema.SobjectField,Object> {Account.Name => 'bar'}
-	*    } 
+	*    }
 	*   By default, matchers compare against argument elements in order, viz:
 	* 		The matcher will compare the first Account in the list passed to uow.registerNew to the first map of field values (i.e. Account[0].Name must be 'foo')
 	*   	The matcher then compares the second Account in the list passed to uow.registerNew to the second map of field values (i.e. Account[1].Name must be 'bar')
-	* 	
+	*
 	*   Optional second argument matchInOrderr if false means that each argument element is compared against all matcher elements
 	*   if everuy argument is matched exactly once and no matcher matches more than once, then the match is true
-	* 
+	*
 	* If the arity of the list passed in the mocked method doesn't agree with the arity of the map of expected field values, false is returned
-	* 
+	*
 	* Note. this method silently catches exceptions getting values for the supplied fields from the arguments supplied in method calls.
-	* 
+	*
 	* If your matcher is mysteriously failing for your SObject record, it may be getting silent 'SObject row was retrieved via SOQL without querying
 	* the requested field' exceptions, because you haven't queried all of the fields used in this matcher.
 	*/
@@ -1023,7 +1023,7 @@ public with sharing class fflib_MatcherDefinitions
 	{
 		private list<Map<Schema.SObjectField, Object>> toMatch;
 		private Boolean matchInOrder {
-			get 
+			get
 			{
 				return matchInOrder == null ? false : matchInOrder;
 			}
@@ -1051,27 +1051,27 @@ public with sharing class fflib_MatcherDefinitions
 			{
 				SObject[] sobjsArg = (SObject[])arg;
 				list<map<Schema.SObjectField,Object>> toMatches = new list<map<Schema.SObjectField,Object>>();
-                
+
 				//	Counters for matchInOrder = false; not relevant for matchInOrder = true
 				list<Integer> argMatchedCounts = new list<Integer>();		// # times matched by a matcher. anything other than 1 is match error
 				list<Integer> matcherMatchedCounts = new list<Integer>(); 	// for each map<Schema.SObjectField,Object>
 																			// # args that match it. Anything other than 1 is match error
-                
-                
+
+
 				for (map<Schema.SObjectField,Object> mtchElm : toMatch)
 				{
 					toMatches.add(mtchElm);
 					matcherMatchedCounts.add(0);
-				}   
-                
+				}
+
 				if (sobjsArg.size() != toMatches.size())	// arity of arguments to mocked method doesn't agree with arity of expected matches
 				{
 					return false;
 				}
-                
+
 				if (matchInOrder)
 				{
-					for (Integer i = 0; i < sobjsArg.size(); i++) 
+					for (Integer i = 0; i < sobjsArg.size(); i++)
 					{	// match in order (toMatch[i] must match arg[i])
 						if (!sobjectMatches(sobjsArg[i],toMatches[i]))
 						{
@@ -1081,15 +1081,15 @@ public with sharing class fflib_MatcherDefinitions
 					return true;
 				}
 				else
-				{	
+				{
 					// match in any order (but every arg must be matched only once)
-					for (Integer i = 0; i < sobjsArg.size(); i++) 
+					for (Integer i = 0; i < sobjsArg.size(); i++)
 					{
 						argMatchedCounts.add(0);
-						// For each arg passed to mocked method, see if any match in the list of match field maps. 
+						// For each arg passed to mocked method, see if any match in the list of match field maps.
 						// Loop within loop so not hugely efficient but there are no IDs to rely on.
 						// Avoid unit test methods that build huge lists of expected results
-                         
+
 						for (Integer m = 0; m < toMatches.size(); m++)
 						{
 							if (sobjectMatches(sobjsArg[i],toMatches[m]))
@@ -1102,16 +1102,16 @@ public with sharing class fflib_MatcherDefinitions
 					// Check to see that every arg was matched only once
 					// Check to see that every matcher matched only once
 					// Anything else is a match fail
-                    
+
 					for (Integer i=0; i < argMatchedCounts.size(); i++)
 					{
-						if (argMatchedCounts[i] != 1 || matcherMatchedCounts[i] != 1) 
+						if (argMatchedCounts[i] != 1 || matcherMatchedCounts[i] != 1)
 						{
 							return false;
-						}      
+						}
 					}
-					return true;    
-				}    
+					return true;
+				}
 			}
 			return false;
 		}
@@ -1137,10 +1137,10 @@ public with sharing class fflib_MatcherDefinitions
 				return '[unordered SObjects with ' + fflib_MatcherDefinitions.stringify(toMatch) + ']';
 			}
 		}
-        
 
-	}    
-  
+
+	}
+
     /**
      * helper for the sObjectWith, sObjectsWith matchers
      * Compares to see if the field values in toMatch exist in the sobj
@@ -1150,7 +1150,7 @@ public with sharing class fflib_MatcherDefinitions
         for (Schema.SObjectField f : toMatch.keySet())
         {
             Object valueToMatch = toMatch.get(f);
-            
+
             try
             {
                 if (sobj.get(f) != valueToMatch)
@@ -1169,7 +1169,7 @@ public with sharing class fflib_MatcherDefinitions
         }
 		return true;  // map of expected fieldvals found in sobj arg
     }
-    
+
 	/**
 	* SObjectWithId matcher: checks if the supplied argument has the specified Id
 	*/
@@ -1227,7 +1227,7 @@ public with sharing class fflib_MatcherDefinitions
 		{
 			if (arg != null && arg instanceof SObject)
 			{
-				SObject soArg = (SObject)arg;	
+				SObject soArg = (SObject)arg;
 				Schema.DescribeSObjectResult describe = soArg.getSObjectType().getDescribe();
 				for (Schema.SObjectField f : describe.fields.getMap().values())
 				{
@@ -1250,7 +1250,7 @@ public with sharing class fflib_MatcherDefinitions
 	/*
 	* STRING MATCHERS
 	*/
-	
+
 	/**
 	* StringContains matcher: checks if the supplied argument contains the specified substring
 	*/
@@ -1258,7 +1258,7 @@ public with sharing class fflib_MatcherDefinitions
 	public class StringContains implements fflib_IMatcher
 	{
 		private String toMatch;
-		
+
 		/**
 		* StringContains constructor
 		* @param toMatch The substring to be compared
@@ -1267,8 +1267,8 @@ public with sharing class fflib_MatcherDefinitions
 		public StringContains(String toMatch)
 		{
 			this.toMatch = (String)validateNotNull(toMatch);
-		}	
-		
+		}
+
 		public Boolean matches(Object arg)
 		{
 			return arg != null && arg instanceof String ? ((String)arg).contains(toMatch) : false;
@@ -1287,7 +1287,7 @@ public with sharing class fflib_MatcherDefinitions
 	public class StringEndsWith implements fflib_IMatcher
 	{
 		private String toMatch;
-		
+
 		/**
 		* StringEndsWith constructor
 		* @param toMatch The substring to be compared
@@ -1296,8 +1296,8 @@ public with sharing class fflib_MatcherDefinitions
 		public StringEndsWith(String toMatch)
 		{
 			this.toMatch = (String)validateNotNull(toMatch);
-		}	
-		
+		}
+
 		public Boolean matches(Object arg)
 		{
 			return arg != null && arg instanceof String ? ((String)arg).endsWith(toMatch) : false;
@@ -1314,7 +1314,7 @@ public with sharing class fflib_MatcherDefinitions
 	@NamespaceAccessible
 	*/
 	public class StringIsBlank implements fflib_IMatcher
-	{		
+	{
 		public Boolean matches(Object arg)
 		{
 			return arg == null || (arg instanceof String ? String.isBlank((String)arg) : false);
@@ -1331,7 +1331,7 @@ public with sharing class fflib_MatcherDefinitions
 	* StringIsNotBlank matcher: checks if the supplied argument is a non-blank string
 	*/
 	public class StringIsNotBlank implements fflib_IMatcher
-	{		
+	{
 		public Boolean matches(Object arg)
 		{
 			return (arg != NULL && arg instanceof String) ? String.isNotBlank((String)arg) : false;
@@ -1351,7 +1351,7 @@ public with sharing class fflib_MatcherDefinitions
 	{
 		private Pattern pat;
 		private final String regEx;
-		
+
 		/**
 		* StringMatches constructor
 		* @param toMatch The substring to be compared
@@ -1361,8 +1361,8 @@ public with sharing class fflib_MatcherDefinitions
 		{
 			this.regEx = regEx;
 			this.pat = Pattern.compile((String)validateNotNull(regEx));
-		}	
-		
+		}
+
 		public Boolean matches(Object arg)
 		{
 			return arg != null && arg instanceof String ? pat.matcher((String)arg).matches() : false;
@@ -1381,7 +1381,7 @@ public with sharing class fflib_MatcherDefinitions
 	public class StringStartsWith implements fflib_IMatcher
 	{
 		private String toMatch;
-		
+
 		/**
 		* StringStartsWith constructor
 		* @param toMatch The substring to be compared
@@ -1390,8 +1390,8 @@ public with sharing class fflib_MatcherDefinitions
 		public StringStartsWith(String toMatch)
 		{
 			this.toMatch = (String)validateNotNull(toMatch);
-		}	
-		
+		}
+
 		public Boolean matches(Object arg)
 		{
 			return arg != null && arg instanceof String ? ((String)arg).startsWith(toMatch) : false;
@@ -1411,9 +1411,9 @@ public with sharing class fflib_MatcherDefinitions
 	{
 		if (arg == null)
 		{
-			throw new fflib_ApexMocks.ApexMocksException('Arg cannot be null: ' + arg);	
+			throw new fflib_ApexMocks.ApexMocksException('Arg cannot be null: ' + arg);
 		}
-		
+
 		return arg;
 	}
 

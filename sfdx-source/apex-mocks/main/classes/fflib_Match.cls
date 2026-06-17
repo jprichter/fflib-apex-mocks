@@ -24,17 +24,17 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 @NamespaceAccessible
-@SuppressWarnings('PMD.AvoidBooleanMethodParameters, PMD.ExcessiveParameterList, PMD.CyclomaticComplexity, PMD.CognitiveComplexity, PMD.ExcessivePublicCount, PMD.ClassNamingConventions, PMD.FieldNamingConventions')
+@SuppressWarnings('PMD.AvoidBooleanMethodParameters, PMD.ExcessiveParameterList, PMD.CyclomaticComplexity, PMD.CognitiveComplexity, PMD.ExcessivePublicCount, PMD.ClassNamingConventions, PMD.FieldNamingConventions, PMD.ApexDoc')
 public class fflib_Match
 {
 	private static List<fflib_IMatcher> matchers = new List<fflib_IMatcher>();
 
-	/** 
+	/**
 	* Matching
 	* True when comparing method arg values to matchers, false when comparing absolute arg values.
 	*/
 	public static Boolean Matching = false;
-	
+
 	/**
 	* Used internally by the mocking framework, you shouldn't need to call this method directly.
 	* Copies the registered matchers, and then switches matching mode off.
@@ -56,10 +56,10 @@ public class fflib_Match
 				+ 'If you are using matchers all arguments must be passed in as matchers.\n'
 				+ 'For example myList.add(fflib_Match.anyInteger(), \'String\') should be defined as myList.add(fflib_Match.anyInteger(), fflib_Match.eq(\'String\')).');
 		}
-		
+
 		return retval;
 	}
-	
+
 	/**
 	* Used internally by the mocking framework, you shouldn't need to call this method directly.
 	* Compares all supplied method arg values to the supplied target matchers.
@@ -72,39 +72,39 @@ public class fflib_Match
 	public static Boolean matchesAllArgs(fflib_MethodArgValues methodArg, List<fflib_IMatcher> targetMatchers)
 	{
 		validateArgs(methodArg, targetMatchers);
-		
+
 		Integer matchersSize = targetMatchers.size();
 		for (Integer i=0; i<matchersSize; i++)
 		{
 			Object argValue = methodArg.argValues[i];
 			fflib_IMatcher matcher = targetMatchers[i];
-			
+
 			if (!matcher.matches(argValue))
 			{
 				return false;
 			}
 		}
-		
+
 		return true;
 	}
-	
+
 	private static void validateArgs(fflib_MethodArgValues methodArg, List<fflib_IMatcher> targetMatchers)
 	{
 		if (methodArg == null)
 		{
 			throw new fflib_ApexMocks.ApexMocksException('MethodArgs cannot be null');
 		}
-		
+
 		if (methodArg.argValues == null)
 		{
 			throw new fflib_ApexMocks.ApexMocksException('MethodArgs.argValues cannot be null');
 		}
-		
+
 		if (targetMatchers == null)
 		{
 			throw new fflib_ApexMocks.ApexMocksException('Matchers cannot be null');
 		}
-		
+
 		if (targetMatchers.size() != methodArg.argValues.size())
 		{
 			throw new fflib_ApexMocks.ApexMocksException('MethodArgs and matchers must have the same count'
@@ -112,7 +112,7 @@ public class fflib_Match
 				+ ', Matchers: (' + targetMatchers.size() + ') ' + targetMatchers);
 		}
 	}
-	
+
 	/**
 	* Registers a matcher which will be stubbed/verified against.
 	* @param matcher The matcher that needs to be compared
@@ -124,19 +124,19 @@ public class fflib_Match
 	{
 		Matching = true;
 		matchers.add(matcher);
-		
+
 		return null;
 	}
-	
-	/** 
+
+	/**
 	* COMBINED MATCHER
 	* The allOf, anyOf and noneOf methods are overloaded to provide fluent matcher calls for up to 4 matcher conditions.
 	* To connect 5 or more, the List<Object> version directly.
 	*/
-	
+
 	/**
 	* Registers a matcher which will check if the method is called with an arg that matches allOf
-	* @param o1 A dummy object returned by registering another matcher 
+	* @param o1 A dummy object returned by registering another matcher
 	* @param o2 A dummy object returned by registering another matcher
 	* @return Object A dummy object of the correct type, so that when called inline as part of a method call, the correct method is invoked. (You may need to cast down to your specific object type)public static Object allOf(Object o1, Object o2)
 	*/
@@ -144,7 +144,7 @@ public class fflib_Match
 	{
 		return allOf(new Object[]{ o1, o2 });
 	}
-	
+
 	/**
 	* Registers a matcher which will check if the method is called with an arg that matches allOf
 	* @param o1 A dummy object returned by registering another matcher
@@ -156,7 +156,7 @@ public class fflib_Match
 	{
 		return allOf(new Object[]{ o1, o2, o3 });
 	}
-	
+
 	/**
 	* Registers a matcher which will check if the method is called with an arg that matches allOf
 	* @param o1 A dummy object returned by registering another matcher
@@ -169,7 +169,7 @@ public class fflib_Match
 	{
 		return allOf(new Object[]{ o1, o2, o3, o4 });
 	}
-	
+
 	/**
 	* Registers a matcher which will check if the method is called with an arg that matches allOf
 	* @param o A list of dummy objects returned by registering other matchers
@@ -179,7 +179,7 @@ public class fflib_Match
 	{
 		return combined(fflib_MatcherDefinitions.Connective.ALL, o);
 	}
-	
+
 	/**
 	* Registers a matcher which will check if the method is called with an arg that matches anyOf
 	* @param o1 A dummy object returned by registering another matcher
@@ -190,7 +190,7 @@ public class fflib_Match
 	{
 		return anyOf(new Object[]{ o1, o2 });
 	}
-	
+
 	/**
 	* Registers a matcher which will check if the method is called with an arg that matches anyOf
 	* @param o1 A dummy object returned by registering another matcher
@@ -202,7 +202,7 @@ public class fflib_Match
 	{
 		return anyOf(new Object[]{ o1, o2, o3 });
 	}
-	
+
 	/**
 	* Registers a matcher which will check if the method is called with an arg that matches anyOf
 	* @param o1 A dummy object returned by registering another matcher
@@ -215,7 +215,7 @@ public class fflib_Match
 	{
 		return anyOf(new Object[]{ o1, o2, o3, o4 });
 	}
-	
+
 	/**
 	* Registers a matcher which will check if the method is called with an arg that matches anyOf
 	* @param o A list of dummy objects returned by registering other matchers
@@ -225,7 +225,7 @@ public class fflib_Match
 	{
 		return combined(fflib_MatcherDefinitions.Connective.AT_LEAST_ONE, o);
 	}
-	
+
 	/**
 	* Registers a matcher which will check if the method is called with an arg that matches isNot
 	* @param o1 A dummy object returned by registering another matcher
@@ -235,7 +235,7 @@ public class fflib_Match
 	{
 		return noneOf(new Object[]{ o1 });
 	}
-	
+
 	/**
 	* Registers a matcher which will check if the method is called with an arg that matches noneOf
 	* @param o1 A dummy object returned by registering another matcher
@@ -246,7 +246,7 @@ public class fflib_Match
 	{
 		return noneOf(new Object[]{ o1, o2 });
 	}
-	
+
 	/**
 	* Registers a matcher which will check if the method is called with an arg that matches noneOf
 	* @param o1 A dummy object returned by registering another matcher
@@ -258,7 +258,7 @@ public class fflib_Match
 	{
 		return noneOf(new Object[]{ o1, o2, o3 });
 	}
-	
+
 	/**
 	* Registers a matcher which will check if the method is called with an arg that matches noneOf
 	* @param o1 A dummy object returned by registering another matcher
@@ -271,7 +271,7 @@ public class fflib_Match
 	{
 		return noneOf(new Object[]{ o1, o2, o3, o4 });
 	}
-	
+
 	/**
 	* Registers a matcher which will check if the method is called with an arg that matches noneOf
 	* @param o A list of dummy objects returned by registering other matchers
@@ -281,23 +281,23 @@ public class fflib_Match
 	{
 		return combined(fflib_MatcherDefinitions.Connective.NONE, o);
 	}
-	
+
 	private static Object combined(fflib_MatcherDefinitions.Connective connectiveExpression, List<Object> o)
 	{
 		return matches(new fflib_MatcherDefinitions.Combined(connectiveExpression, (gatherMatchers(o))));
 	}
-	
+
 	private static List<fflib_IMatcher> gatherMatchers(Object[] ignoredMatcherObjects)
 	{
 		if (ignoredMatcherObjects == null || ignoredMatcherObjects.isEmpty())
 		{
 			throw new fflib_ApexMocks.ApexMocksException('Must register matchers to combine');
 		}
-		
+
 		//Each ignored matcher object represents a matcher that has been registered against fflib_Match.matchers,
 		//but is actually for the connective matchers.
 		List<fflib_IMatcher> innerMatchers = new List<fflib_IMatcher>();
-		
+
 		Integer innerMatcherCount = ignoredMatcherObjects.size();
 		while (innerMatchers.size() < innerMatcherCount)
 		{
@@ -306,28 +306,28 @@ public class fflib_Match
 				throw new fflib_ApexMocks.ApexMocksException('Error reclaiming inner matchers for combined matcher. Wanted '
 					+ innerMatcherCount + ' matchers but only got ' + innerMatchers);
 			}
-			
+
 			fflib_IMatcher innerMatcher = matchers.remove(matchers.size()-1);
-			
+
 			//Add to the start of the list to preserve the order in which matchers were declared.
 			//Note. Apex throws list index out of bounds if inserting an element into an empty list at index 0S
 			if (!innerMatchers.isEmpty())
 			{
-				innerMatchers.add(0, innerMatcher);	
+				innerMatchers.add(0, innerMatcher);
 			}
 			else
 			{
 				innerMatchers.add(innerMatcher);
 			}
 		}
-		
+
 		return innerMatchers;
 	}
-	
+
 	/**
 	* ALL OTHER MATCHER METHODS
 	*/
-	
+
 	/**
 	* Registers a matcher which will check if the method is called with an arg that matches eq
 	* @param toMatch The Object to be compared
@@ -1073,7 +1073,7 @@ public class fflib_Match
 	{
 		return (SObject[])matches(new fflib_MatcherDefinitions.SObjectsWith(toMatch,true));
 	}
-    
+
 	/**
 	* Registers a matcher which will check if the method is called with a list of SObject
 	* @param toMatch A list of Map of SObjectFields to required values, to be compared to concrete SObject records. Comparison can be order dependent
@@ -1083,7 +1083,7 @@ public class fflib_Match
 	{
 		return (SObject[])matches(new fflib_MatcherDefinitions.SObjectsWith(toMatch,matchInOrder));
 	}
-    
+
 	/**
 	* Registers a matcher which will check if the method is called with an SObject
 	* @param toMatch The Id to be compared

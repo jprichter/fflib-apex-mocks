@@ -24,7 +24,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 @NamespaceAccessible
-@SuppressWarnings('PMD.ExcessiveParameterList, PMD.ClassNamingConventions')
+@SuppressWarnings('PMD.ExcessiveParameterList, PMD.ClassNamingConventions, PMD.ApexDoc')
 public class fflib_ApexMocksUtils
 {
 	/**
@@ -32,10 +32,10 @@ public class fflib_ApexMocksUtils
 	*
 	* This method works on the principle that serializing and deserialising child records is supported
 	*
-	*   System.assertEquals(1, ((List<Master__c>) 
+	*   System.assertEquals(1, ((List<Master__c>)
 	*    JSON.deserialize(
 	*	    JSON.serialize(
-	*         [select Id, Name, 
+	*         [select Id, Name,
 	*            (select Id, Name from Children__r) from Master__c]), List<Master__c>.class))
 	*               [0].Children__r.size());
 	*
@@ -75,7 +75,7 @@ public class fflib_ApexMocksUtils
 
 	/**
 	* Generic overload to makeRelationship. Enables creation of
-	* relationships in a loosely-coupled manner. 
+	* relationships in a loosely-coupled manner.
 	*/
 	@NamespaceAccessible
 	public static Object makeRelationship(
@@ -146,7 +146,7 @@ public class fflib_ApexMocksUtils
 		// Stream the parsed JSON representation of the parent objects back out, injecting children as it goes
 		JSONParser parentsParser = JSON.createParser(JSON.serialize(parents));
 		JSONParser childrenParser = JSON.createParser(JSON.serialize(children));
-		JSONGenerator combinedOutput = JSON.createGenerator(false);		
+		JSONGenerator combinedOutput = JSON.createGenerator(false);
 		streamTokens(parentsParser, combinedOutput, new InjectChildrenEventHandler(childrenParser, relationshipName, children) );
 
 		// Derserialise back into SObject list complete with children
@@ -199,7 +199,7 @@ public class fflib_ApexMocksUtils
 			if (events != null) {
 				events.nextToken(fromStream, depth, toStream);
 			}
-				
+
 			// Forward to output stream
 			switch on fromStream.getCurrentToken() {
 				when START_ARRAY {

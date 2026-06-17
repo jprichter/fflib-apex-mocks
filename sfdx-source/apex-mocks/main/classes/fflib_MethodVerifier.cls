@@ -82,7 +82,7 @@ public abstract class fflib_MethodVerifier
 			template += '\n---' // separator
 				+ '\nACTUAL ARGS: {6}' // actual args
 				+ '\n---' // separator
-				+ '\nEXPECTED ARGS: {7}'; // matcher descriptions 
+				+ '\nEXPECTED ARGS: {7}'; // matcher descriptions
 
 			if (expectedMatchers == null)
 			{

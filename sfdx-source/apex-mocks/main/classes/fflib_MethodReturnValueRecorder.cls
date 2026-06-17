@@ -28,7 +28,7 @@
  * @group Core
  */
 @NamespaceAccessible
-@SuppressWarnings('PMD.AvoidBooleanMethodParameters, PMD.ClassNamingConventions, PMD.PropertyNamingConventions')
+@SuppressWarnings('PMD.AvoidBooleanMethodParameters, PMD.ClassNamingConventions, PMD.PropertyNamingConventions, PMD.ApexDoc')
 public with sharing class fflib_MethodReturnValueRecorder
 {
 	public Boolean Stubbing { get; set; }
