@@ -28,6 +28,7 @@ public with sharing class fflib_IDGenerator
 {
 	private static Integer fakeIdCount = 0;
 	private static final String ID_PATTERN = '000000000000';
+	private static final Map<Schema.SObjectType, String> KEY_PREFIX_CACHE = new Map<Schema.SObjectType, String>();
 
 	/**
 	 * Generate a fake Salesforce Id for the given SObjectType
@@ -35,7 +36,12 @@ public with sharing class fflib_IDGenerator
 	@NamespaceAccessible
 	public static Id generate(Schema.SObjectType sobjectType)
 	{
-		String keyPrefix = sobjectType.getDescribe().getKeyPrefix();
+		String keyPrefix = KEY_PREFIX_CACHE.get(sobjectType);
+		if (keyPrefix == null)
+		{
+			keyPrefix = sobjectType.getDescribe(SObjectDescribeOptions.DEFERRED).getKeyPrefix();
+			KEY_PREFIX_CACHE.put(sobjectType, keyPrefix);
+		}
 		fakeIdCount++;
 
 		String fakeIdPrefix = ID_PATTERN.substring(0, ID_PATTERN.length() - String.valueOf(fakeIdCount).length());
