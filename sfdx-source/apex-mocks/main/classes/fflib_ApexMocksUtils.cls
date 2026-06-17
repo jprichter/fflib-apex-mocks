@@ -68,7 +68,6 @@ public class fflib_ApexMocksUtils
 	public static Object makeRelationship(Type parentsType, List<SObject> parents, SObjectField relationshipField, List<List<SObject>> children) {
 
 		// Find out more about this relationship...
-		String relationshipFieldName = relationshipField.getDescribe().getName();
 		DescribeSObjectResult parentDescribe = parents.getSObjectType().getDescribe();
 		return deserializeParentsAndChildren(parentsType, parentDescribe, relationshipField, parents, children);
 	}

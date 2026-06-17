@@ -149,6 +149,7 @@ public class fflib_ApexMocksUtilsTest
 					'AccountId',
 					new List<List<SObject>> { new List<SObject> { cont }}
 			))[0];
+			System.Assert.fail('Expected exception but got: ' + accWithRelationships);
 		} catch (Exception exc) {
 			errorMessage = exc.getMessage();
 		}
@@ -176,6 +177,7 @@ public class fflib_ApexMocksUtilsTest
 					'AccountId',
 					new List<List<SObject>> { new List<SObject> { cont }}
 			))[0];
+			System.Assert.fail('Expected exception but got: ' + accWithRelationships);
 		} catch (Exception exc) {
 			errorMessage = exc.getMessage();
 		}
@@ -203,6 +205,7 @@ public class fflib_ApexMocksUtilsTest
 					'MyInvalidField',
 					new List<List<SObject>> { new List<SObject> { cont }}
 			))[0];
+			System.Assert.fail('Expected exception but got: ' + accWithRelationships);
 		} catch (Exception exc) {
 			errorMessage = exc.getMessage();
 		}
