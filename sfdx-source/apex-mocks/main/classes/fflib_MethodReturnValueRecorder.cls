@@ -28,6 +28,7 @@
  * @group Core
  */
 @NamespaceAccessible
+@SuppressWarnings('PMD.AvoidBooleanMethodParameters')
 public with sharing class fflib_MethodReturnValueRecorder
 {
 	public Boolean Stubbing { get; set; }

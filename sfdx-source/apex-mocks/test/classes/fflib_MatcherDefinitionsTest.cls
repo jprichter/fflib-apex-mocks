@@ -24,6 +24,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
  @isTest
+@SuppressWarnings('PMD.CyclomaticComplexity, PMD.NcssCount')
 public class fflib_MatcherDefinitionsTest
 {
 	private static final List<fflib_IMatcher> INTERNAL_MATCHERS = new List<fflib_IMatcher>{

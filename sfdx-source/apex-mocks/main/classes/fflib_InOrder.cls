@@ -7,6 +7,7 @@
  * @group Core
  */
 @NamespaceAccessible
+@SuppressWarnings('PMD.CyclomaticComplexity, PMD.CognitiveComplexity, PMD.AvoidDeeplyNestedIfStmts')
 public with sharing class fflib_InOrder extends fflib_MethodVerifier
 {
 	private final List<Object> unorderedMockInstances;
@@ -153,18 +154,7 @@ public with sharing class fflib_InOrder extends fflib_MethodVerifier
 
 		if( verificationMode.VerifyMin == verificationMode.VerifyMax )
 		{
-			if(hasNextInteraction(unorderedMockInstances, idxMethodCall))
-			{
-				fflib_InvocationOnMock nextMethod = getNextMethodCall(false);
-
-				if(nextMethod.getMethod() == qm &&
-					argumentsMatch(nextMethod.getMethodArgValues(), matchers, expectedArguments))
-				{
-					Integer methodCounts = i + countInteractions(matchers, qm, expectedArguments);
-					throwException(qm, inOrder, verificationMode.VerifyMin, '', methodCounts, verificationMode.CustomAssertMessage, expectedArguments, matchers, actualArguments);
-				}
-			}
-
+			verifyNoExtraInteractions(qm, inOrder, i, matchers, expectedArguments, verificationMode, actualArguments);
 			return;
 		}
 
@@ -173,6 +163,25 @@ public with sharing class fflib_InOrder extends fflib_MethodVerifier
 			|| verificationMode.Method == fflib_VerificationMode.ModeName.atLeastOnce)
 		{
 			consumeInteractions(matchers, qm, expectedArguments);
+		}
+	}
+
+	private void verifyNoExtraInteractions(
+		fflib_QualifiedMethod qm,
+		String inOrder,
+		Integer confirmedCount,
+		List<fflib_IMatcher> matchers,
+		fflib_MethodArgValues expectedArguments,
+		fflib_VerificationMode verificationMode,
+		List<fflib_MethodArgValues> actualArguments)
+	{
+		if (!hasNextInteraction(unorderedMockInstances, idxMethodCall)) return;
+		fflib_InvocationOnMock nextMethod = getNextMethodCall(false);
+		if (nextMethod.getMethod() == qm &&
+			argumentsMatch(nextMethod.getMethodArgValues(), matchers, expectedArguments))
+		{
+			Integer methodCounts = confirmedCount + countInteractions(matchers, qm, expectedArguments);
+			throwException(qm, inOrder, verificationMode.VerifyMin, '', methodCounts, verificationMode.CustomAssertMessage, expectedArguments, matchers, actualArguments);
 		}
 	}
 
@@ -207,8 +216,9 @@ public with sharing class fflib_InOrder extends fflib_MethodVerifier
 		fflib_MethodArgValues methodArg)
 	{
 		Integer interactionsCouter = 0;
+		Integer len = fflib_MethodCountRecorder.getOrderedMethodCalls().size();
 
-		for (Integer i = idxMethodCall, len = fflib_MethodCountRecorder.getOrderedMethodCalls().size(); i<len; i++)
+		for (Integer i = idxMethodCall; i < len; i++)
 		{
 			fflib_InvocationOnMock invocation = fflib_MethodCountRecorder.getOrderedMethodCalls().get(i);
 			for (Object mockInstance : unorderedMockInstances)
@@ -231,9 +241,10 @@ public with sharing class fflib_InOrder extends fflib_MethodVerifier
 		fflib_MethodArgValues methodArg)
 	{
 		Integer lastInteracionIndex = 0;
+		Integer len = fflib_MethodCountRecorder.getOrderedMethodCalls().size();
 
 		//going all through the orderedMethodCalls to find all the interaction of the method
-		for (Integer i = idxMethodCall, len = fflib_MethodCountRecorder.getOrderedMethodCalls().size(); i<len; i++)
+		for (Integer i = idxMethodCall; i < len; i++)
 		{
 			fflib_InvocationOnMock invocation = fflib_MethodCountRecorder.getOrderedMethodCalls().get(i);
 			for (Object mockInstance : unorderedMockInstances)
