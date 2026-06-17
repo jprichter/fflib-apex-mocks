@@ -6,7 +6,7 @@
  * @nodoc
  */
 @isTest
-@SuppressWarnings('PMD.EmptyStatementBlock, PMD.ExcessiveParameterList')
+@SuppressWarnings('PMD.EmptyStatementBlock, PMD.ExcessiveParameterList, PMD.ClassNamingConventions')
 public with sharing class fflib_MyList implements IList
 {
 	public interface IList

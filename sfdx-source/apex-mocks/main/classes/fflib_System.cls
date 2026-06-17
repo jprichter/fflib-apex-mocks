@@ -8,14 +8,15 @@
  */
 
 @NamespaceAccessible
+@SuppressWarnings('PMD.ClassNamingConventions')
 public class fflib_System
 {
 	/**
-	 * Verifies that the supplied argument is meaningfully equivalent to the expected argument, as defined by its matcher.
-	 * See fflib_SystemTest for examples of usage.
-	 * @param ignoredRetval Dummy value, returned on registering an fflib_IMatcher.
-	 * @param value         The object instance upon which we are checking equality.
-	 */
+	* Verifies that the supplied argument is meaningfully equivalent to the expected argument, as defined by its matcher.
+	* See fflib_SystemTest for examples of usage.
+	* @param ignoredRetval Dummy value, returned on registering an fflib_IMatcher.
+	* @param value         The object instance upon which we are checking equality.
+	*/
 	@NamespaceAccessible
 	public static void assertEquals(Object ignoredRetval, Object value)
 	{
@@ -23,12 +24,12 @@ public class fflib_System
 	}
 
 	/**
-	 * Verifies that the supplied argument is meaningfully equivalent to the expected argument, as defined by its matcher.
-	 * See fflib_SystemTest for examples of usage.
-	 * @param ignoredRetval Dummy value, returned on registering an fflib_IMatcher.
-	 * @param value         The object instance upon which we are checking equality.
-	 * @param customAssertMessage Provides context or additional information for the assertion.
-	 */
+	* Verifies that the supplied argument is meaningfully equivalent to the expected argument, as defined by its matcher.
+	* See fflib_SystemTest for examples of usage.
+	* @param ignoredRetval Dummy value, returned on registering an fflib_IMatcher.
+	* @param value         The object instance upon which we are checking equality.
+	* @param customAssertMessage Provides context or additional information for the assertion.
+	*/
 	@NamespaceAccessible
 	public static void assertEquals(Object ignoredRetval, Object value, String customAssertMessage)
 	{

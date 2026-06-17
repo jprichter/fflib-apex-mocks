@@ -2,7 +2,7 @@
  * Copyright (c) 2014-2017 FinancialForce.com, inc.  All rights reserved.
  */
 @isTest
-@SuppressWarnings('PMD.CyclomaticComplexity, PMD.NcssCount')
+@SuppressWarnings('PMD.CyclomaticComplexity, PMD.NcssCount, PMD.ClassNamingConventions')
 private class fflib_ApexMocksTest
 {
 	private static final fflib_ApexMocks MY_MOCKS = new fflib_ApexMocks();

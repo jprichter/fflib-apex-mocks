@@ -6,6 +6,7 @@
  * @nodoc
  */
 @isTest
+@SuppressWarnings('PMD.ClassNamingConventions')
 private class fflib_AnswerTest
 {
 

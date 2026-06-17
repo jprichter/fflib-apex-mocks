@@ -1,4 +1,5 @@
 @isTest
+@SuppressWarnings('PMD.ClassNamingConventions')
 public class fflib_QualifiedMethodAndArgValuesTest
 {
     @isTest

@@ -28,7 +28,7 @@
  * @group Core
  */
 @NamespaceAccessible
-@SuppressWarnings('PMD.AvoidBooleanMethodParameters')
+@SuppressWarnings('PMD.AvoidBooleanMethodParameters, PMD.ClassNamingConventions, PMD.PropertyNamingConventions')
 public with sharing class fflib_MethodReturnValueRecorder
 {
 	public Boolean Stubbing { get; set; }
@@ -36,11 +36,11 @@ public with sharing class fflib_MethodReturnValueRecorder
 	public List<Exception> DoThrowWhenExceptions { get; set; }
 
 	/**
-	 * Map of matchers by method.
-	 *
-	 * Key: qualifiedMethod
-	 * Object: map of method return values by method.
-	 */
+	* Map of matchers by method.
+	*
+	* Key: qualifiedMethod
+	* Object: map of method return values by method.
+	*/
 
 	private Map<fflib_QualifiedMethod, List<fflib_MatchersReturnValue>> matcherReturnValuesByMethod;
 
@@ -54,10 +54,10 @@ public with sharing class fflib_MethodReturnValueRecorder
 	}
 
 	/**
-	 * Prepare a stubbed method return value.
-	 * @param invocation The object holding all the data of the invocation, like the method and arguments and the mock instance.
-	 * @return The MethodReturnValue instance.
-	 */
+	* Prepare a stubbed method return value.
+	* @param invocation The object holding all the data of the invocation, like the method and arguments and the mock instance.
+	* @return The MethodReturnValue instance.
+	*/
 	public fflib_MethodReturnValue prepareMethodReturnValue(fflib_InvocationOnMock invocation)
 	{
 		MethodReturnValue = new fflib_MethodReturnValue();
@@ -77,9 +77,13 @@ public with sharing class fflib_MethodReturnValueRecorder
 			for (Object arg : argValues)
 			{
 				if (arg == null)
+				{
 					fflib_Match.isNull();
+				}
 				else
+				{
 					fflib_Match.eq(arg);
+				}
 			}
 		}
 
@@ -90,10 +94,10 @@ public with sharing class fflib_MethodReturnValueRecorder
 	}
 
 	/**
-	 * Get the method return value for the given method call.
-	 * @param invocation The object holding all the data of the invocation, like the method and arguments and the mock instance.
-	 * @return The MethodReturnValue instance.
-	 */
+	* Get the method return value for the given method call.
+	* @param invocation The object holding all the data of the invocation, like the method and arguments and the mock instance.
+	* @return The MethodReturnValue instance.
+	*/
 	public fflib_MethodReturnValue getMethodReturnValue(fflib_InvocationOnMock invocation)
 	{
 		List<fflib_MatchersReturnValue> matchersForMethods = matcherReturnValuesByMethod.get(invocation.getMethod());
@@ -113,9 +117,9 @@ public with sharing class fflib_MethodReturnValueRecorder
 	}
 
 	/**
-	 * Prepare a stubbed exceptions for a void method.
-	 * @param exps The list of exception to throw.
-	 */
+	* Prepare a stubbed exceptions for a void method.
+	* @param exps The list of exception to throw.
+	*/
 	public void prepareDoThrowWhenExceptions(List<Exception> exps)
 	{
 		DoThrowWhenExceptions = exps;
