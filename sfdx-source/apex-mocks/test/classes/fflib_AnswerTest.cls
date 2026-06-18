@@ -6,6 +6,7 @@
  * @nodoc
  */
 @IsTest
+@SuppressWarnings('PMD.ClassNamingConventions, PMD.ApexUnitTestClassShouldHaveRunAs, PMD.ApexDoc')
 private class fflib_AnswerTest
 {
 

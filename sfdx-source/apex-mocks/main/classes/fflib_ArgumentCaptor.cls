@@ -31,6 +31,7 @@
  *	To be consistent with Mockito, the capturer does not perform any checks on the type of the argument.
  * 	@group Core
  */
+@SuppressWarnings('PMD.ClassNamingConventions, PMD.ApexDoc')
 @NamespaceAccessible
 public with sharing class fflib_ArgumentCaptor
 {

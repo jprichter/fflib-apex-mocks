@@ -5,6 +5,7 @@
  * @nodoc
  */
 @IsTest
+@SuppressWarnings('PMD.ClassNamingConventions, PMD.ApexUnitTestClassShouldHaveRunAs')
 private class fflib_ArgumentCaptorTest
 {
 	@IsTest

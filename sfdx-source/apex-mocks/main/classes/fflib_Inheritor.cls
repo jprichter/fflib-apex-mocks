@@ -3,6 +3,7 @@
  */
 @IsTest
 @NamespaceAccessible
+@SuppressWarnings('PMD.ClassNamingConventions, PMD.ApexDoc')
 public class fflib_Inheritor implements IA, IB, IC
 {
 	public interface IA {String doA();}
