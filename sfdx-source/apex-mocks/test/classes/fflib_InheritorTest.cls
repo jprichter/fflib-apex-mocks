@@ -1,10 +1,10 @@
 /*
  * Copyright (c) 2016-2017 FinancialForce.com, inc.  All rights reserved.
  */
-@isTest
+@IsTest
 public class fflib_InheritorTest
 {
- 	@isTest
+	@IsTest
     public static void canInstantiateMultipleInterfaceInheritor()
     {
         fflib_ApexMocks mocks = new fflib_ApexMocks();
@@ -14,7 +14,7 @@ public class fflib_InheritorTest
         System.Assert.isInstanceOfType(inheritor, fflib_Inheritor.IC.class);
     }
 
- 	@isTest
+	@IsTest
     public static void canStubMultipleInterfaceInheritor()
     {
         fflib_ApexMocks mocks = new fflib_ApexMocks();
@@ -25,7 +25,7 @@ public class fflib_InheritorTest
         mocks.when(inheritor.doB()).thenReturn('Did not do B');
         mocks.when(inheritor.doC()).thenReturn('Did not do C');
         mocks.stopStubbing();
-        
+
         System.Assert.areEqual('Did not do A', inheritor.doA());
         System.Assert.areEqual('Did not do B', inheritor.doB());
         System.Assert.areEqual('Did not do C', inheritor.doC());

@@ -5,13 +5,13 @@
 /**
  * @nodoc
  */
-@isTest
+@IsTest
 private class fflib_AnswerTest
 {
 
 	private static fflib_InvocationOnMock actualInvocation = null;
 
-	@isTest
+	@IsTest
 	static void thatAnswersWithException()
 	{
 		// Given
@@ -36,7 +36,7 @@ private class fflib_AnswerTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatStoresMethodIntoInvocationOnMock()
 	{
 		// Given
@@ -59,7 +59,7 @@ private class fflib_AnswerTest
 		System.Assert.areEqual(expectedMethodSignature, ((fflib_QualifiedMethod)methodCalled).toString(), ' the method is no the one expected');
 	}
 
-	@isTest
+	@IsTest
 	static void thatAnswerOnlyForTheMethodStubbedWithAnswer()
 	{
 		// Given
@@ -86,7 +86,7 @@ private class fflib_AnswerTest
 		System.Assert.areEqual('ted', noAnswered, 'the get method should have returned the stubbed string');
 	}
 
-	@isTest
+	@IsTest
 	static void thatMultipleAnswersAreHandled()
 	{
 		// Given
@@ -107,7 +107,7 @@ private class fflib_AnswerTest
 		System.Assert.areEqual('and this is the second one', answer2, 'the answer wasnt the one expected');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStoresMockInstanceIntoInvocationOnMock()
 	{
 		// Given
@@ -126,7 +126,7 @@ private class fflib_AnswerTest
 		System.Assert.areEqual(mockList, actualInvocation.getMock(), 'the mock returned should be the mockList used in the stubbing');
 	}
 
-	@isTest
+	@IsTest
 	static void thatMethodsParametersAreAccessible()
 	{
 		// Given
@@ -144,7 +144,7 @@ private class fflib_AnswerTest
 		System.Assert.areEqual('Bye hi Hello Bye hi', actualValue, 'the answer is not correct');
 	}
 
-	@isTest
+	@IsTest
 	static void thatAnswerOnlyForTheStubbedParameter()
 	{
 		// Given
@@ -166,7 +166,7 @@ private class fflib_AnswerTest
 		System.Assert.areEqual(null, actualValue3, 'the answer is not correct');
 	}
 
-	@isTest
+	@IsTest
 	static void thatMethodsParametersAreAccessibleWhenCalledWithMatchers()
 	{
 		// Given
@@ -184,7 +184,7 @@ private class fflib_AnswerTest
 		System.Assert.areEqual('Bye hi Hello Bye hi', actualValue, 'the answer is not correct');
 	}
 
-	@isTest
+	@IsTest
 	static void thatExceptionIsThrownWhenAccessOutOfIndexArgument()
 	{
 		// Given
@@ -202,7 +202,7 @@ private class fflib_AnswerTest
 		System.Assert.isNull(actualValue, 'ExceptionForArgumentsOutOfBound answer should return null');
 	}
 
-	@isTest
+	@IsTest
 	static void thatExceptionIsThrownWhenAccessNegativeIndexArgument()
 	{
 		// Given
@@ -220,7 +220,7 @@ private class fflib_AnswerTest
 		System.Assert.isNull(actualValue, 'ExceptionForNegativeArgumentIndex answer should return null');
 	}
 
-	@isTest
+	@IsTest
 	static void thatArgumentListEmptyForMethodWithNoArgument()
 	{
 		// Given
@@ -238,7 +238,7 @@ private class fflib_AnswerTest
 		System.Assert.isNull(actualValue, 'ArgumentListEmptyForMethodWithNoArgument answer should return null');
 	}
 
-	@isTest
+	@IsTest
 	static void thatAnswerToVoidMethod()
 	{
 		// Given
@@ -260,7 +260,7 @@ private class fflib_AnswerTest
 		System.Assert.areEqual(expectedMethodSignature, ((fflib_QualifiedMethod)methodCalled).toString(), 'Unexpected method name: ' + methodCalled);
 	}
 
-	@isTest
+	@IsTest
 	static void thatAnswerToVoidAndNotVoidMethods()
 	{
 		// Given
@@ -290,7 +290,7 @@ private class fflib_AnswerTest
 		System.Assert.areEqual('and this is the second one', answer2, 'the answer was not the one expected');
 	}
 
-	@isTest
+	@IsTest
 	static void thatAnswerToDifferentVoidMethods()
 	{
 		// Given

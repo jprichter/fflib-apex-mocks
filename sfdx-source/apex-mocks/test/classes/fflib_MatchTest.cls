@@ -23,24 +23,24 @@
  * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-@isTest
+@IsTest
 public with sharing class fflib_MatchTest
 {
-	@isTest
+	@IsTest
 	private static void whenMatchesAllArgsWithOneMatchReturnsTrue()
 	{
 		//Given
 		fflib_MethodArgValues argValues = new fflib_MethodArgValues(new List<Object>{ null });
 		List<fflib_IMatcher> targetMatchers = new List<fflib_IMatcher>{ new AlwaysMatch() };
-		
+
 		//When
 		Boolean match = fflib_Match.matchesAllArgs(argValues, targetMatchers);
 
 		//Then
 		System.Assert.isTrue(match);
 	}
-	
-	@isTest
+
+	@IsTest
 	private static void whenMatchesAllArgsWithManyMatchesReturnsTrue()
 	{
 		//Given
@@ -50,36 +50,36 @@ public with sharing class fflib_MatchTest
 			null,
 			null
 		});
-		
+
 		List<fflib_IMatcher> targetMatchers = new List<fflib_IMatcher>{
 			new AlwaysMatch(),
 			new AlwaysMatch(),
 			new AlwaysMatch(),
 			new AlwaysMatch()
 		};
-		
+
 		//When
 		Boolean match = fflib_Match.matchesAllArgs(argValues, targetMatchers);
 
 		//Then
 		System.Assert.isTrue(match);
 	}
-	
-	@isTest
+
+	@IsTest
 	private static void whenMatchesAllArgsWithOneMismatchReturnsFalse()
 	{
 		//Given
 		fflib_MethodArgValues argValues = new fflib_MethodArgValues(new List<Object>{ null });
 		List<fflib_IMatcher> targetMatchers = new List<fflib_IMatcher>{ new NeverMatch() };
-		
+
 		//When
 		Boolean match = fflib_Match.matchesAllArgs(argValues, targetMatchers);
 
 		//Then
 		System.Assert.isFalse(match);
 	}
-	
-	@isTest
+
+	@IsTest
 	private static void whenMatchesAllArgsWithManyMismatchesReturnsFalse()
 	{
 		//Given
@@ -89,22 +89,22 @@ public with sharing class fflib_MatchTest
 			null,
 			null
 		});
-		
+
 		List<fflib_IMatcher> targetMatchers = new List<fflib_IMatcher>{
 			new NeverMatch(),
 			new NeverMatch(),
 			new NeverMatch(),
 			new NeverMatch()
 		};
-		
+
 		//When
 		Boolean match = fflib_Match.matchesAllArgs(argValues, targetMatchers);
 
 		//Then
 		System.Assert.isFalse(match);
 	}
-	
-	@isTest
+
+	@IsTest
 	private static void whenMatchesAllArgsWithMatchesAndMismatchesReturnsFalse()
 	{
 		//Given
@@ -114,28 +114,28 @@ public with sharing class fflib_MatchTest
 			null,
 			null
 		});
-		
+
 		List<fflib_IMatcher> targetMatchers = new List<fflib_IMatcher>{
 			new AlwaysMatch(),
 			new AlwaysMatch(),
 			new NeverMatch(),
 			new AlwaysMatch()
 		};
-		
+
 		//When
 		Boolean match = fflib_Match.matchesAllArgs(argValues, targetMatchers);
 
 		//Then
 		System.Assert.isFalse(match);
 	}
-	
-	@isTest
+
+	@IsTest
 	private static void whenMatchesAllArgsWithNullMethodArgsThrowsException()
 	{
 		//Given
 		fflib_MethodArgValues methodArg = null;
 		List<fflib_IMatcher> targetMatchers = new List<fflib_IMatcher>{ new AlwaysMatch() };
-		
+
 		//When
 		try
 		{
@@ -148,14 +148,14 @@ public with sharing class fflib_MatchTest
 			System.Assert.areEqual('MethodArgs cannot be null', e.getMessage());
 		}
 	}
-	
-	@isTest
+
+	@IsTest
 	private static void whenMatchesAllArgsWithNullMethodArgsArgValuesThrowsException()
 	{
 		//Given
 		fflib_MethodArgValues methodArg = new fflib_MethodArgValues(null);
 		List<fflib_IMatcher> targetMatchers = new List<fflib_IMatcher>{ new AlwaysMatch() };
-		
+
 		//When
 		try
 		{
@@ -168,14 +168,14 @@ public with sharing class fflib_MatchTest
 			System.Assert.areEqual('MethodArgs.argValues cannot be null', e.getMessage());
 		}
 	}
-	
-	@isTest
+
+	@IsTest
 	private static void whenMatchesAllArgsWithNullMatchersThrowsException()
 	{
 		//Given
 		fflib_MethodArgValues methodArg = new fflib_MethodArgValues(new List<Object>{ 'Test' });
 		List<fflib_IMatcher> targetMatchers = null;
-		
+
 		//When
 		try
 		{
@@ -188,14 +188,14 @@ public with sharing class fflib_MatchTest
 			System.Assert.areEqual('Matchers cannot be null', e.getMessage());
 		}
 	}
-	
-	@isTest
+
+	@IsTest
 	private static void whenMatchesAllArgsWithDifferentSizeArgValuesAndMatchersThrowsException()
 	{
 		//Given
 		fflib_MethodArgValues methodArg = new fflib_MethodArgValues(new List<Object>{ 'Test' });
 		List<fflib_IMatcher> targetMatchers = new List<fflib_IMatcher>{ new AlwaysMatch(), new AlwaysMatch() };
-		
+
 		//When
 		try
 		{
@@ -212,51 +212,51 @@ public with sharing class fflib_MatchTest
 			System.Assert.areEqual(expectedMessage, e.getMessage());
 		}
 	}
-	
-	@isTest
+
+	@IsTest
 	private static void whenMatchesWithOneMatcherSetsMatchingToTrue()
 	{
 		//Given
 		fflib_IMatcher matcher = new AlwaysMatch();
-		
+
 		//When
 		fflib_Match.matches(matcher);
-		
+
 		//Then
 		System.Assert.isTrue(fflib_Match.Matching);
 	}
-	
-	@isTest
+
+	@IsTest
 	private static void whenMatchesWithOneMatcherRegistersMatcher()
 	{
 		//Given
 		fflib_IMatcher matcher = new AlwaysMatch();
-		
+
 		//When
 		fflib_Match.matches(matcher);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
-		
+
 		System.Assert.areNotEqual(null, registeredMatchers);
 		System.Assert.areEqual(1, registeredMatchers.size());
 		System.Assert.areEqual(matcher, registeredMatchers[0]);
 	}
-	
-	@isTest
+
+	@IsTest
 	private static void whenMatchesWithOneMatcherReturnsNull()
 	{
 		//Given
 		fflib_IMatcher matcher = new AlwaysMatch();
-		
+
 		//When
 		Object retval = fflib_Match.matches(matcher);
-		
+
 		//Then
 		System.Assert.areEqual(null, retval);
 	}
 
-	@isTest
+	@IsTest
 	private static void allOfWithNoArgsThrowsException()
 	{
 		//Given/When
@@ -272,7 +272,7 @@ public with sharing class fflib_MatchTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void allOfWithEmptyArgsThrowsException()
 	{
 		//Given/When
@@ -288,7 +288,7 @@ public with sharing class fflib_MatchTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void allOfWithoutRegisteringInnerMatchersThrowsException()
 	{
 		//Given/When
@@ -307,13 +307,13 @@ public with sharing class fflib_MatchTest
 			System.Assert.areEqual(expectedMessage, e.getMessage());
 		}
 	}
-	
-	@isTest
+
+	@IsTest
 	private static void allOfWith2ArgsRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.allOf(fflib_Match.eq('hello1'), fflib_Match.eq('hello2'));
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -321,12 +321,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Combined.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void allOfWith3ArgsRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.allOf(fflib_Match.eq('hello1'), fflib_Match.eq('hello2'), fflib_Match.eq('hello3'));
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -334,12 +334,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Combined.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void allOfWith4ArgsRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.allOf(fflib_Match.eq('hello1'), fflib_Match.eq('hello2'), fflib_Match.eq('hello3'), fflib_Match.eq('hello4'));
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -347,12 +347,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Combined.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void allOfWithListArgsRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.allOf(new List<Object>{ fflib_Match.eq('hello') });
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -360,12 +360,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Combined.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anyOfWith2ArgsRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anyOf(fflib_Match.eq('hello1'), fflib_Match.eq('hello2'));
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -373,12 +373,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Combined.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anyOfWith3ArgsRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anyOf(fflib_Match.eq('hello1'), fflib_Match.eq('hello2'), fflib_Match.eq('hello3'));
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -386,12 +386,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Combined.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anyOfWith4ArgsRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anyOf(fflib_Match.eq('hello1'), fflib_Match.eq('hello2'), fflib_Match.eq('hello3'), fflib_Match.eq('hello4'));
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -399,12 +399,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Combined.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anyOfWithListArgsRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anyOf(new List<Object>{ fflib_Match.eq('hello') });
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -412,12 +412,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Combined.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void isNotRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.isNot(fflib_Match.eq('hello1'));
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -425,12 +425,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Combined.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void noneOfWith2ArgsRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.noneOf(fflib_Match.eq('hello1'), fflib_Match.eq('hello2'));
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -438,12 +438,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Combined.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void noneOfWith3ArgsRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.noneOf(fflib_Match.eq('hello1'), fflib_Match.eq('hello2'), fflib_Match.eq('hello3'));
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -451,12 +451,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Combined.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void noneOfWith4ArgsRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.noneOf(fflib_Match.eq('hello1'), fflib_Match.eq('hello2'), fflib_Match.eq('hello3'), fflib_Match.eq('hello4'));
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -464,12 +464,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Combined.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void noneOfWithListArgsRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.noneOf(new List<Object>{ fflib_Match.eq('hello') });
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -477,12 +477,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Combined.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void eqRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.eq('hello');
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -490,12 +490,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Eq.class);
 	}
 
-	@isTest
+	@IsTest
 	public static void eqBooleanRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.eqBoolean(true);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -503,12 +503,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Eq.class);
 	}
 
-	@isTest
+	@IsTest
 	public static void eqDateRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.eqDate(Date.today());
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -516,12 +516,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Eq.class);
 	}
 
-	@isTest
+	@IsTest
 	public static void eqDatetimeRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.eqDatetime(System.now());
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -529,12 +529,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Eq.class);
 	}
 
-	@isTest
+	@IsTest
 	public static void eqDecimalRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.eqDecimal(123);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -542,12 +542,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Eq.class);
 	}
 
-	@isTest
+	@IsTest
 	public static void eqDoubleRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.eqDouble(123);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -555,7 +555,7 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Eq.class);
 	}
 
-	@isTest
+	@IsTest
 	public static void eqIdRegistersCorrectMatcherType()
 	{
 		//Given/When
@@ -568,12 +568,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Eq.class);
 	}
 
-	@isTest
+	@IsTest
 	public static void eqIntegerRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.eqInteger(123);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -581,12 +581,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Eq.class);
 	}
 
-	@isTest
+	@IsTest
 	public static void eqListRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.eqList(new List<String>{ 'hello' });
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -594,12 +594,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Eq.class);
 	}
 
-	@isTest
+	@IsTest
 	public static void eqLongRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.eqLong(123);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -607,13 +607,13 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Eq.class);
 	}
 
-	@isTest
+	@IsTest
 	public static void eqSObjectFieldRegistersCorrectMatcherType()
 	{
 		//Given/When
 		Schema.SObjectField f = Schema.getGlobalDescribe().get('Account').getDescribe().fields.getMap().get('Id');
 		fflib_Match.eqSObjectField(f);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -621,13 +621,13 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Eq.class);
 	}
 
-	@isTest
+	@IsTest
 	public static void eqSObjectTypeRegistersCorrectMatcherType()
 	{
 		//Given/When
 		Schema.SObjectType ot = Schema.getGlobalDescribe().get('Account');
 		fflib_Match.eqSObjectType(ot);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -635,12 +635,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Eq.class);
 	}
 
-	@isTest
+	@IsTest
 	public static void eqStringRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.eqString('hello');
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -648,12 +648,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.Eq.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void refEqRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.refEq('hello');
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -661,12 +661,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.RefEq.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anyBooleanRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anyBoolean();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -674,12 +674,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.AnyBoolean.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anyDateRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anyDate();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -687,12 +687,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.AnyDate.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anyDatetimeRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anyDatetime();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -700,12 +700,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.AnyDatetime.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anyDecimalRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anyDecimal();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -713,12 +713,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.AnyDecimal.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anyDoubleRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anyDouble();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -726,12 +726,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.AnyDouble.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anyFieldSetRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anyFieldSet();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -739,12 +739,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.AnyFieldSet.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anyIdRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anyId();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -752,12 +752,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.AnyId.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anyIntegerRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anyInteger();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -765,12 +765,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.AnyInteger.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anyListRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anyList();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -778,12 +778,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.AnyList.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anyLongRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anyLong();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -791,12 +791,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.AnyLong.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anyObjectRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anyObject();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -804,12 +804,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.AnyObject.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anyStringRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anyString();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -817,12 +817,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.AnyString.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anySObjectRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anySObject();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -830,12 +830,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.AnySObject.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anySObjectFieldRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anySObjectField();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -843,12 +843,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.AnySObjectField.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void anySObjectTypeRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.anySObjectType();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -856,7 +856,7 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.AnySObjectType.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void dateAfterRegistersCorrectMatcherType()
 	{
 		//Given/When
@@ -869,7 +869,7 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.DatetimeAfter.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void dateBeforeRegistersCorrectMatcherType()
 	{
 		//Given/When
@@ -882,7 +882,7 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.DatetimeBefore.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void dateBetweenRegistersCorrectMatcherType()
 	{
 		//Given/When
@@ -895,7 +895,7 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.DatetimeBetween.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void datetimeAfterRegistersCorrectMatcherType()
 	{
 		//Given/When
@@ -908,7 +908,7 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.DatetimeAfter.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void datetimeBeforeRegistersCorrectMatcherType()
 	{
 		//Given/When
@@ -921,7 +921,7 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.DatetimeBefore.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void datetimeBetweenRegistersCorrectMatcherType()
 	{
 		//Given/When
@@ -934,12 +934,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.DatetimeBetween.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void decimalBetweenRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.decimalBetween(0, 10);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -947,12 +947,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.DecimalBetween.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void decimalLessThanRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.decimalLessThan(0);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -960,12 +960,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.DecimalLessThan.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void decimalMoreThanRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.decimalMoreThan(0);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -973,12 +973,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.DecimalMoreThan.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void doubleBetweenRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.doubleBetween(0, 10);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -986,12 +986,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.DecimalBetween.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void doubleLessThanRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.doubleLessThan(0);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -999,12 +999,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.DecimalLessThan.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void doubleMoreThanRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.doubleMoreThan(0);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1012,7 +1012,7 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.DecimalMoreThan.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void fieldSetEquivalentWithNullFieldSetThrowsException()
 	{
 		try
@@ -1026,7 +1026,7 @@ public with sharing class fflib_MatchTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void fieldSetEquivalentToRegistersCorrectMatcherType()
 	{
 		Schema.FieldSet anyFieldSet = fflib_ApexMocksUtilsTest.findAnyFieldSet();
@@ -1037,7 +1037,7 @@ public with sharing class fflib_MatchTest
 
 		//Given/When
 		fflib_Match.fieldSetEquivalentTo(anyFieldSet);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1045,12 +1045,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.FieldSetEquivalentTo.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void integerBetweenRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.integerBetween(0, 10);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1058,12 +1058,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.DecimalBetween.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void integerLessThanRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.integerLessThan(0);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1071,12 +1071,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.DecimalLessThan.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void integerMoreThanRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.integerMoreThan(0);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1084,12 +1084,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.DecimalMoreThan.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void isNotNullRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.isNotNull();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1097,12 +1097,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.IsNotNull.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void isNullRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.isNull();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1110,12 +1110,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.IsNull.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void listContainsRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.listContains('fred');
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1123,12 +1123,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.ListContains.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void listIsEmptyRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.listIsEmpty();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1136,12 +1136,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.ListIsEmpty.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void longBetweenRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.longBetween(0, 10);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1149,12 +1149,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.DecimalBetween.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void longLessThanRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.longLessThan(0);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1162,12 +1162,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.DecimalLessThan.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void longMoreThanRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.longMoreThan(0);
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1175,7 +1175,7 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.DecimalMoreThan.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void sObjectOfTypeRegistersCorrectMatcherType()
 	{
 		//Given
@@ -1195,7 +1195,7 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.SObjectOfType.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void sObjectWithRegistersCorrectMatcherType()
 	{
 		//Given
@@ -1217,7 +1217,7 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.SObjectWith.class);
 	}
 
-    @isTest
+    @IsTest
 	private static void sObjectsWithRegistersCorrectMatcherType()
 	{
 		//Given
@@ -1230,9 +1230,9 @@ public with sharing class fflib_MatchTest
 		Schema.SObjectField f = ot.getDescribe().fields.getMap().get('Id');
 
 		//When
-		fflib_Match.sObjectsWith(new list<Map<Schema.SObjectField, Object>>{ 
+		fflib_Match.sObjectsWith(new list<Map<Schema.SObjectField, Object>>{
             new map<Schema.SObjectField,Object> {f=>null}
-        	});
+			});
 
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
@@ -1241,7 +1241,7 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.SObjectsWith.class);
 	}
 
-    @isTest
+    @IsTest
 	private static void sObjectsWithMatchInOrderRegistersCorrectMatcherType()
 	{
 		//Given
@@ -1254,9 +1254,9 @@ public with sharing class fflib_MatchTest
 		Schema.SObjectField f = ot.getDescribe().fields.getMap().get('Id');
 
 		//When
-		fflib_Match.sObjectsWith(new list<Map<Schema.SObjectField, Object>>{ 
+		fflib_Match.sObjectsWith(new list<Map<Schema.SObjectField, Object>>{
             new map<Schema.SObjectField,Object> {f=>null}
-        	}, false);
+			}, false);
 
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
@@ -1264,8 +1264,8 @@ public with sharing class fflib_MatchTest
 		System.Assert.areEqual(1, registeredMatchers.size());
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.SObjectsWith.class, String.valueOf(registeredMatchers));
 	}
-    
-	@isTest
+
+	@IsTest
 	private static void sObjectWithIdRegistersCorrectMatcherType()
 	{
 		//Given/When
@@ -1278,7 +1278,7 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.SObjectWithId.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void sObjectWithNameRegistersCorrectMatcherType()
 	{
 		//Given/When
@@ -1291,12 +1291,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.SObjectWithName.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void stringContainsRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.stringContains('hello');
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1304,12 +1304,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.StringContains.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void stringEndsWithRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.stringEndsWith('hello');
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1317,12 +1317,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.StringEndsWith.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void stringIsBlankRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.stringIsBlank();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1330,12 +1330,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.StringIsBlank.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void stringIsNotBlankRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.stringIsNotBlank();
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1343,12 +1343,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.StringIsNotBlank.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void stringMatchesRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.stringMatches('[a-z]*');
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1356,12 +1356,12 @@ public with sharing class fflib_MatchTest
 		System.Assert.isInstanceOfType(registeredMatchers[0], fflib_MatcherDefinitions.StringMatches.class);
 	}
 
-	@isTest
+	@IsTest
 	private static void stringStartsWithRegistersCorrectMatcherType()
 	{
 		//Given/When
 		fflib_Match.stringStartsWith('hello');
-		
+
 		//Then
 		List<fflib_IMatcher> registeredMatchers = fflib_Match.getAndClearMatchers(1);
 		System.Assert.areNotEqual(null, registeredMatchers);
@@ -1376,7 +1376,7 @@ public with sharing class fflib_MatchTest
 			return true;
 		}
 	}
-	
+
 	private class NeverMatch implements fflib_IMatcher
 	{
 		public Boolean matches(Object arg)

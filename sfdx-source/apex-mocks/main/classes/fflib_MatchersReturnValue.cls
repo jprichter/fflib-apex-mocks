@@ -28,7 +28,7 @@ public with sharing class fflib_MatchersReturnValue
 {
 	public List<fflib_IMatcher> matchers;
 	public fflib_MethodReturnValue returnValue;
-	
+
 	public fflib_MatchersReturnValue(List<fflib_IMatcher> matchers, fflib_MethodReturnValue returnValue)
 	{
 		this.matchers = matchers;

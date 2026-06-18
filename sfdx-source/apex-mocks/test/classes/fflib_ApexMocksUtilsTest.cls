@@ -23,7 +23,7 @@
  * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-@isTest
+@IsTest
 public class fflib_ApexMocksUtilsTest
 {
 	public static Schema.FieldSet findAnyFieldSet()
@@ -39,7 +39,7 @@ public class fflib_ApexMocksUtilsTest
 		return null;
 	}
 
-	@isTest
+	@IsTest
 	private static void makeRelationship_returnsObjectsWithRelationFieldSet()
 	{
 		//Given
@@ -71,7 +71,7 @@ public class fflib_ApexMocksUtilsTest
 		System.Assert.areEqual(acc.Id, accWithRelationships.Id);
 		System.Assert.areEqual(acc.Name, accWithRelationships.Name);
 		System.Assert.areEqual(acc.NumberOfEmployees, accWithRelationships.NumberOfEmployees);
-		
+
 		//Assert relationship fields
 		List<Contact> contacts = accWithRelationships.Contacts;
 		System.Assert.areNotEqual(null, contacts);
@@ -84,8 +84,8 @@ public class fflib_ApexMocksUtilsTest
 		System.Assert.areEqual(contact2.DoNotCall, contacts[1].DoNotCall);
 	}
 
-	@isTest
-	private static void makeRelationship_GenericOverload_ReturnsObjectsWithRelationFieldSet() 
+	@IsTest
+	private static void makeRelationship_GenericOverload_ReturnsObjectsWithRelationFieldSet()
 	{
 		//Given
 		SObject acc = Schema.getGlobalDescribe().get('Account').newSObject();
@@ -128,8 +128,8 @@ public class fflib_ApexMocksUtilsTest
 		System.Assert.areEqual((Boolean)contact2.get('DoNotCall'), (Boolean)contacts[1].get('DoNotCall'));
 	}
 
-	@isTest
-	private static void makeRelationship_GenericOverload_ThrowsErrorOnInvalidParentType() 
+	@IsTest
+	private static void makeRelationship_GenericOverload_ThrowsErrorOnInvalidParentType()
 	{
 		// Setup parent object
 		SObject acc = Schema.getGlobalDescribe().get('Account').newSObject();
@@ -156,8 +156,8 @@ public class fflib_ApexMocksUtilsTest
 		System.Assert.areEqual('SObject type not found: MyInvalidParentType', errorMessage);
 	}
 
-	@isTest
-	private static void makeRelationship_GenericOverload_ThrowsErrorOnInvalidChildType() 
+	@IsTest
+	private static void makeRelationship_GenericOverload_ThrowsErrorOnInvalidChildType()
 	{
 		// Setup parent object
 		SObject acc = Schema.getGlobalDescribe().get('Account').newSObject();
@@ -184,8 +184,8 @@ public class fflib_ApexMocksUtilsTest
 		System.Assert.areEqual('SObject type not found: MyInvalidChildType', errorMessage);
 	}
 
-	@isTest
-	private static void makeRelationship_GenericOverload_ThrowsErrorOnInvalidFieldName() 
+	@IsTest
+	private static void makeRelationship_GenericOverload_ThrowsErrorOnInvalidFieldName()
 	{
 		// Setup parent object
 		SObject acc = Schema.getGlobalDescribe().get('Account').newSObject();
@@ -212,9 +212,9 @@ public class fflib_ApexMocksUtilsTest
 		System.Assert.areEqual('SObject field not found: MyInvalidField', errorMessage);
 	}
 
-	@IsTest 
-	private static void makeRelationship_ObjectWithNull_DoesNotThrowErrorOnJSONExceptionCanNotWriteAFieldNameExpectingAValue() 
-	{	
+	@IsTest
+	private static void makeRelationship_ObjectWithNull_DoesNotThrowErrorOnJSONExceptionCanNotWriteAFieldNameExpectingAValue()
+	{
 		// Given
 		Product2 prod1 = new Product2(
 			Id = fflib_IDGenerator.generate(Product2.SObjectType),
@@ -254,7 +254,7 @@ public class fflib_ApexMocksUtilsTest
 
 		// When
 		Test.startTest();
-		
+
 		try {
 			fflib_ApexMocksUtils.makeRelationship(
 				List<Opportunity>.class,
@@ -269,13 +269,12 @@ public class fflib_ApexMocksUtilsTest
 		Test.stopTest();
 
 		// Then
-		System.debug(exceptionThatWasCalled);
 		Assert.isNull(exceptionThatWasCalled, 'Exception should not have been called');
 	}
 
-	@isTest
+	@IsTest
 	static void setReadOnlyFields_CreatedByIdSetToCurrentUserId_IdFieldSetSuccessfully() {
-		
+
 		Account acc = new Account();
 		Id userId = fflib_IDGenerator.generate((new User()).getSObjectType());
 
@@ -290,9 +289,9 @@ public class fflib_ApexMocksUtilsTest
 		System.Assert.areEqual(userId, acc.CreatedById);
 	}
 
-	@isTest
+	@IsTest
 	static void setReadOnlyFields_LastReferencedDateSetOnAccount_DateTimeFieldSetSuccessfully() {
-		
+
 		Account acc = new Account();
 		DateTime lastRefDate = DateTime.newInstanceGmt(2020, 1, 7, 23, 30, 0);
 
@@ -307,7 +306,7 @@ public class fflib_ApexMocksUtilsTest
 		System.Assert.areEqual(lastRefDate, acc.LastReferencedDate);
 	}
 
-	@isTest
+	@IsTest
 	static void setReadOnlyFields_IsDeletedSetOnAccount_BooleanFieldSetSuccessfully() {
 
 		Account acc = new Account();
@@ -324,7 +323,7 @@ public class fflib_ApexMocksUtilsTest
 		System.Assert.areEqual(isDeleted, acc.IsDeleted);
 	}
 
-	@isTest
+	@IsTest
 	static void setReadOnlyFields_PolymorphicRelationJoin_FieldSetSuccessfully() {
 
 		Account acc = new Account(Name='TestAccount');

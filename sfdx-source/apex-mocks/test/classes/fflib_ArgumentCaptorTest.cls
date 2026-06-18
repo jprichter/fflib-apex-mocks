@@ -4,10 +4,10 @@
 /**
  * @nodoc
  */
-@isTest
+@IsTest
 private class fflib_ArgumentCaptorTest
 {
-	@isTest
+	@IsTest
 	static void thatArgumentValueIsCaptured()
 	{
 		// Given
@@ -24,7 +24,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual('Fred', (String)argument.getValue(), 'the argument captured is not as expected');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCanPerformFurtherAssertionsOnCapturedArgumentValue()
 	{
 		// Given
@@ -54,7 +54,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual('5', testValueCaptured.s, 'the values inside the argument captured should be the same of the original one');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCaptureArgumentOnlyFromVerifiedMethod()
 	{
 		// Given
@@ -76,7 +76,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual(1, argument.getAllValues().size(), 'the argument captured should be only one');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCaptureAllArgumentsForTheVerifiedMethods()
 	{
 		// Given
@@ -105,7 +105,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual('Fred', (String) argsCaptured[0], 'the first value is not as expected');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCaptureArgumentFromRequestedParameter()
 	{
 		// Given
@@ -129,7 +129,7 @@ private class fflib_ArgumentCaptorTest
 			'the argument captured is not as expected, should be Wilma because is the 3rd parameter in the call');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCaptureLastArgument()
 	{
 		// Given
@@ -148,7 +148,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual('Fred', (String)argument.getValue(), 'the argument captured is not as expected');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCaptureAllArguments()
 	{
 		// Given
@@ -176,7 +176,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual('Betty', (String) argsCaptured[3], 'the forth value is not as expected');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCaptureAllArgumentsFromMultipleMethods()
 	{
 		// Given
@@ -208,7 +208,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual('pebble', (String) argsCaptured[2], 'the third value is not as expected');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCanHandleMultipleCapturesInOneMethodCall()
 	{
 		// Given
@@ -237,7 +237,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual('Wilma', (String) argsCaptured[1], 'the second value is not as expected');
 	}
 
-	@isTest
+	@IsTest
 	static void thatDoesNotCaptureIfNotVerified()
 	{
 		// Given
@@ -260,7 +260,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual(null, argument.getValue(), 'no value should be captured, so must return null');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCaptureOnlyMethodsThatMatchesWithOtherMatcherAsWell()
 	{
 		// Given
@@ -283,7 +283,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual('First call', (String)argument.getValue());
 	}
 
-	@isTest
+	@IsTest
 	static void thatDoesNotCaptureAnythingWhenCaptorIsWrappedInAMatcher()
 	{
 		// Given
@@ -322,7 +322,7 @@ private class fflib_ArgumentCaptorTest
 			'nothing should have been capture because the matcher it not really a capture type, but a allOf()');
 	}
 
-	@isTest
+	@IsTest
 	static void thatArgumentValueIsCapturedWithInOrderVerification()
 	{
 		// Given
@@ -341,7 +341,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual('Fred', (String)argument.getValue(), 'the argument captured is not as expected');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCanPerformFurtherAssertionsOnCapturedArgumentValueWithInOrderVerification()
 	{
 		// Given
@@ -373,7 +373,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual('5', testValueCaptured.s, 'the values inside the argument captured should be the same of the original one');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCaptureArgumentOnlyFromVerifiedMethodWithInOrderVerification()
 	{
 		// Given
@@ -397,7 +397,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual(1, argument.getAllValues().size(), 'the argument captured should be only one');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCaptureAllArgumentsForTheVerifiedMethodsWithInOrderVerification()
 	{
 		// Given
@@ -428,7 +428,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual('Fred', (String) argsCaptured[0], 'the first value is not as expected');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCaptureArgumentFromRequestedParameterWithInOrderVerification()
 	{
 		// Given
@@ -454,7 +454,7 @@ private class fflib_ArgumentCaptorTest
 			'the argument captured is not as expected, should be Wilma because is the 3rd parameter in the call');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCaptureLastArgumentWithInOrderVerification()
 	{
 		// Given
@@ -475,7 +475,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual('Fred', (String)argument.getValue(), 'the argument captured is not as expected');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCaptureAllArgumentsWithInOrderVerification()
 	{
 		// Given
@@ -505,7 +505,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual('Betty', (String) argsCaptured[3], 'the forth value is not as expected');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCaptureAllArgumentsFromMultipleMethodsWithInOrderVerification()
 	{
 		// Given
@@ -539,7 +539,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual('pebble', (String) argsCaptured[2], 'the third value is not as expected');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCanHandleMultipleCapturesInOneMethodCallWithInOrderVerification()
 	{
 		// Given
@@ -570,7 +570,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual('Wilma', (String) argsCaptured[1], 'the second value is not as expected');
 	}
 
-	@isTest
+	@IsTest
 	static void thatDoesNotCaptureIfNotVerifiedWithInOrderVerification()
 	{
 		// Given
@@ -595,7 +595,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual(null, argument.getValue(), 'no value should be captured, so must return null');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCaptureOnlyMethodsThatMatchesWithOtherMatcherAsWellWithInOrderVerification()
 	{
 		// Given
@@ -620,7 +620,7 @@ private class fflib_ArgumentCaptorTest
 		System.Assert.areEqual('First call', (String)argument.getValue());
 	}
 
-	@isTest
+	@IsTest
 	static void thatDoesNotCaptureAnythingWhenCaptorIsWrappedInAMatcherWithInOrderVerification()
 	{
 		// Given
@@ -661,7 +661,7 @@ private class fflib_ArgumentCaptorTest
 			'nothing should have been capture because the matcher it not really a capture type, but a allOf()');
 	}
 
-	@isTest
+	@IsTest
 	static void thatCaptureAllArgumentswhenMethodIsCalledWithTheSameArgument()
 	{
 		// Given

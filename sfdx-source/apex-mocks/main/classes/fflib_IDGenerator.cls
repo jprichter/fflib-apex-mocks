@@ -31,8 +31,8 @@ public with sharing class fflib_IDGenerator
 	private static final Map<Schema.SObjectType, String> KEY_PREFIX_CACHE = new Map<Schema.SObjectType, String>();
 
 	/**
-	 * Generate a fake Salesforce Id for the given SObjectType
-	 */
+	* Generate a fake Salesforce Id for the given SObjectType
+	*/
 	@NamespaceAccessible
 	public static Id generate(Schema.SObjectType sobjectType)
 	{
