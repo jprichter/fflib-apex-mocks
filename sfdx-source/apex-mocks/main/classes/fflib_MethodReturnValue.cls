@@ -28,8 +28,8 @@
  * @group Core
  * Class defining a method return value.
  */
-@isTest
-@SuppressWarnings('PMD.ClassNamingConventions, PMD.FieldNamingConventions, PMD.PropertyNamingConventions')
+@IsTest
+@SuppressWarnings('PMD.ClassNamingConventions, PMD.FieldNamingConventions, PMD.PropertyNamingConventions, PMD.ApexDoc')
 @NamespaceAccessible
 public with sharing class fflib_MethodReturnValue
 {

@@ -7,7 +7,7 @@
  * @group Core
  */
 @NamespaceAccessible
-@SuppressWarnings('PMD.CyclomaticComplexity, PMD.CognitiveComplexity, PMD.AvoidDeeplyNestedIfStmts, PMD.ClassNamingConventions')
+@SuppressWarnings('PMD.CyclomaticComplexity, PMD.CognitiveComplexity, PMD.AvoidDeeplyNestedIfStmts, PMD.ClassNamingConventions, PMD.ExcessiveParameterList')
 public with sharing class fflib_InOrder extends fflib_MethodVerifier
 {
 	private final List<Object> unorderedMockInstances;
@@ -177,7 +177,10 @@ public with sharing class fflib_InOrder extends fflib_MethodVerifier
 		fflib_VerificationMode verificationMode,
 		List<fflib_MethodArgValues> actualArguments)
 	{
-		if (!hasNextInteraction(unorderedMockInstances, idxMethodCall)) { return; }
+		if (!hasNextInteraction(unorderedMockInstances, idxMethodCall))
+		{
+			return;
+		}
 		fflib_InvocationOnMock nextMethod = getNextMethodCall(false);
 		if (nextMethod.getMethod() == qm &&
 			argumentsMatch(nextMethod.getMethodArgValues(), matchers, expectedArguments))

@@ -2,13 +2,13 @@
  Copyright (c) 2014-2017 FinancialForce.com, inc.  All rights reserved.
  */
 
-@isTest
-@SuppressWarnings('PMD.CyclomaticComplexity, PMD.NcssCount, PMD.ClassNamingConventions, PMD.FieldNamingConventions')
+@IsTest
+@SuppressWarnings('PMD.CyclomaticComplexity, PMD.NcssCount, PMD.ClassNamingConventions, PMD.FieldNamingConventions, PMD.ApexUnitTestClassShouldHaveRunAs, PMD.NcssTypeCount')
 private class fflib_InOrderTest
 {
 	private static fflib_ApexMocks MY_MOCKS = new fflib_ApexMocks();
 
-	@isTest
+	@IsTest
 	static void thatVerifyInOrderAllTheMethodsCalled()
 	{
 		// Given
@@ -46,7 +46,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyInOrderDifferentMethodsCalledWithSameArguments()
 	{
 		// Given
@@ -68,10 +68,10 @@ private class fflib_InOrderTest
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(1))).addMore('1-1');
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(1))).addMore('1-3');
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(1))).add('1-4');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyInOrderDifferentMethodsCalledWithSameArgumentsOrderFail()
 	{
 		// Given
@@ -106,7 +106,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyInOrderDifferentMethodsCalledWithSameArgumentsDoubleCallFail()
 	{
 		// Given
@@ -141,7 +141,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyInOrderCallMethodWithMatches()
 	{
 		// Given
@@ -158,10 +158,10 @@ private class fflib_InOrderTest
 		// Then
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(2))).add(fflib_Match.stringStartsWith('1-1'));
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(1))).add('1-4');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyInOrderCallMethodWithMatchesFailsIfVerifyACallAlreadyInTheMatcher()
 	{
 		// Given
@@ -198,7 +198,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyInOrderCallMethodWithMultipleMatches()
 	{
 		// Given
@@ -221,10 +221,10 @@ private class fflib_InOrderTest
 		// Then
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(4))).add(fflib_Match.stringStartsWith('1-'));
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(4))).add(fflib_Match.stringStartsWith('2-'));
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyInOrderCallMethodWithMultipleMatchesMixed()
 	{
 		// Given
@@ -244,10 +244,10 @@ private class fflib_InOrderTest
 		// Then
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(4))).add(fflib_Match.stringStartsWith('1-'));
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(1))).add(fflib_Match.stringStartsWith('2-'));
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyInOrderCallMethodWithMultipleMatchesMixedFailWhenMatcherHaveAlreadyVerifiedMethod()
 	{
 		// Given
@@ -286,7 +286,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyInOrderCanSkipMethodsCalledUntilFindTheOneThatNeedsVerify()
 	{
 		// Given
@@ -322,7 +322,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyInOrderCanHandleMultipleMethodsCalls()
 	{
 		// Given
@@ -340,10 +340,10 @@ private class fflib_InOrderTest
 		// Then
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(3))).add('1-2');
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(1))).add('1-4');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyInOrderCanHandleMultipleMethodsCallsAndNotFailsIfVerifyCountIsGreaterThenExpected()
 	{
 		// Given
@@ -361,10 +361,10 @@ private class fflib_InOrderTest
 		// Then
 
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(2))).add('1-2');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyInOrderCanHandleMultipleMethodsCallsButFailsIfVerifyCountIsLessThenExpected()
 	{
 		// Given
@@ -399,7 +399,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyInOrderCanHandleMultipleMocks()
 	{
 		// Given
@@ -432,10 +432,10 @@ private class fflib_InOrderTest
 		((fflib_MyList.IList)inOrder.verify(secondMock, MY_MOCKS.calls(1))).add('2-3');
 
 		((fflib_MyList.IList)MY_MOCKS.verify(thirdMock, MY_MOCKS.times(3))).add(fflib_Match.stringStartsWith('3-'));
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyInOrderCanHandleMixedInOrderInstance()
 	{
 		// Given
@@ -473,10 +473,10 @@ private class fflib_InOrderTest
 		((fflib_MyList.IList)inOrder2.verify(secondMock, MY_MOCKS.calls(1))).add('2-3');
 
 		((fflib_MyList.IList)MY_MOCKS.verify(thirdMock, MY_MOCKS.times(3))).add(fflib_Match.stringStartsWith('3-'));
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyInOrderThrownExceptionIfVerifyMockInstanceNotInTheSet()
 	{
 		// Given
@@ -510,7 +510,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyInOrderThrownExceptionWithCustomMessage()
 	{
 		// Given
@@ -546,7 +546,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyAtMostThrowsExceptionBecauseNotImplemented()
 	{
 		// Given
@@ -577,7 +577,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyBetweenThrowsExceptionBecauseNotImplemented()
 	{
 		// Given
@@ -609,7 +609,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyNever()
 	{
 		// Given
@@ -630,10 +630,10 @@ private class fflib_InOrderTest
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(1))).add('2-1');
 
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.never())).add('3-1');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyNeverWithMatchers()
 	{
 		// Given
@@ -654,10 +654,10 @@ private class fflib_InOrderTest
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(1))).add('2-1');
 
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.never())).add(fflib_Match.stringStartsWith('3-'));
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyNeverFailsWhenCalled()
 	{
 		// Given
@@ -696,7 +696,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyNeverFailsWhenCalledWithMatchers()
 	{
 		// Given
@@ -735,7 +735,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyThrowsExceptionWhenCallsIsInvochedFromStandardMock()
 	{
 		// Given
@@ -759,7 +759,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyNoMoreInteractionsFails()
 	{
 		// Given
@@ -786,7 +786,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyNoMoreInteractionsFailsWhenOnLyOneMethodLeft()
 	{
 		// Given
@@ -813,7 +813,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyNoMoreInteractionsPass()
 	{
 		// Given
@@ -838,10 +838,10 @@ private class fflib_InOrderTest
 		((fflib_MyList.IList)inOrder2.verify(secondMock, MY_MOCKS.calls(2))).add('1-1');
 
 		inOrder2.verifyNoMoreInteractions();
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyNoMoreInteractionsFailsWhenNoInteracionOccurs()
 	{
 		// Given
@@ -866,7 +866,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyNoInteractionsFails()
 	{
 		// Given
@@ -891,7 +891,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyNoInteractionsPass()
 	{
 		// Given
@@ -903,10 +903,10 @@ private class fflib_InOrderTest
 		secondMock.add('1-2');
 		//Then
 		inOrder1.verifyNoInteractions();
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStrictVerificationCanBePerformed()
 	{
 		fflib_MyList firstMock = (fflib_MyList)MY_MOCKS.mock(fflib_MyList.class);
@@ -922,10 +922,10 @@ private class fflib_InOrderTest
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(1))).add('2-1');
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(1))).add('1-1');
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(1))).add('4-1');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatMixedVerificationDoNotInterfierWithOtherImplementationChecking()
 	{
 		fflib_MyList firstMock = (fflib_MyList)MY_MOCKS.mock(fflib_MyList.class);
@@ -945,10 +945,10 @@ private class fflib_InOrderTest
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(1))).add('4-1');
 
 		((fflib_MyList.IList)MY_MOCKS.verify(firstMock, MY_MOCKS.times(2))).add('1-1');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyAtLeastPassWithSameCallsOfAssertion()
 	{
 		// Given
@@ -969,10 +969,10 @@ private class fflib_InOrderTest
 
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.atLeast(3))).add('1-1');
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(1))).add('2-1');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyAtLeastPassWithMoreCallsThenAsserted()
 	{
 		// Given
@@ -993,10 +993,10 @@ private class fflib_InOrderTest
 
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.atLeast(2))).add('1-1');
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(1))).add('2-1');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyAtLeastThrowsErrorIfCalledLessTimes()
 	{
 		// Given
@@ -1034,7 +1034,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyAtLeastConsumeAllTheInstances()
 	{
 		// Given
@@ -1077,7 +1077,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyAtLeastConsumeAllTheInstancesForOnlyTheMethodVerified()
 	{
 		// Given
@@ -1097,10 +1097,10 @@ private class fflib_InOrderTest
 		// Then
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.atLeast(2))).add('2-1');
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.atLeast(2))).add('1-1');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyAtLeastOnce()
 	{
 		// Given
@@ -1113,10 +1113,10 @@ private class fflib_InOrderTest
 		firstMock.add('1-1');
 
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.atLeastOnce())).add('1-1');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyAtLeastOnceConsumesInstancesUntilLastMethodVerified()
 	{
 		// Given
@@ -1131,10 +1131,10 @@ private class fflib_InOrderTest
 
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.atLeastOnce())).add('1-1');
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.atLeastOnce())).add('2-1');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyAtLeastOnceThrowsErrorIfCalledLessTimes()
 	{
 		// Given
@@ -1166,7 +1166,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyAtLeastOnceConsumesAllTheInstances()
 	{
 		// Given
@@ -1203,7 +1203,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyTimes()
 	{
 		// Given
@@ -1223,10 +1223,10 @@ private class fflib_InOrderTest
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(1))).add('2-1');
 
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.times(3))).add('1-1');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyTimesThrowsExceptionIfCalledMoreTimesThanExpected()
 	{
 		// Given
@@ -1264,7 +1264,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyTimesThrowsExceptionIfCalledLessTimesThanExpected()
 	{
 		// Given
@@ -1302,7 +1302,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyTimesPassWhenAnotherMethodIsCalledBetweenMethodsCalls()
 	{
 		// Given
@@ -1326,10 +1326,10 @@ private class fflib_InOrderTest
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.times(4))).add('1-1');
 
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.times(1))).add('2-1');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyTimesPassWhenAnotherMethodIsCalledBetweenMethodsCalls2()
 	{
 		// Given
@@ -1354,10 +1354,10 @@ private class fflib_InOrderTest
 
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.times(1))).add('2-1');
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.times(1))).add('1-1');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyTimesPassWhenAnotherMethodIsCalledBetweenMethodsCalls3()
 	{
 		// Given
@@ -1387,10 +1387,10 @@ private class fflib_InOrderTest
 
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.times(1))).add('2-1');
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.times(1))).add('1-1');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyTimesPassWhenAnotherMethodIsCalledBetweenMethodsCalls4()
 	{
 		// Given
@@ -1417,10 +1417,10 @@ private class fflib_InOrderTest
 
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.times(1))).add('2-1');
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.times(1))).add('1-1');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyTimesThrowsExceptionWhenAnotherMethodIsCalledBetweenMethodsCalls()
 	{
 		// Given
@@ -1460,7 +1460,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatStrictVerificationCanBeEnforced()
 	{
 		// Given
@@ -1484,10 +1484,10 @@ private class fflib_InOrderTest
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.times(1))).add('2-1');
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.times(1))).add('1-1');
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.times(1))).add('2-1');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatTimesOneIsTheDefaultVerification()
 	{
 		// Given
@@ -1527,7 +1527,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatWithOldNotation()
 	{
 		// Given
@@ -1547,10 +1547,10 @@ private class fflib_InOrderTest
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(1))).add('2-1');
 
 		((fflib_MyList.IList)inOrder1.verify(firstMock, 3)).add('1-1');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatWithOldNotationThrowsExceptionIfCalledMoreTimesThanExpected()
 	{
 		// Given
@@ -1588,7 +1588,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatWithOldNotationThrowsExceptionIfCalledLessTimesThanExpected()
 	{
 		// Given
@@ -1626,7 +1626,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatWithOldNotationPassWhenAnotherMethodIsCalledBetweenMethodsCalls()
 	{
 		// Given
@@ -1648,10 +1648,10 @@ private class fflib_InOrderTest
 		((fflib_MyList.IList)inOrder1.verify(firstMock, MY_MOCKS.calls(1))).add('2-1');
 
 		((fflib_MyList.IList)inOrder1.verify(firstMock, 4)).add('1-1');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatWithOldNotationThrowsExceptionWhenAnotherMethodIsCalledBetweenMethodsCalls()
 	{
 		// Given
@@ -1691,7 +1691,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatStrictVerificationCanBeEnforcedWithOldNotation()
 	{
 		// Given
@@ -1715,10 +1715,10 @@ private class fflib_InOrderTest
 		((fflib_MyList.IList)inOrder1.verify(firstMock, 1)).add('2-1');
 		((fflib_MyList.IList)inOrder1.verify(firstMock, 1)).add('1-1');
 		((fflib_MyList.IList)inOrder1.verify(firstMock, 1)).add('2-1');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStrictVerificationCanBeEnforcedWithOldNotationUsingDefaultTimesOne()
 	{
 		// Given
@@ -1742,10 +1742,10 @@ private class fflib_InOrderTest
 		((fflib_MyList.IList)inOrder1.verify(firstMock)).add('2-1');
 		((fflib_MyList.IList)inOrder1.verify(firstMock)).add('1-1');
 		((fflib_MyList.IList)inOrder1.verify(firstMock)).add('2-1');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVerifyAtLeastConsumesAllTheInstances2()
 	{
 		// Given
@@ -1785,7 +1785,7 @@ private class fflib_InOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void verifyAtLeastAndCapture()
 	{
 		// Given
@@ -1806,7 +1806,7 @@ private class fflib_InOrderTest
 		System.Assert.areEqual('4-1', (string) argument.getValue(), 'the last value captured is not as expected');
 	}
 
-	@isTest
+	@IsTest
 	static void verifyTimesAndCaptor()
 	{
 		// Given
@@ -1832,7 +1832,7 @@ private class fflib_InOrderTest
 		System.Assert.areEqual('5-1', (string) argument.getValue(), 'the last value captured is not as expected');
 	}
 
-	@isTest
+	@IsTest
 	static void verifyCallsAndCapture()
 	{
 		// Given

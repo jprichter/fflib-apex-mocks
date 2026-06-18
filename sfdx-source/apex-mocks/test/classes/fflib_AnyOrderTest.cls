@@ -5,15 +5,15 @@
 /**
  * @nodoc
  */
-@isTest
-@SuppressWarnings('PMD.CyclomaticComplexity, PMD.ClassNamingConventions')
+@IsTest
+@SuppressWarnings('PMD.CyclomaticComplexity, PMD.ClassNamingConventions, PMD.ApexUnitTestClassShouldHaveRunAs, PMD.ApexDoc')
 private class fflib_AnyOrderTest
 {
 	/*
 	*	replicating the apex mocks tests with the new syntax
 	*/
 
-	@isTest
+	@IsTest
 	private static void whenVerifyMultipleCallsWithMatchersShouldReturnCorrectMethodCallCounts()
 	{
 		// Given
@@ -28,10 +28,10 @@ private class fflib_AnyOrderTest
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.times(2))).add(fflib_Match.anyString());
 		((fflib_MyList.IList) mocks.verify(mockList)).add('fred');
 		((fflib_MyList.IList) mocks.verify(mockList)).add(fflib_Match.stringContains('fred'));
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void whenVerifyWithCombinedMatchersShouldReturnCorrectMethodCallCounts()
 	{
 		// Given
@@ -73,10 +73,10 @@ private class fflib_AnyOrderTest
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.times(2))).add(
 			(String)fflib_Match.isNot(fflib_Match.eq('jack'))
 		);
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void whenVerifyCustomMatchersCanBeUsed()
 	{
 		// Given
@@ -93,10 +93,10 @@ private class fflib_AnyOrderTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.times(3))).get((Integer)fflib_Match.matches(new isOdd()));
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.times(2))).get((Integer)fflib_Match.matches(new isEven()));
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void verifyMultipleMethodCallsWithSameSingleArgument()
 	{
 		// Given
@@ -109,10 +109,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.times(2))).add('bob');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void verifyMethodNotCalled()
 	{
 		// Given
@@ -125,10 +125,10 @@ private class fflib_AnyOrderTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.never())).add('bob');
 		((fflib_MyList.IList) mocks.verify(mockList)).get(0);
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void verifySingleMethodCallWithMultipleArguments()
 	{
 		// Given
@@ -141,10 +141,10 @@ private class fflib_AnyOrderTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList)).set(0, 'bob');
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.never())).set(0, 'fred');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void verifyMethodCallWhenNoCallsBeenMadeForType()
 	{
 		// Given
@@ -153,10 +153,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.never())).add('bob');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void whenVerifyMethodNeverCalledMatchersAreReset()
 	{
 		// Given
@@ -169,14 +169,14 @@ private class fflib_AnyOrderTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.never())).get(fflib_Match.anyInteger());
 		((fflib_MyList.IList) mocks.verify(mockList)).add(fflib_Match.anyString());
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
 	/*
 	*	times
 	*/
 
-	@isTest
+	@IsTest
 	private static void verifyTimesMethodHasBeenCalled()
 	{
 		// Given
@@ -190,10 +190,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.times(3))).add('bob');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void verifyTimesMethodHasBeenCalledWithMatchers()
 	{
 		// Given
@@ -207,10 +207,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.times(3))).add(fflib_Match.anyString());
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifyTimesMethodFailsWhenCalledLessTimes()
 	{
 		// Given
@@ -235,7 +235,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifyTimesMethodFailsWhenCalledMoreTimes()
 	{
 		// Given
@@ -260,7 +260,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifyTimesMethodFailsWhenCalledLessTimesWithMatchers()
 	{
 		// Given
@@ -285,7 +285,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifyTimesMethodFailsWhenCalledMoreTimesWithMatchers()
 	{
 		// Given
@@ -314,7 +314,7 @@ private class fflib_AnyOrderTest
 	*	description
 	*/
 
-	@isTest
+	@IsTest
 	private static void thatCustomMessageIsAdded()
 	{
 		// Given
@@ -354,7 +354,7 @@ private class fflib_AnyOrderTest
 	*	atLeast
 	*/
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastNumberOfTimes()
 	{
 		// Given
@@ -369,10 +369,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeast(2))).add('bob');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastNumberOfTimesWhenIsCalledMoreTimes()
 	{
 		// Given
@@ -389,10 +389,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeast(2))).add('bob');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatThrownExceptionIfCalledLessThanAtLeastNumberOfTimes()
 	{
 		// Given
@@ -425,7 +425,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -438,10 +438,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeast(2))).add(fflib_Match.anyString());
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastNumberOfTimesWhenIsCalledMoreTimesWithMatchers()
 	{
 		// Given
@@ -456,10 +456,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeast(2))).add(fflib_Match.anyString());
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatThrownExceptionIfCalledLessThanAtLeastNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -495,7 +495,7 @@ private class fflib_AnyOrderTest
 	*	atMost
 	*/
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtMostNumberOfTimes()
 	{
 		// Given
@@ -511,10 +511,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atMost(5))).add('bob');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtMostSameNumberOfTimes()
 	{
 		// Given
@@ -530,10 +530,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atMost(3))).add('bob');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatThrownExceptionIfCalledMoreThanAtMostNumberOfTimes()
 	{
 		// Given
@@ -570,7 +570,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtMostNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -584,10 +584,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atMost(5))).add(fflib_Match.anyString());
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtMostSameNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -601,10 +601,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atMost(3))).add(fflib_Match.anyString());
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatThrownExceptionIfCalledMoreThanAtMostNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -642,7 +642,7 @@ private class fflib_AnyOrderTest
 	*	atLeastOnce
 	*/
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastOnceNumberOfTimes()
 	{
 		// Given
@@ -656,10 +656,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeastOnce())).add('bob');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastOnceNumberOfTimesWhenIsCalledMoreTimes()
 	{
 		// Given
@@ -674,10 +674,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeastOnce())).add('bob');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatThrownExceptionIfCalledLessThanAtLeastOnceNumberOfTimes()
 	{
 		// Given
@@ -709,7 +709,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastOnceNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -722,10 +722,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeastOnce())).add(fflib_Match.anyString());
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastOnceNumberOfTimesWhenIsCalledMoreTimesWithMatchers()
 	{
 		// Given
@@ -742,10 +742,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeastOnce())).add(fflib_Match.anyString());
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatThrownExceptionIfCalledLessThanAtLeastOnceNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -782,7 +782,7 @@ private class fflib_AnyOrderTest
 	*	between
 	*/
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesBetweenNumberOfTimes()
 	{
 		// Given
@@ -801,10 +801,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.between(3, 5))).add('bob');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatBetweenThrownExceptionIfCalledLessThanAtLeastNumberOfTimes()
 	{
 		// Given
@@ -837,7 +837,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesBetweenNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -852,10 +852,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.between(3, 5))).add(fflib_Match.anyString());
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatBetweenThrownExceptionIfCalledLessThanAtLeastNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -887,7 +887,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatBetweenThrownExceptionIfCalledMoreThanAtMostNumberOfTimes()
 	{
 		// Given
@@ -926,7 +926,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatBetweenThrownExceptionIfCalledMoreThanAtMostNumberOfTimesWithMatchers()
 	{
 		// Given
@@ -966,7 +966,7 @@ private class fflib_AnyOrderTest
 	*	never
 	*/
 
-	@isTest
+	@IsTest
 	private static void verifyNeverMethodHasNotBeenCalled()
 	{
 		// Given
@@ -980,10 +980,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.never())).add('bob');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void verifyNeverMethodHasBeenNotCalledWithMatchers()
 	{
 		// Given
@@ -997,10 +997,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.never())).add(fflib_Match.anyString());
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifyNeverFailsWhenCalledMoreTimes()
 	{
 		// Given
@@ -1024,7 +1024,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifyNeverFailsWhenCalledMoreTimesWithMatchers()
 	{
 		// Given
@@ -1055,7 +1055,7 @@ private class fflib_AnyOrderTest
 	*	atLeastOnce
 	*/
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastOnce()
 	{
 		// Given
@@ -1070,10 +1070,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeastOnce())).add('bob');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastOnceWhenIsCalledMoreTimes()
 	{
 		// Given
@@ -1090,10 +1090,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeastOnce())).add('bob');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatThrownExceptionIfCalledLessThanAtLeastOnce()
 	{
 		// Given
@@ -1126,7 +1126,7 @@ private class fflib_AnyOrderTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastOnceWithMatchers()
 	{
 		// Given
@@ -1139,10 +1139,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeastOnce())).add(fflib_Match.anyString());
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatVerifiesAtLeastOnceWhenIsCalledMoreTimesWithMatchers()
 	{
 		// Given
@@ -1157,10 +1157,10 @@ private class fflib_AnyOrderTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, mocks.atLeastOnce())).add(fflib_Match.anyString());
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	private static void thatThrownExceptionIfCalledLessThanAtLeastOnceWithMatchers()
 	{
 		// Given

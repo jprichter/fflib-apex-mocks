@@ -5,8 +5,8 @@
 /**
  * @nodoc
  */
-@isTest
-@SuppressWarnings('PMD.EmptyStatementBlock, PMD.ExcessiveParameterList, PMD.ClassNamingConventions')
+@IsTest
+@SuppressWarnings('PMD.EmptyStatementBlock, PMD.ExcessiveParameterList, PMD.ClassNamingConventions, PMD.ApexDoc')
 public with sharing class fflib_MyList implements IList
 {
 	public interface IList

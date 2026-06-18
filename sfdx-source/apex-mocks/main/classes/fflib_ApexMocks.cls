@@ -6,7 +6,7 @@
  * @group Core
  */
 @NamespaceAccessible
-@SuppressWarnings('PMD.AvoidBooleanMethodParameters, PMD.ExcessiveParameterList, PMD.CyclomaticComplexity, PMD.CognitiveComplexity, PMD.ExcessivePublicCount, PMD.ClassNamingConventions, PMD.PropertyNamingConventions')
+@SuppressWarnings('PMD.AvoidBooleanMethodParameters, PMD.ExcessiveParameterList, PMD.CyclomaticComplexity, PMD.CognitiveComplexity, PMD.ExcessivePublicCount, PMD.ClassNamingConventions, PMD.PropertyNamingConventions, PMD.ApexDoc')
 public with sharing class fflib_ApexMocks implements System.StubProvider
 {
 	public static final Integer NEVER = 0;
@@ -445,7 +445,7 @@ public with sharing class fflib_ApexMocks implements System.StubProvider
 	{
 		this.methodVerifier = verifyOrderingMode;
 	}
-	
+
 	/**
 	* A simple override to suppress the default toString logic, which is noisy and rarely useful.
 	* In some cases, the Salesforce default implementation of toString here can cause internal Salesforce errors

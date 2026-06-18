@@ -53,8 +53,14 @@ public class fflib_AnyOrder extends fflib_MethodVerifier
 
 	private Integer getMethodCount(fflib_MethodArgValues methodArg, List<fflib_IMatcher> matchers, List<fflib_MethodArgValues> methodArgs)
 	{
-		if (methodArgs == null) { return 0; }
-		if (matchers == null) { return countCalls(methodArgs, methodArg); }
+		if (methodArgs == null)
+		{
+			return 0;
+		}
+		if (matchers == null)
+		{
+			return countCalls(methodArgs, methodArg);
+		}
 
 		Integer retval = 0;
 		for (fflib_MethodArgValues args : methodArgs)
@@ -74,7 +80,10 @@ public class fflib_AnyOrder extends fflib_MethodVerifier
 
 		for(fflib_MethodArgValues arg: methodArgs)
 		{
-			if( arg == methodArg) { count++; }
+			if (arg == methodArg)
+			{
+				count++;
+			}
 		}
 
 		return count;
