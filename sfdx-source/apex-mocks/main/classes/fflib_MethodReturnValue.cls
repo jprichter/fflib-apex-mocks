@@ -29,6 +29,7 @@
  * Class defining a method return value.
  */
 @IsTest
+@SuppressWarnings('PMD.ClassNamingConventions, PMD.FieldNamingConventions, PMD.PropertyNamingConventions, PMD.ApexDoc')
 @NamespaceAccessible
 public with sharing class fflib_MethodReturnValue
 {

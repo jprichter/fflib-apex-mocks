@@ -7,6 +7,7 @@
  *	It can be used in the classic verify and in the ordered verify.
  *	@group Core
  */
+@SuppressWarnings('PMD.ClassNamingConventions, PMD.FieldNamingConventions, PMD.PropertyNamingConventions, PMD.ApexDoc')
 @NamespaceAccessible
 public with sharing class fflib_VerificationMode
 {

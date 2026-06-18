@@ -6,6 +6,7 @@
  * @nodoc
  */
 @IsTest
+@SuppressWarnings('PMD.CyclomaticComplexity, PMD.ClassNamingConventions, PMD.ApexUnitTestClassShouldHaveRunAs, PMD.ApexDoc')
 private class fflib_AnyOrderTest
 {
 	/*

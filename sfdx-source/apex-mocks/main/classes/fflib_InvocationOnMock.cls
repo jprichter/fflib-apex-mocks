@@ -7,6 +7,7 @@
  *	A place holder for mock, the method that was called and the arguments that were passed.
  *	@group Core
  */
+@SuppressWarnings('PMD.ClassNamingConventions')
 @NamespaceAccessible
 public with sharing class fflib_InvocationOnMock
 {

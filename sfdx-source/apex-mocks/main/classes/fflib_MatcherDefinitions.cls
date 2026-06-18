@@ -31,6 +31,7 @@
  * E.g. Don't construct Eq(Object toMatch), instead call fflib_Match.eq(Object toMatch).
  */
 @NamespaceAccessible
+@SuppressWarnings('PMD.AvoidBooleanMethodParameters, PMD.ExcessiveParameterList, PMD.CyclomaticComplexity, PMD.CognitiveComplexity, PMD.AvoidDeeplyNestedIfStmts, PMD.ClassNamingConventions, PMD.ApexDoc, PMD.ExcessiveClassLength')
 public with sharing class fflib_MatcherDefinitions
 {
 	/**
@@ -1018,6 +1019,7 @@ public with sharing class fflib_MatcherDefinitions
 	* the requested field' exceptions, because you haven't queried all of the fields used in this matcher.
 	*/
 	@NamespaceAccessible
+	@SuppressWarnings('PMD.StdCyclomaticComplexity')
 	public class SObjectsWith implements fflib_IMatcher
 	{
 		private list<Map<Schema.SObjectField, Object>> toMatch;
@@ -1044,6 +1046,7 @@ public with sharing class fflib_MatcherDefinitions
 			this.toMatch = validate(toMatch);
 			this.matchInOrder = true;
 		}
+		@SuppressWarnings('PMD.StdCyclomaticComplexity, PMD.NcssMethodCount')
 		public Boolean matches(Object arg)
 		{
 			if (arg != null && arg instanceof list<SObject>)
