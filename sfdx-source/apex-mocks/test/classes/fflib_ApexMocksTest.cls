@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2014-2017 FinancialForce.com, inc.  All rights reserved.
  */
-@isTest
+@IsTest
 private class fflib_ApexMocksTest
 {
 	private static final fflib_ApexMocks MY_MOCKS = new fflib_ApexMocks();
 	private static final fflib_MyList MY_MOCK_LIST = (fflib_MyList)MY_MOCKS.mock(fflib_MyList.class);
 
-	@isTest
+	@IsTest
 	static void whenStubMultipleCallsWithMatchersShouldReturnExpectedValues()
 	{
 		// Given
@@ -26,7 +26,7 @@ private class fflib_ApexMocksTest
 		System.Assert.areEqual('hello', actualValue);
 	}
 
-	@isTest
+	@IsTest
 	static void whenVerifyMultipleCallsWithMatchersShouldReturnCorrectMethodCallCounts()
 	{
 		// Given
@@ -41,10 +41,10 @@ private class fflib_ApexMocksTest
 		((fflib_MyList.IList) mocks.verify(mockList, 2)).add(fflib_Match.anyString());
 		((fflib_MyList.IList) mocks.verify(mockList)).add('fred');
 		((fflib_MyList.IList) mocks.verify(mockList)).add(fflib_Match.stringContains('fred'));
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void whenStubExceptionWithMatchersShouldThrowException()
 	{
 		// Given
@@ -70,7 +70,7 @@ private class fflib_ApexMocksTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void whenVerifyWithCombinedMatchersShouldReturnCorrectMethodCallCounts()
 	{
 		// Given
@@ -112,10 +112,10 @@ private class fflib_ApexMocksTest
 		((fflib_MyList.IList) mocks.verify(mockList, 2)).add(
 			(String)fflib_Match.isNot(fflib_Match.eq('jack'))
 		);
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void whenStubCustomMatchersCanBeUsed()
 	{
 		// Given
@@ -142,7 +142,7 @@ private class fflib_ApexMocksTest
 		System.Assert.areEqual('Odd', s5);
 	}
 
-	@isTest
+	@IsTest
 	static void whenVerifyCustomMatchersCanBeUsed()
 	{
 		// Given
@@ -159,10 +159,10 @@ private class fflib_ApexMocksTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, 3)).get((Integer)fflib_Match.matches(new isOdd()));
 		((fflib_MyList.IList) mocks.verify(mockList, 2)).get((Integer)fflib_Match.matches(new isEven()));
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void whenStubWithMatcherAndNonMatcherArgumentsShouldThrowException()
 	{
 		// Given
@@ -187,7 +187,7 @@ private class fflib_ApexMocksTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void whenVerifyWithMatcherAndNonMatcherArgumentsShouldThrowException()
 	{
 		// Given
@@ -213,7 +213,7 @@ private class fflib_ApexMocksTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void whenStubSameMethodWithMatchersAndNonMatchersShouldStubInOrder()
 	{
 		// Given
@@ -235,7 +235,7 @@ private class fflib_ApexMocksTest
 		System.Assert.areEqual('Good', mockList.get2(1, 'Matcher first'));
 	}
 
-	@isTest
+	@IsTest
 	static void whenStubExceptionSameMethodWithMatchersAndNonMatchersShouldStubInOrder()
 	{
 		// Given
@@ -274,7 +274,7 @@ private class fflib_ApexMocksTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void whenStubSingleCallWithSingleArgumentShouldReturnStubbedValue()
 	{
 		// Given
@@ -292,7 +292,7 @@ private class fflib_ApexMocksTest
 		System.Assert.areEqual('bob', actualValue);
 	}
 
-	@isTest
+	@IsTest
 	static void whenStubSingleCallWithNullReturnValueItShouldReturnNull()
 	{
 		// Given
@@ -310,7 +310,7 @@ private class fflib_ApexMocksTest
 		System.Assert.areEqual(null, actualValue);
 	}
 
-	@isTest
+	@IsTest
 	static void whenStubMultipleCallsWithSingleArgumentShouldReturnStubbedValues()
 	{
 		// Given
@@ -333,7 +333,7 @@ private class fflib_ApexMocksTest
 		System.Assert.areEqual(null, actualValueArg2);
 	}
 
-	@isTest
+	@IsTest
 	static void whenStubSameCallWithDifferentArgumentValueShouldReturnLastStubbedValue()
 	{
 		// Given
@@ -352,7 +352,7 @@ private class fflib_ApexMocksTest
 		System.Assert.areEqual('bob2', actualValue);
 	}
 
-	@isTest
+	@IsTest
 	static void whenStubCallWithNoArgumentsShouldReturnStubbedValue()
 	{
 		// Given
@@ -370,7 +370,7 @@ private class fflib_ApexMocksTest
 		System.Assert.areEqual(false, actualValue);
 	}
 
-	@isTest
+	@IsTest
 	static void verifySingleMethodCallWithNoArguments()
 	{
 		// Given
@@ -382,10 +382,10 @@ private class fflib_ApexMocksTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList)).isEmpty();
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void verifySingleMethodCallWithSingleArgument()
 	{
 		// Given
@@ -397,10 +397,10 @@ private class fflib_ApexMocksTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList)).add('bob');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void verifyMultipleMethodCallsWithSameSingleArgument()
 	{
 		// Given
@@ -413,10 +413,10 @@ private class fflib_ApexMocksTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, 2)).add('bob');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void verifyMultipleMethodCallsWithDifferentSingleArgument()
 	{
 		// Given
@@ -430,10 +430,10 @@ private class fflib_ApexMocksTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList)).add('bob');
 		((fflib_MyList.IList) mocks.verify(mockList)).add('fred');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void verifyMethodCallsWithSameNameButDifferentArgumentTypes()
 	{
 		// Given
@@ -451,10 +451,10 @@ private class fflib_ApexMocksTest
 		((fflib_MyList.IList) mocks.verify(mockList)).add(new String[] {'bob'});
 		((fflib_MyList.IList) mocks.verify(mockList)).add((String)null);
 		((fflib_MyList.IList) mocks.verify(mockList)).add((String[])null);
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void verifyMethodNotCalled()
 	{
 		// Given
@@ -467,10 +467,10 @@ private class fflib_ApexMocksTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, fflib_ApexMocks.NEVER)).add('bob');
 		((fflib_MyList.IList) mocks.verify(mockList)).get(0);
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void stubAndVerifyMethodCallsWithNoArguments()
 	{
 		// Given
@@ -491,7 +491,7 @@ private class fflib_ApexMocksTest
 		((fflib_MyList.IList) mocks.verify(mockList)).clear();
 	}
 
-	@isTest
+	@IsTest
 	static void whenStubExceptionTheExceptionShouldBeThrown()
 	{
 		// Given
@@ -516,7 +516,7 @@ private class fflib_ApexMocksTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void whenStubVoidMethodWithExceptionThenExceptionShouldBeThrown()
 	{
 		// Given
@@ -541,7 +541,7 @@ private class fflib_ApexMocksTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void whenStubMultipleVoidMethodsWithExceptionsThenExceptionsShouldBeThrown()
 	{
 		// Given
@@ -580,7 +580,7 @@ private class fflib_ApexMocksTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void whenStubVoidMethodWithExceptionAndCallMethodTwiceThenExceptionShouldBeThrownTwice()
 	{
 		// Given
@@ -618,7 +618,7 @@ private class fflib_ApexMocksTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void verifyMethodCallWhenNoCallsBeenMadeForType()
 	{
 		// Given
@@ -627,10 +627,10 @@ private class fflib_ApexMocksTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, fflib_ApexMocks.NEVER)).add('bob');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void verifySingleMethodCallWithMultipleArguments()
 	{
 		// Given
@@ -643,10 +643,10 @@ private class fflib_ApexMocksTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList)).set(0, 'bob');
 		((fflib_MyList.IList) mocks.verify(mockList, fflib_ApexMocks.NEVER)).set(0, 'fred');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void whenStubMultipleCallsWithMultipleArgumentShouldReturnStubbedValues()
 	{
 		// Given
@@ -675,7 +675,7 @@ private class fflib_ApexMocksTest
 		System.Assert.areEqual(null, actualValueArg4);
 	}
 
-	@isTest
+	@IsTest
 	static void whenStubNullConcreteArgValueCorrectValueIsReturned()
 	{
 		// Given
@@ -695,7 +695,7 @@ private class fflib_ApexMocksTest
 		System.Assert.areEqual(expected, actual);
 	}
 
-	@isTest
+	@IsTest
 	static void whenSetDoThrowWhenExceptionsValuesAreSet()
 	{
 		//Given
@@ -711,7 +711,7 @@ private class fflib_ApexMocksTest
 		System.Assert.areEqual(expsList, mocks.DoThrowWhenExceptions);
 	}
 
-	@isTest
+	@IsTest
 	static void whenVerifyMethodNeverCalledMatchersAreReset()
 	{
 		// Given
@@ -724,10 +724,10 @@ private class fflib_ApexMocksTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, fflib_ApexMocks.NEVER)).get(fflib_Match.anyInteger());
 		((fflib_MyList.IList) mocks.verify(mockList)).add(fflib_Match.anyString());
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void whenMockIsGeneratedCanVerify()
 	{
 		// Given
@@ -740,10 +740,10 @@ private class fflib_ApexMocksTest
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, fflib_ApexMocks.NEVER)).get(fflib_Match.anyInteger());
 		((fflib_MyList.IList) mocks.verify(mockList)).add('bob');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void whenMockIsGeneratedCanStubVerify()
 	{
 		// Given
@@ -763,7 +763,7 @@ private class fflib_ApexMocksTest
 		System.Assert.areEqual('>Two', mockList.get(3));
 	}
 
-	@isTest
+	@IsTest
 	static void whenMockVoidMethodRecordsCallCanVerify()
 	{
 		// Given
@@ -780,10 +780,10 @@ private class fflib_ApexMocksTest
 
 		// Then
 		((fflib_MyList.IList) mocks.verify(mockList, 1)).clear();
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatMultipleInstancesCanBeMockedIndependently()
 	{
 		fflib_ApexMocksConfig.HasIndependentMocks = true;
@@ -792,7 +792,7 @@ private class fflib_ApexMocksTest
 		fflib_ApexMocks mocks = new fflib_ApexMocks();
 		fflib_MyList first = (fflib_MyList)mocks.mock(fflib_MyList.class);
 		fflib_MyList second = (fflib_MyList)mocks.mock(fflib_MyList.class);
-		
+
 		mocks.startStubbing();
 		mocks.when(first.get(0)).thenReturn('First');
 		mocks.when(second.get(0)).thenReturn('Second');
@@ -807,7 +807,7 @@ private class fflib_ApexMocksTest
 		((fflib_MyList)mocks.verify(second, mocks.never())).get(0);
 	}
 
-	@isTest
+	@IsTest
 	static void thatMultipleInstancesCanBeMockedDependently()
 	{
 		fflib_ApexMocksConfig.HasIndependentMocks = false;
@@ -816,7 +816,7 @@ private class fflib_ApexMocksTest
 		fflib_ApexMocks mocks = new fflib_ApexMocks();
 		fflib_MyList first = (fflib_MyList)mocks.mock(fflib_MyList.class);
 		fflib_MyList second = (fflib_MyList)mocks.mock(fflib_MyList.class);
-		
+
 		mocks.startStubbing();
 		mocks.when(first.get(0)).thenReturn('First');
 		mocks.when(second.get(0)).thenReturn('Second');
@@ -844,7 +844,7 @@ private class fflib_ApexMocksTest
 		assertReturnedValue('One');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingCanBeChainedFirstValueThenException()
 	{
 		// Given
@@ -856,10 +856,10 @@ private class fflib_ApexMocksTest
 		// Then
 		assertReturnedValue('One');
 		assertExceptionMessage('Stubbed exception.');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMultipleMethodsCanBeChainedFirstExceptionThenValue()
 	{
 		// Given
@@ -874,10 +874,10 @@ private class fflib_ApexMocksTest
 		assertReturnedValue('One');
 		assertExceptionMessageForGet2('Stubbed exception2.');
 		assertReturnedValueForGet2('One2');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMultipleMethodsCanBeChainedFirstValueThenException()
 	{
 		// Given
@@ -892,10 +892,10 @@ private class fflib_ApexMocksTest
 		assertExceptionMessage('Stubbed exception.');
 		assertReturnedValueForGet2('One2');
 		assertExceptionMessageForGet2('Stubbed exception2.');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingReturnsDifferentValuesForDifferentCalls()
 	{
 		// Given
@@ -908,10 +908,10 @@ private class fflib_ApexMocksTest
 		assertReturnedValue('One');
 		assertReturnedValue('Two');
 		assertReturnedValue('Three');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingReturnsDifferentValuesForDifferentCallsAndRepeatLastValuesForFurtherCalls()
 	{
 		// Given
@@ -927,10 +927,10 @@ private class fflib_ApexMocksTest
 
 		assertReturnedValue('Three');
 		assertReturnedValue('Three');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingThrowsDifferentExceptionsForDifferentCalls()
 	{
 		// Given
@@ -947,10 +947,10 @@ private class fflib_ApexMocksTest
 		assertExceptionMessage('first.');
 		assertExceptionMessage('second.');
 		assertExceptionMessage('third.');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingThrowsDifferentExceptionsForDifferentCallsAndRepeatLastExceptionForFurtherCalls()
 	{
 		// Given
@@ -970,10 +970,10 @@ private class fflib_ApexMocksTest
 
 		assertExceptionMessage('third.');
 		assertExceptionMessage('third.');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingThrowsAndReturnsDifferentExceptionsAndValuesForDifferentCalls()
 	{
 		// Given
@@ -999,10 +999,10 @@ private class fflib_ApexMocksTest
 
 		assertReturnedValue('Three');
 		assertReturnedValue('Three');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingReturnsAndThrowsDifferentValuesAndExceptionsForDifferentCalls()
 	{
 		// Given
@@ -1028,10 +1028,10 @@ private class fflib_ApexMocksTest
 
 		assertExceptionMessage('third.');
 		assertExceptionMessage('third.');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMultipleTimesOverridePreviousThenReturnWithSingleValue()
 	{
 		// Given
@@ -1044,10 +1044,10 @@ private class fflib_ApexMocksTest
 		// Then
 		assertReturnedValue('Two');
 		assertReturnedValue('Two');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMultipleTimesOverridePreviousThenReturnMultiWithSingleValue()
 	{
 		// Given
@@ -1060,10 +1060,10 @@ private class fflib_ApexMocksTest
 		// Then
 		assertReturnedValue('Two');
 		assertReturnedValue('Two');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMultipleTimesOverridePreviousThenReturnMultiWithMultiValue()
 	{
 		// Given
@@ -1080,10 +1080,10 @@ private class fflib_ApexMocksTest
 
 		assertReturnedValue('Six');
 		assertReturnedValue('Six');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMultipleTimesOverridePreviousThenReturnWithMultiValues()
 	{
 		// Given
@@ -1100,10 +1100,10 @@ private class fflib_ApexMocksTest
 
 		assertReturnedValue('Three');
 		assertReturnedValue('Three');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMultipleTimesOverridePreviousThenReturnMultiWithSingleException()
 	{
 		// Given
@@ -1118,10 +1118,10 @@ private class fflib_ApexMocksTest
 		// Then
 		assertExceptionMessage('first.');
 		assertExceptionMessage('first.');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMultipleTimesOverridePreviousThenReturnMultiWithMultiExceptions()
 	{
 		// Given
@@ -1142,10 +1142,10 @@ private class fflib_ApexMocksTest
 
 		assertExceptionMessage('third.');
 		assertExceptionMessage('third.');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMultipleTimesOverridePreviousThenReturnWithMultiExceptions()
 	{
 		// Given
@@ -1166,10 +1166,10 @@ private class fflib_ApexMocksTest
 
 		assertExceptionMessage('third.');
 		assertExceptionMessage('third.');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMultipleTimesOverridePreviousThenReturnWithSingleException()
 	{
 		// Given
@@ -1184,10 +1184,10 @@ private class fflib_ApexMocksTest
 		// Then
 		assertExceptionMessage('first.');
 		assertExceptionMessage('first.');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMultipleTimesOverridePreviousThenThrowWithSingleValue()
 	{
 		// Given
@@ -1202,10 +1202,10 @@ private class fflib_ApexMocksTest
 		// Then
 		assertReturnedValue('Two');
 		assertReturnedValue('Two');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMultipleTimesOverridePreviousThenThrowMultiWithSingleValue()
 	{
 		// Given
@@ -1222,10 +1222,10 @@ private class fflib_ApexMocksTest
 		// Then
 		assertReturnedValue('Two');
 		assertReturnedValue('Two');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMultipleTimesOverridePreviousThenThrowMultiWithMultiValue()
 	{
 		// Given
@@ -1246,10 +1246,10 @@ private class fflib_ApexMocksTest
 
 		assertReturnedValue('Six');
 		assertReturnedValue('Six');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMultipleTimesOverridePreviousThenThrowWithMultiValues()
 	{
 		// Given
@@ -1268,10 +1268,10 @@ private class fflib_ApexMocksTest
 
 		assertReturnedValue('Three');
 		assertReturnedValue('Three');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMultipleTimesOverridePreviousThenThrowMultiWithSingleException()
 	{
 		// Given
@@ -1289,10 +1289,10 @@ private class fflib_ApexMocksTest
 		// Then
 		assertExceptionMessage('fourth.');
 		assertExceptionMessage('fourth.');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMultipleTimesOverridePreviousThenThrowMultiWithMultiExceptions()
 	{
 		// Given
@@ -1317,10 +1317,10 @@ private class fflib_ApexMocksTest
 
 		assertExceptionMessage('sixth.');
 		assertExceptionMessage('sixth.');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMultipleTimesOverridePreviousThenThrowWithMultiExceptions()
 	{
 		// Given
@@ -1343,10 +1343,10 @@ private class fflib_ApexMocksTest
 
 		assertExceptionMessage('third.');
 		assertExceptionMessage('third.');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMultipleTimesOverridePreviousThenThrowWithSingleException()
 	{
 		// Given
@@ -1362,10 +1362,10 @@ private class fflib_ApexMocksTest
 		// Then
 		assertExceptionMessage('first.');
 		assertExceptionMessage('first.');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatVoidMethodThrowsMultipleExceptions()
 	{
 		// Given
@@ -1385,10 +1385,10 @@ private class fflib_ApexMocksTest
 
 		assertExceptionMessageOnVoidMethod('third.');
 		assertExceptionMessageOnVoidMethod('third.');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatMultipleVoidMethodsThrowsMultipleExceptions()
 	{
 		// Given
@@ -1421,10 +1421,10 @@ private class fflib_ApexMocksTest
 
 		assertExceptionMessageOnAddMoreVoidMethod('third2.');
 		assertExceptionMessageOnAddMoreVoidMethod('third2.');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMutipleTimesVoidMethodThrowsMultipleExceptionsOverride()
 	{
 		// Given
@@ -1449,10 +1449,10 @@ private class fflib_ApexMocksTest
 
 		assertExceptionMessageOnVoidMethod('sixth.');
 		assertExceptionMessageOnVoidMethod('sixth.');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatStubbingMutipleTimesVoidMethodThrowsMultipleExceptionsOverrideWithSingleException()
 	{
 		// Given
@@ -1471,10 +1471,10 @@ private class fflib_ApexMocksTest
 		// Then
 		assertExceptionMessageOnVoidMethod('fourth.');
 		assertExceptionMessageOnVoidMethod('fourth.');
-		System.Assert.isTrue(true, 'Verifications passed without exception');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
-	@isTest
+	@IsTest
 	static void thatExceptionIsthrownWhenStubbingIsNotDone()
 	{
 		MY_MOCKS.startStubbing();
@@ -1495,7 +1495,7 @@ private class fflib_ApexMocksTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatExceptionIsthrownWhenReturnMultiPassEmptyList()
 	{
 		try
@@ -1513,7 +1513,7 @@ private class fflib_ApexMocksTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatExceptionIsthrownWhenReturnMultiPassNullList()
 	{
 		try
@@ -1531,7 +1531,7 @@ private class fflib_ApexMocksTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatExceptionIsthrownWhenThrowMultiPassEmptyList()
 	{
 		try
@@ -1549,7 +1549,7 @@ private class fflib_ApexMocksTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatExceptionIsthrownWhenThrowMultiPassNullList()
 	{
 		try
@@ -1568,7 +1568,7 @@ private class fflib_ApexMocksTest
 		}
 	}
 
-	@isTest
+	@IsTest
 	static void thatNullCanBeUsedAsReturnValue()
 	{
 		MY_MOCKS.startStubbing();
@@ -1579,7 +1579,7 @@ private class fflib_ApexMocksTest
 		System.Assert.areEqual(null, MY_MOCK_LIST.get(1), 'it should be possible stub using the null value');
 	}
 
-	@isTest
+	@IsTest
 	static void thatNullCanBeUsedAsExceptionvalue()
 	{
 		MY_MOCKS.startStubbing();
@@ -1652,8 +1652,8 @@ private class fflib_ApexMocksTest
 	{
 		System.Assert.areEqual(expectedValue, MY_MOCK_LIST.get2(2, 'Hello.'), 'the method did not returned the expected value');
 	}
-	
-	@isTest
+
+	@IsTest
 	static void thatToStringReturnsSimpleStringValue()
 	{
 		System.Assert.areEqual('fflib_ApexMocks', '' + new fflib_ApexMocks());
