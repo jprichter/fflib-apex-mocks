@@ -1,7 +1,8 @@
-@isTest
+@IsTest
+@SuppressWarnings('PMD.ClassNamingConventions, PMD.ApexUnitTestClassShouldHaveRunAs')
 public class fflib_QualifiedMethodAndArgValuesTest
 {
-    @isTest
+    @IsTest
     private static void equalsReturnsExpectedResults()
     {
         fflib_QualifiedMethod qm1 = new fflib_QualifiedMethod('Type1', 'Method1', new List<Type>{ Integer.class } );

@@ -1,10 +1,11 @@
 /*
  * Copyright (c) 2016-2017 FinancialForce.com, inc.  All rights reserved.
  */
-@isTest
+@IsTest
+@SuppressWarnings('PMD.ClassNamingConventions, PMD.ApexUnitTestClassShouldHaveRunAs')
 public with sharing class fflib_QualifiedMethodTest
 {
-	@isTest
+	@IsTest
 	private static void equalsReturnsExpectedResults()
 	{
 		//Given
@@ -44,7 +45,7 @@ public with sharing class fflib_QualifiedMethodTest
 		System.Assert.areEqual(qm6, qm6);
 	}
 
-	@isTest
+	@IsTest
 	private static void hashCodeReturnsExpectedResults()
 	{
 		//Given
@@ -84,13 +85,13 @@ public with sharing class fflib_QualifiedMethodTest
 		System.Assert.areEqual(qm6.hashCode(), qm6.hashCode());
 	}
 
-	@isTest
+	@IsTest
 	public static void toStringReturnsExpectedResult()
 	{
 		System.Assert.areEqual('MyClass.MyMethod(Integer)', new fflib_QualifiedMethod('MyClass', 'MyMethod', new List<Type>{ Integer.class }).toString());
 	}
 
-	@isTest
+	@IsTest
 	private static void equalsReturnsExpectedResultsForHasDependentMocks()
 	{
 		//Given
@@ -103,7 +104,7 @@ public with sharing class fflib_QualifiedMethodTest
 
 		//When/thens
 		fflib_ApexMocksConfig.HasIndependentMocks = false;
-		
+
 		System.Assert.areEqual(qm1, qm2);
 		System.Assert.areEqual(qm1, qm3);
 		System.Assert.areEqual(qm1, qm4);
@@ -120,7 +121,7 @@ public with sharing class fflib_QualifiedMethodTest
 		System.Assert.areNotEqual(qm3, qm4);
 	}
 
-	@isTest
+	@IsTest
 	private static void hashCodeReturnsExpectedResultsForHasDependentMocks()
 	{
 		//Given
@@ -133,7 +134,7 @@ public with sharing class fflib_QualifiedMethodTest
 
 		//When/thens
 		fflib_ApexMocksConfig.HasIndependentMocks = false;
-		
+
 		System.Assert.areEqual(qm1.hashCode(), qm2.hashCode());
 		System.Assert.areEqual(qm1.hashCode(), qm3.hashCode());
 		System.Assert.areEqual(qm1.hashCode(), qm4.hashCode());

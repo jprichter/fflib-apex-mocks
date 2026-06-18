@@ -23,12 +23,13 @@
  * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+@SuppressWarnings('PMD.ClassNamingConventions, PMD.ApexDoc')
 @NamespaceAccessible
 public with sharing class fflib_MatchersReturnValue
 {
 	public List<fflib_IMatcher> matchers;
 	public fflib_MethodReturnValue returnValue;
-	
+
 	public fflib_MatchersReturnValue(List<fflib_IMatcher> matchers, fflib_MethodReturnValue returnValue)
 	{
 		this.matchers = matchers;

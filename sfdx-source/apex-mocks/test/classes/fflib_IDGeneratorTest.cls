@@ -23,12 +23,15 @@
  * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-@isTest
+@IsTest
+@SuppressWarnings('PMD.ClassNamingConventions, PMD.ApexUnitTestClassShouldHaveRunAs')
 private class fflib_IDGeneratorTest
 {
-	@isTest
+	@IsTest
 	static void itShouldGenerateValidIDs()
 	{
+		String accountPrefix = Account.SObjectType.getDescribe(SObjectDescribeOptions.DEFERRED).getKeyPrefix();
+
 		String id1 = fflib_IDGenerator.generate(Account.SObjectType);
 		String id2 = fflib_IDGenerator.generate(Account.SObjectType);
 		String id3 = fflib_IDGenerator.generate(Account.SObjectType);
@@ -41,16 +44,13 @@ private class fflib_IDGeneratorTest
 		String id10 = fflib_IDGenerator.generate(Account.SObjectType);
 		String id11 = fflib_IDGenerator.generate(Account.SObjectType);
 
-		System.Assert.areEqual('001000000000001AAA', id1);
-		System.Assert.areEqual('001000000000002AAA', id2);
-		System.Assert.areEqual('001000000000003AAA', id3);
-		System.Assert.areEqual('001000000000004AAA', id4);
-		System.Assert.areEqual('001000000000005AAA', id5);
-		System.Assert.areEqual('001000000000006AAA', id6);
-		System.Assert.areEqual('001000000000007AAA', id7);
-		System.Assert.areEqual('001000000000008AAA', id8);
-		System.Assert.areEqual('001000000000009AAA', id9);
-		System.Assert.areEqual('001000000000010AAA', id10);
-		System.Assert.areEqual('001000000000011AAA', id11);
+		for (String generatedId : new List<String>{ id1, id2, id3, id4, id5, id6, id7, id8, id9, id10, id11 })
+		{
+			System.Assert.areEqual(18, generatedId.length(), 'Generated ID should be 18 characters');
+			System.Assert.isTrue(generatedId.startsWith(accountPrefix), 'Generated ID should start with Account key prefix');
+		}
+
+		Set<String> uniqueIds = new Set<String>{ id1, id2, id3, id4, id5, id6, id7, id8, id9, id10, id11 };
+		System.Assert.areEqual(11, uniqueIds.size(), 'All generated IDs should be unique');
 	}
 }

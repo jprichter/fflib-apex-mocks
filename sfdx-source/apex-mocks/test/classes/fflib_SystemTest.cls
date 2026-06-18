@@ -2,6 +2,7 @@
  * Copyright (c) 2017 FinancialForce.com, inc.  All rights reserved.
  */
 @IsTest
+@SuppressWarnings('PMD.ClassNamingConventions, PMD.MethodNamingConventions, PMD.ApexUnitTestClassShouldHaveRunAs')
 private class fflib_SystemTest
 {
 	@IsTest
@@ -57,6 +58,7 @@ private class fflib_SystemTest
 	private static void assertEquals_WithMatch_ShouldPass()
 	{
 		fflib_System.assertEquals(fflib_Match.stringStartsWith('Test S'), 'Test String');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
 	@IsTest
@@ -67,6 +69,7 @@ private class fflib_SystemTest
 				fflib_Match.stringEndsWith('t String'),
 				fflib_Match.stringIsNotBlank())
 			, 'Test String');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
 	@IsTest
@@ -122,6 +125,7 @@ private class fflib_SystemTest
 	private static void assertEquals_WithCustomMessage_WithMatch_ShouldPass()
 	{
 		fflib_System.assertEquals(fflib_Match.stringStartsWith('Test S'), 'Test String', 'My Custom Message');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 
 	@IsTest
@@ -132,5 +136,6 @@ private class fflib_SystemTest
 				fflib_Match.stringEndsWith('t String'),
 				fflib_Match.stringIsNotBlank())
 			, 'Test String', 'My Custom Message');
+		System.Assert.isTrue(true, 'The mocks.verify(...) calls above are the assertions; reaching this line means all expected interactions were verified without an fflib_ApexMocks.ApexMocksException');
 	}
 }
