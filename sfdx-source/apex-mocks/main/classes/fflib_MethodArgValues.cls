@@ -6,13 +6,13 @@
  * are permitted provided that the following conditions are met:
  *
  * - Redistributions of source code must retain the above copyright notice,
- *      this list of conditions and the following disclaimer.
+ * this list of conditions and the following disclaimer.
  * - Redistributions in binary form must reproduce the above copyright notice,
- *      this list of conditions and the following disclaimer in the documentation
- *      and/or other materials provided with the distribution.
+ * this list of conditions and the following disclaimer in the documentation
+ * and/or other materials provided with the distribution.
  * - Neither the name of the FinancialForce.com, inc nor the names of its contributors
- *      may be used to endorse or promote products derived from this software without
- *      specific prior written permission.
+ * may be used to endorse or promote products derived from this software without
+ * specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
@@ -27,7 +27,7 @@
 public with sharing class fflib_MethodArgValues
 {
 	public List<Object> argValues;
-	
+
 	/**
 	 * Wrapper object which encapsulates the argument values
 	 * supplied during a given method call.
@@ -39,7 +39,7 @@ public with sharing class fflib_MethodArgValues
 	{
 		this.argValues = argValues;
 	}
-	
+
 	/**
 	 * Standard equals override.
 	 * @param other The object whose equality we are verifying
@@ -51,11 +51,11 @@ public with sharing class fflib_MethodArgValues
 		{
 			return true;
 		}
-		
-		fflib_MethodArgValues that = other instanceof fflib_MethodArgValues ? (fflib_MethodArgValues)other : null;
+
+		fflib_MethodArgValues that = other instanceof fflib_MethodArgValues ? (fflib_MethodArgValues) other : null;
 		return that != null && this.argValues == that.argValues;
 	}
-	
+
 	/**
 	 * Standard hashCode override.
 	 * @return Integer The generated hashCode
@@ -64,9 +64,9 @@ public with sharing class fflib_MethodArgValues
 	{
 		Integer prime = 31;
 		Integer result = 1;
-		
+
 		result = prime * result + ((argValues == null) ? 0 : argValues.hashCode());
-		
+
 		return result;
 	}
 }

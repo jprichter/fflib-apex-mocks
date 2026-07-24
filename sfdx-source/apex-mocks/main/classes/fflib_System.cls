@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2017 FinancialForce.com, inc.  All rights reserved.
- */
+* Copyright (c) 2017 FinancialForce.com, inc.  All rights reserved.
+*/
 
 /**
  * @group Core
@@ -42,14 +42,10 @@ public class fflib_System
 		{
 			throw new fflib_ApexMocks.ApexMocksException('fflib_System.assertEquals expects you to register exactly 1 fflib_IMatcher (typically through the helpers in fflib_Match).');
 		}
-		
+
 		if (!matcher.matches(value))
 		{
-			throw new fflib_ApexMocks.ApexMocksException(String.format('Expected : {0}, Actual: {1}{2}', new String[]{
-				String.valueOf(matcher),
-				String.valueOf(value),
-				String.isBlank(customAssertMessage) ? '' : (' -- ' + customAssertMessage)
-			}));
+			throw new fflib_ApexMocks.ApexMocksException(String.format('Expected : {0}, Actual: {1}{2}', new String[]{ String.valueOf(matcher), String.valueOf(value), String.isBlank(customAssertMessage) ? '' : (' -- ' + customAssertMessage) }));
 		}
 	}
 }
