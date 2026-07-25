@@ -1,6 +1,6 @@
 /*
- Copyright (c) 2014-2017 FinancialForce.com, inc.  All rights reserved.
- */
+Copyright (c) 2014-2017 FinancialForce.com, inc.  All rights reserved.
+*/
 
 /**
  * @group Core
@@ -9,18 +9,16 @@
 public with sharing class fflib_MethodCountRecorder
 {
 	/*
-	 * Map of method arguments by type name.
-	 *
-	 * Key: qualifiedMethod
-	 * Object: list of method arguments.
-	 *
-	 * Object: map of count by method call argument.
-	 */
-	private final Map<fflib_QualifiedMethod, List<fflib_MethodArgValues>> methodArgumentsByTypeName =
-		new Map<fflib_QualifiedMethod, List<fflib_MethodArgValues>>();
+	* Map of method arguments by type name.
+	*
+	* Key: qualifiedMethod
+	* Object: list of method arguments.
+	*
+	* Object: map of count by method call argument.
+	*/
+	private final Map<fflib_QualifiedMethod, List<fflib_MethodArgValues>> methodArgumentsByTypeName = new Map<fflib_QualifiedMethod, List<fflib_MethodArgValues>>();
 
-	private final List<fflib_InvocationOnMock> orderedMethodCalls =
-		new List<fflib_InvocationOnMock>();
+	private final List<fflib_InvocationOnMock> orderedMethodCalls = new List<fflib_InvocationOnMock>();
 
 	private static final fflib_MethodCountRecorder STATIC_RECORDER = new fflib_MethodCountRecorder();
 
@@ -83,8 +81,7 @@ public with sharing class fflib_MethodCountRecorder
 
 	private void record(fflib_InvocationOnMock invocation)
 	{
-		List<fflib_MethodArgValues> methodArgs =
-			methodArgumentsByTypeName.get(invocation.getMethod());
+		List<fflib_MethodArgValues> methodArgs = methodArgumentsByTypeName.get(invocation.getMethod());
 
 		if (methodArgs == null)
 		{

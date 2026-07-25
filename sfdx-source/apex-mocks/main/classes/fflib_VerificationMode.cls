@@ -1,20 +1,31 @@
 /*
- Copyright (c) 2017 FinancialForce.com, inc.  All rights reserved.
- */
+Copyright (c) 2017 FinancialForce.com, inc.  All rights reserved.
+*/
 
 /**
- *	This class implements the verification modes with Mockito syntax style.
- *	It can be used in the classic verify and in the ordered verify.
- *	@group Core
+ * This class implements the verification modes with Mockito syntax style.
+ * It can be used in the classic verify and in the ordered verify.
+ * @group Core
  */
 @NamespaceAccessible
 public with sharing class fflib_VerificationMode
 {
-	public Integer VerifyMin {get; set;}
-	public Integer VerifyMax {get; set;}
-	public String CustomAssertMessage { get; set; }
+	public Integer VerifyMin
+	{ get; set; }
+	public Integer VerifyMax
+	{ get; set; }
+	public String CustomAssertMessage
+	{ get; set; }
 
-	public enum ModeName {times, atLeast, atMost, between, atLeastOnce, calls}
+	public enum ModeName
+	{
+		times,
+		atLeast,
+		atMost,
+		between,
+		atLeastOnce,
+		calls
+	}
 
 	public ModeName Method;
 
@@ -28,8 +39,8 @@ public with sharing class fflib_VerificationMode
 	}
 
 	/**
-	* Sets how many times the method is expected to be called.
-	  * For InOrder verification we copy Mockito behavior which is as follows;
+	 * Sets how many times the method is expected to be called.
+	 * For InOrder verification we copy Mockito behavior which is as follows;
 	 * <ul>
 	 * <li>Consume the specified number of matching invocations, ignoring non-matching invocations in between</li>
 	 * <li>Fail an assert if the very next invocation matches, but additional matches can still exist so long as at least one non-matching invocation exists before them</li>

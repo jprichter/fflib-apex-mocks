@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2017 FinancialForce.com, inc.  All rights reserved.
- */
+* Copyright (c) 2017 FinancialForce.com, inc.  All rights reserved.
+*/
 @IsTest
 @NamespaceAccessible
 public class fflib_ApexMocksConfig
@@ -13,7 +13,8 @@ public class fflib_ApexMocksConfig
 	 * - See fflib_ApexMocksTest.thatMultipleInstancesCanBeMockedIndependently
 	 */
 	@NamespaceAccessible
-	public static Boolean HasIndependentMocks {get; set;}
+	public static Boolean HasIndependentMocks
+	{ get; set; }
 
 	static
 	{
